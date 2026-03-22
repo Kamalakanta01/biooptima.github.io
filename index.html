@@ -719,6 +719,79 @@ td:first-child { color: var(--ink); font-weight: 600; }
 .pb-med    { background: var(--amber-l); color: var(--amber); border: 1px solid var(--amber-m); }
 .pb-low    { background: var(--green-l); color: var(--green); border: 1px solid var(--green-m); }
 
+/* ─── MEDICATION CHECKLIST ───────────────────────────────── */
+.med-section { margin-bottom: 18px; }
+.med-section-title {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 7px; margin-top: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.med-section-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.med-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
+  gap: 6px;
+}
+.med-item {
+  display: flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--border); border-radius: var(--r2);
+  padding: 8px 11px; cursor: pointer;
+  transition: border-color .15s, background .15s;
+  user-select: none; font-size: 0.8rem; color: var(--muted);
+  min-height: 40px;
+}
+.med-item input { display: none; }
+.med-box {
+  width: 15px; height: 15px; border-radius: 3px;
+  border: 1.5px solid var(--border2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.58rem; transition: all .15s;
+}
+.med-item.checked { border-color: var(--blue); background: var(--blue-l); color: var(--ink2); }
+.med-item.checked .med-box { background: var(--blue); border-color: var(--blue); color: white; }
+.med-item .med-icon { font-size: 0.85rem; flex-shrink: 0; }
+
+/* ─── AGE BAND BADGE ─────────────────────────────────────── */
+.age-band {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 99px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: .05em;
+  background: var(--blue-l); color: var(--blue);
+  border: 1px solid var(--blue-m); margin-bottom: 8px;
+}
+
+/* ─── INTERACTION CARD ───────────────────────────────────── */
+.interaction-card {
+  border: 1px solid var(--border); border-radius: var(--r2);
+  overflow: hidden; margin-bottom: 10px;
+}
+.ic-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; background: var(--stone);
+  border-bottom: 1px solid var(--border);
+}
+.ic-icon { font-size: 1.1rem; flex-shrink: 0; }
+.ic-title { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; font-weight: 700; color: var(--ink); flex: 1; }
+.ic-priority {
+  padding: 2px 8px; border-radius: 99px;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+}
+.ic-p-high { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.ic-p-med  { background: var(--amber-l); color: var(--amber); border: 1px solid var(--amber-m); }
+.ic-p-low  { background: var(--green-l); color: var(--green); border: 1px solid var(--green-m); }
+.ic-body { padding: 12px 14px; }
+.ic-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 8px; }
+.ic-body p:last-child { margin-bottom: 0; }
+.ic-rec {
+  background: var(--blue-l); border: 1px solid var(--blue-m);
+  border-radius: var(--r); padding: 9px 12px;
+  font-size: 0.8rem; color: #1e40af; line-height: 1.6;
+  margin-top: 8px;
+}
+.ic-rec strong { color: var(--blue); }
+
 /* ─── PRINT STYLES ───────────────────────────────────────── */
 @media print {
   .nav, .mob-menu, #prog, .ham, .nav-cta, footer, .calc-form, #resultActions,
@@ -815,6 +888,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
       <li><a href="#edc">EDC &amp; Toxins</a></li>
       <li><a href="#hormonal">Hormonal</a></li>
       <li><a href="#fasting">Fasting</a></li>
+      <li><a href="#bodycomp">Body Composition</a></li>
       <li><a href="#detox">Detox</a></li>
       <li><a href="#sleep">Sleep</a></li>
       <li><a href="#summary">Summary</a></li>
@@ -834,6 +908,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   <a href="#edc">EDC &amp; Endocrine Disruption</a>
   <a href="#hormonal">Hormonal Optimisation</a>
   <a href="#fasting">Fasting &amp; Metabolism</a>
+  <a href="#bodycomp">⚖️ Body Composition</a>
   <a href="#detox">Detox &amp; Nrf2</a>
   <a href="#sleep">Sleep Optimisation</a>
   <a href="#summary">Evidence Summary</a>
@@ -1455,6 +1530,264 @@ td:first-child { color: var(--ink); font-weight: 600; }
   </div>
 </section>
 
+<!-- ▸ BODY COMPOSITION -->
+<section id="bodycomp" class="stone">
+  <div class="wrap">
+    <div class="eyebrow amber fu">Weight &amp; Body Composition</div>
+    <h2 class="fu">The Science of Fat Loss, Muscle Gain &amp; Recomposition</h2>
+    <p class="lead fu" style="margin-bottom:36px;">Most weight management advice ignores the physiology. Understanding the real mechanisms — adaptive thermogenesis, NEAT suppression, protein leverage, hormonal regulation — is the difference between sustainable change and repeated failure.</p>
+
+    <!-- TDEE breakdown -->
+    <div class="g4 fu" style="margin-bottom:32px;">
+      <div class="card blue" style="text-align:center;padding:18px 14px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--blue);">60–70%</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-top:4px;">BMR<br><span style="font-size:0.68rem;">Basal metabolic rate — organs, brain, temperature</span></div>
+      </div>
+      <div class="card amber" style="text-align:center;padding:18px 14px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--amber);">6–50%</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-top:4px;">NEAT<br><span style="font-size:0.68rem;">Non-exercise movement — walking, standing, fidgeting</span></div>
+      </div>
+      <div class="card green" style="text-align:center;padding:18px 14px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--green);">10–15%</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-top:4px;">TEF<br><span style="font-size:0.68rem;">Thermic effect of food — digestion costs (protein highest)</span></div>
+      </div>
+      <div class="card rose" style="text-align:center;padding:18px 14px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--rose);">5–15%</div>
+        <div style="font-size:0.76rem;color:var(--muted);margin-top:4px;">EAT<br><span style="font-size:0.68rem;">Exercise activity thermogenesis — structured training</span></div>
+      </div>
+    </div>
+
+    <div class="split fu">
+      <div>
+        <!-- FAT LOSS -->
+        <div class="sex-badge sb-both">⚖️ Fat Loss Science</div>
+        <h3 style="margin-bottom:12px;">Why diets fail — and how to prevent it</h3>
+        <p style="font-size:0.86rem;margin-bottom:12px;">A caloric deficit is necessary — but the body responds to restriction with a coordinated suite of metabolic adaptations designed to resist weight loss. Understanding them is the key to working around them.</p>
+
+        <div class="acc-wrap" style="margin-bottom:16px;">
+          <div class="acc">
+            <button class="acc-btn" onclick="toggleAcc(this)">
+              <span class="acc-icon">🧊</span>
+              <span class="acc-title">Adaptive Thermogenesis — The Metabolism Slowdown</span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body">
+              <p>When you restrict calories, your body reduces energy expenditure beyond what is explained by the loss of metabolically active tissue. Systematic review of 33 studies (n=2,528): <strong>adaptive thermogenesis (AT) is real and significant</strong>, averaging 90–180 kcal/day below predicted levels during active weight loss. Key mechanisms include reduced leptin, reduced T3 thyroid hormone, and suppressed sympathetic nervous system activity.</p>
+              <p><strong>The good news:</strong> AT is a temporary adaptation. Martins et al. (n=156 women, 16% weight loss) demonstrated <em>complete absence</em> of AT at 1 and 2 years after weight loss — it dissipates within 2–4 weeks of reaching energy balance at the new body weight. The feared "permanently broken metabolism" is largely a myth for moderate weight loss.</p>
+              <p><strong>Exception:</strong> The Biggest Loser study (extreme 30%+ weight loss over 30 weeks) did show persistent AT at 6 years — but this reflects the extreme nature of the intervention, not moderate caloric restriction.</p>
+              <div class="callout c-green"><span class="callout-i">✓</span><span><strong>Counterstrategies:</strong> (1) Moderate deficit (500–700 kcal max) limits the magnitude of AT. (2) High protein diet (≥2g/kg) preserves lean mass, maintaining BMR. (3) Resistance training during deficit directly opposes AT via muscle preservation. (4) 1–2 week diet breaks at maintenance every 4–8 weeks may attenuate AT (MATADOR study showed intermittent restriction superior to continuous for efficiency).</span></div>
+            </div>
+          </div>
+
+          <div class="acc">
+            <button class="acc-btn" onclick="toggleAcc(this)">
+              <span class="acc-icon">🦥</span>
+              <span class="acc-title">NEAT Suppression — The Invisible Fat Loss Killer</span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body">
+              <p>NEAT (non-exercise activity thermogenesis) is everything you do that isn't sleeping, eating, or structured exercise — walking, standing, fidgeting, gesturing. It varies by up to <strong>2,000 kcal/day</strong> between individuals of similar size. During caloric restriction, NEAT drops involuntarily as the body unconsciously reduces spontaneous movement, fidgeting, and postural muscle activity.</p>
+              <p>This is often the primary reason fat loss stalls at a plateau — the deficit that worked in week 1 has been partially offset by reduced NEAT. An additional <strong>280–350 kcal/day of deliberate NEAT</strong> (Levine 2007) is required to sustain meaningful weight loss over time.</p>
+              <div class="callout c-amber"><span class="callout-i">⚠️</span><span><strong>Plateau diagnostic:</strong> If fat loss has stalled and food tracking is accurate, NEAT reduction is the most likely culprit — not a broken metabolism. Step count tracking often reveals a 1,000–2,000 step/day reduction during dieting phases. Consciously increasing NEAT is more sustainable than further reducing calories.</span></div>
+              <div class="callout c-blue"><span class="callout-i">✓</span><span><strong>NEAT strategies:</strong> Standing desk (300–500 kcal/day extra), 5–10 min walk after every meal, parking further away, taking stairs, pacing during phone calls. These habits are far more sustainable long-term than additional formal exercise sessions.</span></div>
+            </div>
+          </div>
+
+          <div class="acc">
+            <button class="acc-btn" onclick="toggleAcc(this)">
+              <span class="acc-icon">🥩</span>
+              <span class="acc-title">Protein Leverage — The Master Macro for Satiety &amp; Muscle Preservation</span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body">
+              <p><strong>Protein leverage hypothesis:</strong> Humans have a biological drive to hit a protein target. When dietary protein is diluted (lower % of calories), total food intake increases to compensate — a primary driver of overconsumption in low-protein, ultra-processed food environments.</p>
+              <p><strong>During fat loss:</strong> Protein minimum of 2.2g/kg is required to preserve lean muscle mass (Helms et al. meta-analysis). Higher protein diets reduce hunger via increased PYY and GLP-1 secretion, higher thermogenesis (25–30% of protein calories are burned in digestion vs 5–10% for carbs/fat), and greater satiety per calorie than any other macronutrient.</p>
+              <p><strong>Distribution matters:</strong> Leucine threshold of ~2.5–3g per meal drives muscle protein synthesis. Spreading protein across 3–4 meals (rather than 1–2 large servings) maximises muscle preservation during a deficit.</p>
+              <div class="callout c-green"><span class="callout-i">✓</span><span>Practical target during fat loss: 2.2–2.7g/kg of <em>body weight</em> (or 2.7–3.1g/kg of <em>lean body mass</em> if obese). This is substantially higher than general population recommendations — necessary to preserve muscle while in deficit.</span></div>
+            </div>
+          </div>
+
+          <div class="acc">
+            <button class="acc-btn" onclick="toggleAcc(this)">
+              <span class="acc-icon">📅</span>
+              <span class="acc-title">Rate of Loss, Refeeds &amp; Diet Breaks</span>
+              <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body">
+              <p><strong>Optimal rate of fat loss:</strong> 0.5–1% of body weight per week minimises muscle loss while allowing meaningful fat reduction. Faster rates (>1%/week) rapidly increase muscle catabolism even at high protein intake.</p>
+              <p><strong>Deficit guidance:</strong> 300–500 kcal/day deficit = conservative (0.3–0.5 kg/week); 500–700 kcal/day = moderate (0.5–0.7 kg/week); >750 kcal/day = aggressive (risk of muscle loss increases sharply). Larger deficits require proportionally higher protein and resistance training.</p>
+              <p><strong>Diet breaks (MATADOR study):</strong> 2 weeks at maintenance every 4 weeks produced 40% greater weight loss efficiency than continuous restriction in men — suggesting periodic energy balance resets may attenuate adaptive thermogenesis and NEAT suppression. Note: the total time in restriction was equated, so participants dieted longer overall.</p>
+              <p><strong>Refeed days (1–2 days/week at maintenance):</strong> Temporarily restore leptin, reduce diet fatigue, and may preserve NEAT. Benefit is psychological as much as physiological at moderate deficit. Protein stays high on refeed days; extra calories from carbohydrates.</p>
+              <div class="callout c-rose"><span class="callout-i">🌸</span><span><strong>Female consideration:</strong> Follicular phase (days 1–14) is the superior fat loss window — lower progesterone, better insulin sensitivity, more stable energy. Luteal phase (days 15–28) naturally increases appetite by ~150–300 kcal/day due to progesterone. Expect and plan for this rather than fighting it or labelling it as failure.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- MUSCLE GAIN -->
+        <div class="sex-badge sb-both">💪 Muscle Gain Science</div>
+        <h3 style="margin-bottom:12px;">Building muscle — realistic rates and requirements</h3>
+        <p style="font-size:0.86rem;margin-bottom:14px;">Muscle gain is slow. Understanding realistic rates prevents both frustration (expecting too much) and errors (eating too large a surplus and gaining excess fat).</p>
+
+        <div class="card" style="margin-bottom:12px;">
+          <h4 style="margin-bottom:10px;">Realistic rates of muscle gain (natural, resistance training)</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;font-size:0.82rem;align-items:start;">
+              <div style="font-weight:700;color:var(--blue);">Beginner (0–1 yr training)</div>
+              <div style="color:var(--muted);">1.5–2.5 kg lean mass/month. Newbie gains allow recomposition — can gain muscle in a deficit. Fastest phase: maximise training consistency and protein.</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;font-size:0.82rem;align-items:start;">
+              <div style="font-weight:700;color:var(--blue);">Intermediate (1–3 yr)</div>
+              <div style="color:var(--muted);">0.7–1.2 kg/month with a modest caloric surplus. Requires progressive overload and consistent stimulus. Rate is approximately half of beginner phase.</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;font-size:0.82rem;align-items:start;">
+              <div style="font-weight:700;color:var(--blue);">Advanced (3+ yr)</div>
+              <div style="color:var(--muted);">0.2–0.5 kg/month maximum natural rate. Diminishing returns — very specific programming and near-optimal nutrition required. Accept slow progress as normal.</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;font-size:0.82rem;align-items:start;">
+              <div style="font-weight:700;color:var(--rose);">Women (all levels)</div>
+              <div style="color:var(--muted);">~50–60% of male rate due to lower testosterone. Roughly: 0.5–1.5 kg/month beginner; 0.3–0.6 kg/month intermediate. Respond similarly to training — differences are magnitude, not mechanism.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout c-amber" style="margin-bottom:12px;">
+          <span class="callout-i">⚠️</span>
+          <div><strong>Surplus calibration:</strong> A 200–300 kcal surplus above TDEE is sufficient for most intermediate/advanced trainees. Larger surpluses ("dirty bulk") accelerate fat gain disproportionately to muscle gain after the beginner phase. Lean bulking (200–300 kcal) → slower but cleaner gains.</div>
+        </div>
+
+        <!-- RECOMP -->
+        <div class="sex-badge sb-both" style="margin-top:14px;">🔄 Recomposition</div>
+        <h3 style="margin-bottom:10px;">Simultaneous fat loss and muscle gain</h3>
+        <p style="font-size:0.86rem;margin-bottom:10px;">Recomposition (gaining muscle while losing fat) is possible but slow. It works best in specific populations.</p>
+        <ul class="clist cl-green" style="font-size:0.83rem;margin-bottom:14px;">
+          <li>Beginners — highest muscle-building potential, any caloric state sufficient</li>
+          <li>Returning from a training break — "muscle memory" allows rapid regain</li>
+          <li>Individuals with higher body fat (&gt;25% men, &gt;32% women) — stored fat provides substrate</li>
+          <li>Advanced trainees on drugs — not applicable without endocrine assistance</li>
+        </ul>
+        <p style="font-size:0.83rem;color:var(--muted);">Recomp protocol: maintenance calories ±5%, protein 2.2–2.7g/kg, resistance training 3–4×/week with progressive overload. Progress is measured in body composition changes (waist shrinking, strength increasing) not scale weight.</p>
+
+        <!-- WEIGHT MAINTENANCE -->
+        <div class="sex-badge sb-both" style="margin-top:14px;">⚖️ Weight Maintenance</div>
+        <div class="callout c-blue" style="margin-top:8px;">
+          <span class="callout-i">📊</span>
+          <div><strong>Long-term maintenance reality:</strong> >80% recidivism rate to pre-weight-loss levels is documented. Primary causes: (1) NEAT remains suppressed for months post-diet, (2) appetite hormones (ghrelin elevated, leptin reduced) stay dysregulated for 1+ year, (3) hedonic appetite increases for palatable foods. The National Weight Control Registry (n=10,000 people who maintained ≥13kg loss for ≥1 year) identifies key habits: consistent breakfast, daily weighing, high physical activity (~1 hour/day NEAT), and consistent eating patterns regardless of weekday vs weekend.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDICATION WEIGHT INTERACTION TABLE -->
+    <h3 class="fu" style="margin-top:40px;margin-bottom:16px;">Medication Effects on Body Weight — Evidence Summary</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:14px;" class="fu">Data from Annals of Internal Medicine (2024) target trial emulation study (n&gt;150,000), PMC meta-analyses, and head-to-head RCTs. All comparisons vs sertraline as reference.</p>
+    <div class="tbl-wrap fu">
+      <table>
+        <thead>
+          <tr>
+            <th>Medication</th>
+            <th>6-Month Weight Change</th>
+            <th>≥5% Body Weight Gain Risk</th>
+            <th>Mechanism</th>
+            <th>Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Escitalopram (Lexapro)</td>
+            <td><span class="stat-pill sp-rose">+0.41 kg vs sertraline</span></td>
+            <td>10–15% higher risk</td>
+            <td>5-HT2C downregulation → appetite increase; H1 blockade</td>
+            <td>Mediterranean diet; protein leverage; resistance training</td>
+          </tr>
+          <tr>
+            <td>Paroxetine (Paxil / Seroxat)</td>
+            <td><span class="stat-pill sp-rose">+0.37 kg vs sertraline</span></td>
+            <td>10–15% higher; 21% ↑ risk over 10 years</td>
+            <td>Strongest anticholinergic effect of SSRIs; M3 receptor → insulin dysregulation</td>
+            <td>Consider switch to fluoxetine/bupropion if weight is a priority</td>
+          </tr>
+          <tr>
+            <td>Duloxetine (Cymbalta)</td>
+            <td><span class="stat-pill sp-rose">+0.34 kg vs sertraline</span></td>
+            <td>10–15% higher risk</td>
+            <td>Noradrenergic component increases appetite; H1 blockade</td>
+            <td>Resistance training; calorie-dense food avoidance</td>
+          </tr>
+          <tr>
+            <td>Mirtazapine (Remeron)</td>
+            <td><span class="stat-pill sp-rose">+1.74 kg (4–12 weeks)</span></td>
+            <td>Highest weight gain risk of atypicals</td>
+            <td>H1 (histamine) antagonism → appetite ↑, sedation; 5-HT2C antagonism</td>
+            <td>Take smallest effective dose; evening administration; TRF may help</td>
+          </tr>
+          <tr>
+            <td>Sertraline (Zoloft)</td>
+            <td>Reference (0 kg)</td>
+            <td>Reference</td>
+            <td>Modest 5-HT2C effects; neutral long-term in most</td>
+            <td>Standard dietary approach sufficient</td>
+          </tr>
+          <tr>
+            <td>Fluoxetine (Prozac)</td>
+            <td><span class="stat-pill sp-green">−0.07 kg (essentially neutral)</span></td>
+            <td>No higher than sertraline</td>
+            <td>Initial 5-HT2C activation → anorexigenic; acute mild weight loss, then neutral</td>
+            <td>Weight-neutral — no special protocol needed</td>
+          </tr>
+          <tr>
+            <td>Bupropion (Wellbutrin)</td>
+            <td><span class="stat-pill sp-green">−0.22 kg vs sertraline</span></td>
+            <td>15% <em>reduced</em> risk of ≥5% gain</td>
+            <td>Dopamine/noradrenaline reuptake inhibition → appetite suppression; no histamine blockade</td>
+            <td>Best-in-class for weight management; only antidepressant with consistent weight-neutral or loss profile</td>
+          </tr>
+          <tr>
+            <td>Corticosteroids (prednisolone)</td>
+            <td><span class="stat-pill sp-rose">5–10% body weight in chronic use</span></td>
+            <td>Very high; central adiposity pattern</td>
+            <td>↑Cortisol → insulin resistance → visceral fat; ↑appetite; fluid retention</td>
+            <td>Lowest effective dose; Mediterranean diet; resistance training to counter muscle loss</td>
+          </tr>
+          <tr>
+            <td>Beta-blockers</td>
+            <td><span class="stat-pill sp-amber">+1–3 kg average</span></td>
+            <td>Moderate</td>
+            <td>↓Exercise capacity (~10%); reduce NEAT; modest insulin resistance</td>
+            <td>Carvedilol/nebivolol are metabolically superior; increase deliberate NEAT</td>
+          </tr>
+          <tr>
+            <td>Metformin</td>
+            <td><span class="stat-pill sp-green">−1 to −3 kg over 12 months</span></td>
+            <td>Weight loss or neutral</td>
+            <td>Reduces hepatic glucose output; modest appetite suppression via GLP-1 pathway; GI effects reduce intake</td>
+            <td>Weight-beneficial — no modification needed</td>
+          </tr>
+          <tr>
+            <td>OCP (combined pill)</td>
+            <td>~1–2 kg water retention; minimal true fat gain</td>
+            <td>Modest (mostly fluid)</td>
+            <td>Oestrogen-driven fluid retention; progestin may increase appetite; nutrient depletion → fatigue</td>
+            <td>Water weight fluctuation is not fat — reassure. Address nutrient depletions (Mg, B6) to reduce fatigue-driven eating.</td>
+          </tr>
+          <tr>
+            <td>Levothyroxine</td>
+            <td>Weight neutral when correctly dosed</td>
+            <td>Under-replacement → weight gain</td>
+            <td>T4→T3 drives metabolism; under-replacement reduces BMR; over-replacement causes weight loss</td>
+            <td>Optimal TSH target 0.4–2.0 mIU/L — confirm with prescriber if weight is not responding</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout c-blue fu" style="margin-top:16px;">
+      <span class="callout-i">🔑</span>
+      <div><strong>Early warning signal:</strong> A ≥5% change in body weight within the first 4 weeks of starting a new medication strongly predicts the long-term weight trajectory (PMC review). This is the critical intervention window — if weight gain is occurring and is unacceptable, discuss alternatives with your prescriber early rather than after significant gain has occurred.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ▸ DETOX -->
 <section id="detox">
   <div class="wrap">
@@ -1836,10 +2169,12 @@ td:first-child { color: var(--ink); font-weight: 600; }
         </div>
       </div>
 
-      <div class="form-grid">
+      <!-- ── BIOMETRICS ── -->
+      <div class="form-section-label">📋 Biometrics &amp; Lifestyle</div>
+      <div class="form-grid" style="margin-bottom:18px;">
         <div class="form-group">
           <label>Age</label>
-          <input type="number" id="age" placeholder="28" min="16" max="80" inputmode="numeric">
+          <input type="number" id="age" placeholder="28" min="16" max="85" inputmode="numeric">
           <span class="unit">years</span>
         </div>
         <div class="form-group">
@@ -1892,92 +2227,155 @@ td:first-child { color: var(--ink); font-weight: 600; }
             <option value="pregnant">Pregnant / breastfeeding</option>
           </select>
         </div>
-      </div>
-
-      <!-- Goals -->
-      <div style="margin-bottom:18px;">
-        <label style="display:block;font-size:0.73rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Primary Goals (select all that apply)</label>
-        <div class="goal-grid" id="goalGrid">
-          <label class="goal-chip checked" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="cognitive" checked>
-            <div class="goal-chip-box">✓</div>
-            🧠 Cognitive focus
-          </label>
-          <label class="goal-chip" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="hormonal">
-            <div class="goal-chip-box">✓</div>
-            ⚡ Hormonal health
-          </label>
-          <label class="goal-chip" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="detox">
-            <div class="goal-chip-box">✓</div>
-            🌿 Detox / EDC reduction
-          </label>
-          <label class="goal-chip" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="sleep">
-            <div class="goal-chip-box">✓</div>
-            😴 Better sleep
-          </label>
-          <label class="goal-chip" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="weight">
-            <div class="goal-chip-box">✓</div>
-            ⚖️ Body composition
-          </label>
-          <label class="goal-chip" onclick="toggleGoal(this, event)">
-            <input type="checkbox" value="fertility">
-            <div class="goal-chip-box">✓</div>
-            🌱 Fertility support
-          </label>
+        <div class="form-group">
+          <label id="targetWeightLabel">Target Weight <span style="font-weight:400;font-size:0.72rem;color:var(--faint);">(optional)</span></label>
+          <input type="number" id="targetWeight" placeholder="e.g. 68" min="30" max="300" step="0.5" inputmode="decimal">
+          <span class="unit" id="targetWeightUnit">kg</span>
+        </div>
+        <div class="form-group">
+          <label>Weight Direction</label>
+          <select id="weightDir">
+            <option value="lose">Lose fat</option>
+            <option value="gain">Gain muscle / mass</option>
+            <option value="recomp">Recomposition (lose fat, gain muscle)</option>
+            <option value="maintain" selected>Maintain current weight</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Est. Body Fat % <span style="font-weight:400;font-size:0.72rem;color:var(--faint);">(optional)</span></label>
+          <select id="bodyFatPct">
+            <option value="">Unknown</option>
+            <option value="8">~8% (very lean / athlete)</option>
+            <option value="13">~13% (lean)</option>
+            <option value="18">~18% (athletic average)</option>
+            <option value="23" selected>~23% (average)</option>
+            <option value="28">~28% (above average)</option>
+            <option value="33">~33% (overweight)</option>
+            <option value="38">~38% (obese)</option>
+          </select>
         </div>
       </div>
 
-      <!-- Toxin exposure checker -->
+      <!-- ── GOALS ── -->
+      <div class="form-section-label">🎯 Primary Goals</div>
+      <div class="goal-grid" id="goalGrid" style="margin-bottom:18px;">
+        <label class="goal-chip checked" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="cognitive" checked>
+          <div class="goal-chip-box">✓</div>🧠 Cognitive focus
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="hormonal">
+          <div class="goal-chip-box">✓</div>⚡ Hormonal health
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="detox">
+          <div class="goal-chip-box">✓</div>🌿 Detox / EDC reduction
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="sleep">
+          <div class="goal-chip-box">✓</div>😴 Better sleep
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="weight">
+          <div class="goal-chip-box">✓</div>⚖️ Body composition
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="fertility">
+          <div class="goal-chip-box">✓</div>🌱 Fertility support
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="muscle">
+          <div class="goal-chip-box">✓</div>💪 Muscle / strength
+        </label>
+        <label class="goal-chip" onclick="toggleGoal(this, event)">
+          <input type="checkbox" value="longevity">
+          <div class="goal-chip-box">✓</div>🔬 Longevity / ageing
+        </label>
+      </div>
+
+      <!-- ── EDC EXPOSURE ── -->
+      <div class="form-section-label" style="margin-top:18px;">☣️ EDC / Toxin Exposure
+        <span style="font-weight:400;font-size:0.72rem;text-transform:none;letter-spacing:0;color:var(--faint);"> — check all that apply</span>
+      </div>
+      <div class="tox-grid" id="toxGrid" style="margin-bottom:18px;">
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Heat food in plastic containers
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Use plastic water bottles regularly
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Canned food most days
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="3"><div class="tox-box">✓</div> Handle thermal/receipt paper often
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Non-organic produce regularly
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Synthetic fragrance products
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="3"><div class="tox-box">✓</div> Tobacco smoke (active or passive)
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Unfiltered tap water
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="3"><div class="tox-box">✓</div> Occupational chemical exposure
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Non-stick cookware (PFAS)
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="1"><div class="tox-box">✓</div> High air pollution environment
+        </label>
+        <label class="tox-item" onclick="toggleTox(this, event)">
+          <input type="checkbox" value="2"><div class="tox-box">✓</div> Conventional cleaning products
+        </label>
+      </div>
+
+      <!-- ─── MEDICATIONS ─── -->
       <div style="margin-bottom:18px;">
-        <label style="display:block;font-size:0.73rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">EDC / Toxin Exposure Check <span style="font-weight:400;text-transform:none;letter-spacing:0;">(check all that apply to your routine)</span></label>
-        <div class="tox-grid" id="toxGrid">
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Heat food in plastic containers
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Use plastic water bottles regularly
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Canned food most days
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="3"><div class="tox-box">✓</div> Handle thermal/receipt paper often
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Non-organic produce regularly
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Synthetic fragrance products
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="3"><div class="tox-box">✓</div> Tobacco smoke (active or passive)
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Unfiltered tap water
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="3"><div class="tox-box">✓</div> Occupational chemical exposure
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Non-stick cookware (PFAS)
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="1"><div class="tox-box">✓</div> High air pollution environment
-          </label>
-          <label class="tox-item" onclick="toggleTox(this, event)">
-            <input type="checkbox" value="2"><div class="tox-box">✓</div> Conventional cleaning products
-          </label>
+        <label style="display:block;font-size:0.73rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">
+          Current Medications
+          <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--faint);margin-left:4px;">(select all that apply — enables drug-specific interaction analysis)</span>
+        </label>
+        <div class="med-section">
+          <div class="med-section-title">🧠 Mental health</div>
+          <div class="med-grid" id="medGrid">
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="ssri"><div class="med-box">✓</div><span class="med-icon">💊</span>SSRI (fluoxetine, sertraline, citalopram)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="snri"><div class="med-box">✓</div><span class="med-icon">💊</span>SNRI (venlafaxine, duloxetine)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="other_ad"><div class="med-box">✓</div><span class="med-icon">💊</span>Other antidepressant (mirtazapine, bupropion)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="benzo"><div class="med-box">✓</div><span class="med-icon">💊</span>Benzodiazepine / Z-drug (zopiclone, zolpidem)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="stimulant"><div class="med-box">✓</div><span class="med-icon">💊</span>Stimulant (methylphenidate, Adderall)</label>
+          </div>
+          <div class="med-section-title">❤️ Cardiovascular</div>
+          <div class="med-grid">
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="betablocker"><div class="med-box">✓</div><span class="med-icon">💊</span>Beta-blocker (atenolol, metoprolol, propranolol, bisoprolol)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="carvedilol"><div class="med-box">✓</div><span class="med-icon">💊</span>Carvedilol / Nebivolol specifically</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="statin"><div class="med-box">✓</div><span class="med-icon">💊</span>Statin (atorvastatin, rosuvastatin, simvastatin)</label>
+          </div>
+          <div class="med-section-title">⚗️ Hormonal / metabolic</div>
+          <div class="med-grid">
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="ocp"><div class="med-box">✓</div><span class="med-icon">💊</span>Oral contraceptive pill (OCP)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="metformin"><div class="med-box">✓</div><span class="med-icon">💊</span>Metformin</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="steroid"><div class="med-box">✓</div><span class="med-icon">💊</span>Corticosteroid (prednisolone, dexamethasone)</label>
+          </div>
+          <div class="med-section-title">🔬 Other</div>
+          <div class="med-grid">
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="levothyroxine"><div class="med-box">✓</div><span class="med-icon">💊</span>Levothyroxine (thyroid)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="ppi"><div class="med-box">✓</div><span class="med-icon">💊</span>PPI (omeprazole, pantoprazole, lansoprazole)</label>
+            <label class="med-item" onclick="toggleMed(this,event)"><input type="checkbox" value="hrt"><div class="med-box">✓</div><span class="med-icon">💊</span>HRT / oestrogen therapy</label>
+          </div>
         </div>
       </div>
 
       <button class="calc-btn" id="calcBtn" onclick="calculate()">
-  <span id="btnText">Generate My Personalised Routine →</span>
-  <span id="btnLoading" style="display:none;">Generating...</span>
-</button>
+        <span id="btnText">Generate My Personalised Routine →</span>
+        <span id="btnLoading" style="display:none;">⏳ Building your protocol...</span>
+      </button>
     </div>
 
     <!-- Result -->
@@ -1988,6 +2386,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
       <div class="result-tabs" id="resultTabs" style="display:none;">
         <button class="rtab active" data-tab="routine" onclick="switchTab('routine',this)">📋 Daily Routine</button>
         <button class="rtab" data-tab="scores" onclick="switchTab('scores',this)">📊 Profile Scores</button>
+        <button class="rtab" data-tab="meds" onclick="switchTab('meds',this)">💊 Medication Interactions</button>
         <button class="rtab" data-tab="notes" onclick="switchTab('notes',this)">💡 Smart Notes</button>
       </div>
 
@@ -1999,6 +2398,10 @@ td:first-child { color: var(--ink); font-weight: 600; }
         <!-- Tab: Scores -->
         <div id="tab-scores" class="tab-content" style="display:none;">
           <div id="resultScores"></div>
+        </div>
+        <!-- Tab: Medications -->
+        <div id="tab-meds" class="tab-content" style="display:none;">
+          <div id="resultMeds"></div>
         </div>
         <!-- Tab: Notes -->
         <div id="tab-notes" class="tab-content" style="display:none;">
@@ -2072,8 +2475,10 @@ function setUnit(u) {
   document.getElementById('imperialBtn').classList.toggle('active', !useMetric);
   document.getElementById('heightUnit').textContent = useMetric ? 'cm' : 'ft (e.g. 5.9)';
   document.getElementById('weightUnit').textContent = useMetric ? 'kg' : 'lbs';
+  document.getElementById('targetWeightUnit').textContent = useMetric ? 'kg' : 'lbs';
   document.getElementById('height').placeholder = useMetric ? '174' : '5.9';
   document.getElementById('weight').placeholder = useMetric ? '73' : '161';
+  document.getElementById('targetWeight').placeholder = useMetric ? 'e.g. 68' : 'e.g. 150';
 }
 
 /* ── SEX TOGGLE ── */
@@ -2110,6 +2515,17 @@ function getToxScore() {
   return score;
 }
 
+/* ── MEDICATION TOGGLE ── */
+function toggleMed(el, event) {
+  event.preventDefault();
+  el.classList.toggle('checked');
+  el.querySelector('input').checked = el.classList.contains('checked');
+}
+
+function getMeds() {
+  return Array.from(document.querySelectorAll('#medGrid .med-item.checked input, .med-grid .med-item.checked input')).map(i => i.value);
+}
+
 /* ── UNIT CONVERSION ── */
 function getKg() {
   const w = parseFloat(document.getElementById('weight').value);
@@ -2122,6 +2538,15 @@ function getCm() {
   if (useMetric) return h;
   const ft = Math.floor(h); const inches = Math.round((h - ft) * 10);
   return ft * 30.48 + inches * 2.54;
+}
+function getTargetKg() {
+  const t = parseFloat(document.getElementById('targetWeight').value);
+  if (!t || t <= 0 || isNaN(t)) return null;
+  return useMetric ? t : t * 0.453592;
+}
+function getBodyFatPct() {
+  const v = document.getElementById('bodyFatPct').value;
+  return v ? parseFloat(v) : null;
 }
 
 /* ── ACCORDION ── */
@@ -2184,6 +2609,189 @@ secEls.forEach(s => obs2.observe(s));
 /* ════════════════════════════════════════════
    CALCULATOR LOGIC
 ════════════════════════════════════════════ */
+/* ── AGE BAND ── */
+function getAgeBand(age) {
+  if (age <= 24) return { band: '16–24', label: 'Young adult — peak hormonal window', phase: 'peak' };
+  if (age <= 35) return { band: '25–35', label: 'Prime — optimal intervention window', phase: 'prime' };
+  if (age <= 45) return { band: '36–45', label: 'Early decline — lifestyle leverage is highest', phase: 'early_decline' };
+  if (age <= 55) return { band: '46–55', label: 'Mid-life transition — significant hormonal shifts', phase: 'mid' };
+  if (age <= 65) return { band: '56–65', label: 'Later life — prevention and maintenance priority', phase: 'later' };
+  return { band: '65+', label: 'Senior — frailty prevention, nutrient needs rise', phase: 'senior' };
+}
+
+/* ── MEDICATION INTERACTIONS ENGINE ── */
+function buildMedInteractions(meds, sex, age, sleep, stress) {
+  if (!meds || meds.length === 0) return null;
+  const interactions = [];
+
+  // SSRI
+  if (meds.includes('ssri')) {
+    interactions.push({
+      icon: '💊', title: 'SSRI (fluoxetine, sertraline, citalopram, escitalopram)', priority: 'high',
+      body: `<p><strong>Sleep effects:</strong> All SSRIs suppress REM sleep and increase sleep onset latency. Fluoxetine is the most disruptive — sleep complaints are very common in the first 4–8 weeks. REM suppression is a class effect: your vivid/intense dreams or nightmares are likely medication-driven, not psychological.</p>
+      <p><strong>Melatonin interaction:</strong> Some SSRIs (especially fluvoxamine) inhibit CYP1A2, raising melatonin levels. Standard SSRIs like fluoxetine do not have this effect. Melatonin supplementation at low doses (0.5–1mg) is generally safe with SSRIs but avoid high doses (>3mg) — theoretical serotonin syndrome risk at very high doses. Discuss with prescriber.</p>
+      <p><strong>Weight impact (Annals of Internal Medicine, 2024, n>150,000):</strong> Escitalopram: +0.41 kg vs sertraline (highest SSRI weight gain). Paroxetine: +0.37 kg. Fluoxetine: essentially neutral (−0.07 kg). The mechanism is 5-HT2C receptor desensitisation after 6–12 months — initial appetite suppression reverses into carbohydrate cravings. A ≥5% body weight change in the first 4 weeks strongly predicts long-term trajectory. If you are gaining weight on escitalopram or paroxetine, fluoxetine is a pharmacologically similar alternative with a substantially better weight profile.</p>
+      <p><strong>Mindfulness + CBT:</strong> CBT-I is directly indicated for SSRI-induced sleep disruption. MBSR is evidence-supported as an augmentation strategy for both depression and the associated sleep disruption.</p>`,
+      rec: `<strong>Routine adjustments:</strong> (1) Take SSRI in the morning where possible — evening dosing worsens insomnia. (2) If insomnia persists beyond 8 weeks, implement CBT-I (stimulus control + sleep restriction). (3) Melatonin 0.5–1mg at bedtime is safe to discuss with prescriber. (4) Avoid alcohol — synergistic REM suppression. (5) Behavioural Activation is strongly indicated — SSRIs improve mood more when combined with scheduled positive activity. (6) If weight gain >5% since starting: high-protein diet (2.2g/kg), resistance training, and a discussion with prescriber about switching to fluoxetine or bupropion are the evidence-based options.`
+    });
+  }
+
+  // SNRI
+  if (meds.includes('snri')) {
+    interactions.push({
+      icon: '💊', title: 'SNRI (venlafaxine, duloxetine)', priority: 'high',
+      body: `<p><strong>Sleep effects:</strong> Similar to SSRIs — REM suppression, increased awakenings. Venlafaxine may be less disruptive than fluoxetine for some patients. Noradrenergic component can increase arousal and cause early-morning awakening — a common complaint.</p>
+      <p><strong>Cognitive impact:</strong> SNRIs generally improve motivation and daytime energy more than SSRIs due to the noradrenergic component. Dual-action on dopamine/norepinephrine overlaps with the mechanism of bupropion (energising antidepressant).</p>`,
+      rec: `<strong>Routine adjustments:</strong> (1) Morning dosing preferred. (2) CBT-I for insomnia — highly effective in this population. (3) Sulforaphane and Mediterranean diet support the serotonergic and noradrenergic systems via anti-inflammatory and antioxidant mechanisms. (4) Resistance training potentiates SNRI effects on motivation via parallel noradrenergic and BDNF pathways.`
+    });
+  }
+
+  // Other antidepressants
+  if (meds.includes('other_ad')) {
+    interactions.push({
+      icon: '💊', title: 'Other antidepressant (mirtazapine, bupropion, TCA)', priority: 'med',
+      body: `<p><strong>Mirtazapine:</strong> Sedating — promotes sleep via H1 and 5-HT2 antagonism. Does NOT suppress REM (unlike SSRIs). <strong>Weight impact:</strong> +1.74 kg at 4–12 weeks (meta-analysis); highest weight gain risk of commonly used atypicals. Mechanism: potent H1 histamine antagonism → appetite increase and sedation, 5-HT2C antagonism. The TRF eating window and Mediterranean diet are particularly critical if on mirtazapine.</p>
+      <p><strong>Bupropion:</strong> Energising dopaminergic/noradrenergic agent — can cause insomnia, especially if taken late in the day. <strong>Weight impact: −0.22 kg vs sertraline — best weight profile of all antidepressants</strong>. Reduces fatigue and hypersomnia; 15% reduced risk of ≥5% body weight gain. <em>Take in the morning only</em>. Supports motivation and energy — synergises with Behavioural Activation.</p>
+      <p><strong>TCAs (amitriptyline, nortriptyline):</strong> Suppress REM sleep. Nortriptyline inhibits CYP1A2 — raises melatonin levels. Amitriptyline: +1.52 kg at 4–12 weeks (meta-analysis). Nortriptyline: +2.0 kg. Significant antihistaminergic effect drives weight gain.</p>`,
+      rec: `<strong>Key adjustments:</strong> Bupropion — morning only, never after 14:00. Mirtazapine — Mediterranean diet and TRF especially important for weight management. TCAs — monitor sleep quality; melatonin supplementation may not be needed (levels already elevated).`
+    });
+  }
+
+  // Benzodiazepines / Z-drugs
+  if (meds.includes('benzo')) {
+    interactions.push({
+      icon: '⚠️', title: 'Benzodiazepine or Z-drug (zopiclone, zolpidem, diazepam, lorazepam)', priority: 'high',
+      body: `<p><strong>Critical sleep architecture effect:</strong> Benzodiazepines and Z-drugs suppress slow-wave sleep (deep NREM, stages 3 and 4) — the most restorative sleep stage. You may fall asleep faster and feel you slept longer, but the architecture is impaired. Chronic use is associated with cognitive impairment, rebound insomnia, tolerance, and dependence.</p>
+      <p><strong>CBT-I is the evidence-based alternative:</strong> CBT-I is the recommended approach for tapering benzodiazepine/Z-drug use. It is more effective than continued pharmacotherapy for insomnia over the long term. Multiple RCTs show CBT-I enables successful tapering in 80%+ of patients when combined with a structured dose reduction schedule.</p>
+      <p><strong>Interaction with this routine:</strong> Fasting and Mediterranean diet improve GABA receptor sensitivity and reduce the neuroinflammation that drives chronic insomnia. However, do not attempt rapid taper without physician guidance — abrupt withdrawal can be dangerous.</p>`,
+      rec: `<strong>Urgent recommendation:</strong> Discuss a supervised taper plan with your prescriber. CBT-I (Sleepio app is NHS-validated) can be started immediately to build sleep capacity before and during taper. Stimulus control is the most effective single CBT-I component for benzo-dependent insomnia.`
+    });
+  }
+
+  // Stimulants
+  if (meds.includes('stimulant')) {
+    interactions.push({
+      icon: '💊', title: 'Stimulant medication (methylphenidate, Adderall / mixed amphetamine salts)', priority: 'med',
+      body: `<p><strong>Sleep timing:</strong> Stimulants have a half-life of 4–12 hours depending on formulation. Late dosing directly impairs sleep onset and reduces total sleep time. Immediate-release has shorter duration; extended-release should be taken early.</p>
+      <p><strong>Interaction with protocol:</strong> Stimulants and the Mediterranean diet/TRF protocol are synergistic — reduced insulin resistance improves prefrontal dopamine sensitivity. Coffee during the fasting window interacts with stimulants — additive CNS stimulation, potentially worsening anxiety or cardiovascular load.</p>
+      <p><strong>Appetite suppression:</strong> Stimulants commonly suppress appetite — this can interfere with meeting protein targets during the eating window. Monitor protein intake explicitly.</p>`,
+      rec: `<strong>Routine adjustments:</strong> (1) Take last dose no later than 13:00 for immediate-release, 11:00 for extended-release. (2) Limit caffeine — one cup max before noon; stimulant + caffeine combination amplifies cardiovascular load. (3) Front-load protein in the first meal — stimulant-induced appetite suppression makes evening protein targets hard to hit. (4) CBT-I if sleep latency is increased.`
+    });
+  }
+
+  // Beta-blockers (all except carvedilol/nebivolol)
+  if (meds.includes('betablocker')) {
+    interactions.push({
+      icon: '❤️', title: 'Beta-blocker (atenolol, metoprolol, propranolol, bisoprolol)', priority: 'high',
+      body: `<p><strong>Melatonin suppression — clinically confirmed:</strong> Beta-1 selective blockers (atenolol, metoprolol, bisoprolol) reduce nocturnal melatonin by approximately 50%. Propranolol (S-enantiomer) reduces it by ~80–86%. This is the primary mechanism behind insomnia, vivid dreams, and nightmares as beta-blocker side effects.</p>
+      <p><strong>RCT evidence for melatonin replacement:</strong> A Brigham & Women's Hospital RCT (n=16, patients on atenolol or metoprolol) found 2.5mg nightly melatonin for 3 weeks significantly improved sleep quality, with no tolerance or rebound on withdrawal (positive carryover effect demonstrated).</p>
+      <p><strong>Weight impact:</strong> Beta-blockers cause modest weight gain (average +1–3 kg) via two mechanisms: (1) reduced exercise capacity — they block the sympathetic response that drives heart rate, reducing maximum HR by ~10–20 BPM and making the same exercise feel harder, thereby reducing EAT and NEAT; (2) mild insulin resistance with some agents (atenolol more than metoprolol). Carvedilol and nebivolol are metabolically superior — they do not impair insulin sensitivity and have better weight profiles.</p>
+      <p><strong>Exception:</strong> Carvedilol and nebivolol do NOT suppress melatonin — different mechanism via alpha-1 blockade and nitric oxide vasodilation. If you are specifically on carvedilol/nebivolol, you do not need the melatonin recommendation below.</p>`,
+      rec: `<strong>Evidence-based recommendation:</strong> (1) Discuss 2.5mg melatonin nightly with prescriber — well-evidenced for this indication. (2) Consider morning dosing of beta-blocker where clinically appropriate — reduces night-time melatonin suppression. (3) Dark bedroom and blue-light cutoff are especially important to maximise remaining endogenous melatonin. (4) CBT-I for persistent insomnia — stimulus control and relaxation training are effective alongside melatonin. (5) If weight management is a priority, discuss switching from atenolol to carvedilol or nebivolol with your prescriber — both are melatonin-sparing and metabolically superior.`
+    });
+  }
+
+  // Carvedilol specifically
+  if (meds.includes('carvedilol')) {
+    interactions.push({
+      icon: '✅', title: 'Carvedilol / Nebivolol — beta-blocker (melatonin-sparing)', priority: 'low',
+      body: `<p><strong>No melatonin suppression:</strong> Unlike other beta-blockers (atenolol, metoprolol, propranolol), carvedilol and nebivolol do NOT suppress nocturnal melatonin production. This is due to their additional alpha-1 blocking and nitric oxide-mediated vasodilatory mechanisms, which compensate for the beta-1 blockade effect on the pineal gland.</p>
+      <p>Standard sleep hygiene recommendations apply without the specific melatonin supplementation concern. CBT-I remains relevant if insomnia is present for other reasons.</p>`,
+      rec: `Standard routine applies. No specific melatonin intervention needed for this beta-blocker. If insomnia occurs, it is likely not medication-driven — apply CBT-I and sleep environment optimisation.`
+    });
+  }
+
+  // Statins
+  if (meds.includes('statin')) {
+    interactions.push({
+      icon: '❤️', title: 'Statin (atorvastatin, rosuvastatin, simvastatin, pravastatin)', priority: 'med',
+      body: `<p><strong>CoQ10 depletion:</strong> Statins inhibit HMG-CoA reductase — the same pathway that produces CoQ10 (ubiquinone). Circulating CoQ10 is universally reduced by statins. Whether this causes muscle symptoms (SAMS) and whether supplementation helps is <em>genuinely contested</em>.</p>
+      <p><strong>Evidence status (honest assessment):</strong> A 2018 JAHA meta-analysis (12 RCTs, n=575) found CoQ10 improved muscle pain, weakness, cramps, and tiredness vs placebo. However, a JACC systematic review and a 2020 meta-analysis concluded insufficient evidence to advocate routine CoQ10 use. A large retrospective survey (n=511) found no benefit. The studies are small and heterogeneous.</p>
+      <p><strong>Sleep:</strong> Some statins (especially simvastatin) may occasionally disrupt sleep — vivid dreams and insomnia reported. Water-soluble statins (pravastatin, rosuvastatin) have fewer CNS effects. If sleep is disrupted, discuss switching to a hydrophilic statin with your prescriber.</p>
+      <p><strong>Interaction with Mediterranean diet / fasting:</strong> Diet and fasting significantly reduce the cardiovascular risk factors that statins address (lipids, inflammation, insulin resistance) — they are synergistic, not competing approaches.</p>`,
+      rec: `<strong>Recommendation:</strong> (1) CoQ10 100–200mg/day (ubiquinol form preferred) — reasonable to trial for 8–12 weeks if experiencing muscle symptoms; evidence is mixed but low risk. Discuss with prescriber. (2) Take statin in the evening (especially simvastatin) — peak effect aligns with nocturnal cholesterol synthesis, unless sleep disruption is a problem. (3) Grapefruit and grapefruit juice inhibit CYP3A4 — increases statin blood levels; avoid with atorvastatin/simvastatin.`
+    });
+  }
+
+  // OCP
+  if (meds.includes('ocp')) {
+    interactions.push({
+      icon: '🌸', title: 'Oral contraceptive pill (OCP / combined or progesterone-only)', priority: 'high',
+      body: `<p><strong>Nutrient depletions — well-established since the 1970s (WHO-acknowledged):</strong></p>
+      <p>• <strong>Folate (B9):</strong> Impaired metabolism — critical if considering pregnancy after stopping the pill; 75% of OCP users have reduced B6. Give methylfolate 400–800µg supplementation 3+ months before trying to conceive.</p>
+      <p>• <strong>Vitamin B6 (pyridoxine):</strong> 75% of users significantly depleted in large US study. B6 is a cofactor for tryptophan→serotonin conversion — B6 deficiency directly contributes to low mood and fatigue often misattributed to the pill's other effects.</p>
+      <p>• <strong>Vitamin B12, riboflavin (B2), vitamin C and E:</strong> All reduced. B12 deficiency can be clinically silent for years.</p>
+      <p>• <strong>Zinc, magnesium, selenium:</strong> All significantly reduced. Zinc depletion: reduced immune function, skin health, and cognitive sharpness. Magnesium depletion: increased anxiety, muscle cramps, poor sleep, headaches.</p>
+      <p><strong>Copper elevation:</strong> OCP paradoxically raises copper — excess copper is associated with anxiety, insomnia, and oestrogen dominance symptoms. Zinc supplementation also helps balance copper.</p>`,
+      rec: `<strong>Supplementation protocol:</strong> (1) Active folate (methylfolate 400µg/day — not folic acid if MTHFR risk), (2) B-complex including B6 (P5P form, 25–50mg), B12 (methylcobalamin 500µg), (3) Magnesium glycinate 200–400mg/evening (helps sleep, reduces OCP-induced muscle cramps), (4) Zinc 15–25mg/day (take with food, not with iron), (5) Vitamin C 500–1000mg/day. Use a quality prenatal multivitamin as a foundation if simpler.`
+    });
+  }
+
+  // Metformin
+  if (meds.includes('metformin')) {
+    interactions.push({
+      icon: '⚗️', title: 'Metformin (glucophage) — for PCOS / insulin resistance / type 2 diabetes', priority: 'high',
+      body: `<p><strong>Vitamin B12 depletion — confirmed by meta-analysis of 6 RCTs:</strong> Metformin causes dose-dependent drops in serum B12 by impairing calcium-dependent B12-intrinsic factor uptake in the ileum. At 13 years of use, 7.4% have clinically low B12 and 20.3% have borderline low levels. PCOS-specific study: 57.7% of metformin-treated women had subnormal B12 (vs 25% in untreated controls).</p>
+      <p><strong>Clinical significance:</strong> B12 deficiency causes fatigue, peripheral neuropathy, cognitive impairment (brain fog), and megaloblastic anaemia — all symptoms commonly attributed to other causes. Deficiency may not manifest clinically for 5–10 years due to liver stores (~2,500µg stored).</p>
+      <p><strong>Risk factors for faster depletion:</strong> Higher dose (>1,500mg/day is the threshold associated with greater risk), longer duration, older age, plant-based diet, PPI co-prescription, and poor dietary B12 intake.</p>
+      <p><strong>Interaction with myo-inositol:</strong> Metformin and myo-inositol are complementary insulin sensitisers with different mechanisms. Some evidence supports their co-administration for PCOS, but dose adjustment of metformin may be needed. Discuss with prescriber.</p>`,
+      rec: `<strong>Mandatory recommendations:</strong> (1) Test serum B12 and methylmalonic acid (MMA) annually — MMA is a more sensitive functional marker. (2) Supplement methylcobalamin 1,000µg/day orally (not cyanocobalamin — better absorbed in metformin-impaired ileal uptake). (3) Take metformin with the largest meal of the day — reduces GI side effects without reducing efficacy. (4) Folate and iron status also worth monitoring due to potential for megaloblastic anaemia.`
+    });
+  }
+
+  // Corticosteroids
+  if (meds.includes('steroid')) {
+    interactions.push({
+      icon: '⚠️', title: 'Corticosteroid (prednisolone, dexamethasone, methylprednisolone)', priority: 'high',
+      body: `<p><strong>Sleep disruption:</strong> Corticosteroids are potent activators of the HPA axis. They cause insomnia, frequent waking, and reduce slow-wave sleep — effects are dose-dependent and most severe in the first few weeks of treatment.</p>
+      <p><strong>Metabolic effects:</strong> Insulin resistance, increased appetite, and weight redistribution (central adiposity). These directly counteract TRF and Mediterranean diet goals. However, the diet's anti-inflammatory properties may help manage steroid-related metabolic side effects.</p>
+      <p><strong>Fasting consideration:</strong> During high-dose corticosteroid courses, fasting is generally not appropriate — blood glucose instability, increased protein catabolism, and impaired wound healing. Reduce or eliminate TRF during acute high-dose use. Resume gradually after dose tapering.</p>
+      <p><strong>Bone health:</strong> Chronic corticosteroid use impairs calcium absorption and accelerates bone density loss. Vitamin D3 (2,000–4,000 IU) and K2 (100µg MK-7) supplementation is particularly important here.</p>`,
+      rec: `<strong>Key adjustments:</strong> (1) Take corticosteroid in the morning — mimics the natural cortisol peak and reduces HPA axis suppression. Never take in the evening. (2) Pause aggressive TRF during high-dose courses — maintain regular meal timing instead. (3) Ensure adequate calcium and vitamin D. (4) CBT-I for steroid-induced insomnia. (5) Discuss bone protection (calcium, D3, weight-bearing exercise) with prescriber for long-term use.`
+    });
+  }
+
+  // Levothyroxine
+  if (meds.includes('levothyroxine')) {
+    interactions.push({
+      icon: '🦋', title: 'Levothyroxine (T4) — thyroid hormone replacement', priority: 'med',
+      body: `<p><strong>Absorption timing is critical:</strong> Levothyroxine bioavailability is dramatically reduced by food, coffee, calcium, iron, magnesium, and other supplements. Even small amounts of food can reduce absorption by 40–80%.</p>
+      <p><strong>TRF interaction (important):</strong> If practising time-restricted eating with breakfast at 09:00–10:00, levothyroxine must still be taken on an empty stomach 30–60 minutes before the first meal. This means taking it during the fasting window — water only is fine. Do not take it with black coffee (reduces absorption).</p>
+      <p><strong>Supplement separation:</strong> Calcium (including dairy), iron, magnesium, and zinc all significantly impair levothyroxine absorption. Must be separated by at least 4 hours. This affects the supplement recommendations from this routine.</p>
+      <p><strong>Sleep:</strong> Optimal thyroid levels are critical for sleep quality, energy, and cognitive function. Under-replacement (low free T4/T3) causes fatigue and brain fog that is identical to sleep deprivation. If fatigue persists despite this routine, reassess thyroid levels.</p>`,
+      rec: `<strong>Strict protocol:</strong> (1) Take levothyroxine first thing on waking — before anything including black coffee. (2) Wait 45–60 minutes before first meal or any supplements. (3) Separate all calcium, iron, magnesium, zinc supplements by 4h (take them with lunch or dinner). (4) Consistent body weight and consistent meal timing improve dosing stability — TRF is compatible but timing must be consistent.`
+    });
+  }
+
+  // PPI
+  if (meds.includes('ppi')) {
+    interactions.push({
+      icon: '🔬', title: 'Proton pump inhibitor (omeprazole, pantoprazole, lansoprazole)', priority: 'med',
+      body: `<p><strong>Magnesium depletion:</strong> PPIs significantly reduce intestinal magnesium absorption. Hypomagnesaemia occurs in long-term PPI users — associated with muscle cramps, poor sleep, anxiety, and constipation. Risk increases after 1 year of continuous use.</p>
+      <p><strong>B12 and iron absorption:</strong> PPIs reduce gastric acid, which is required to cleave B12 from food protein. Long-term PPI use is associated with B12 deficiency, particularly with food-bound B12 sources. Iron (non-haem) absorption is also acid-dependent and may be reduced.</p>
+      <p><strong>Interaction with melatonin + SSRIs:</strong> PPIs (especially omeprazole) inhibit CYP2C19, which metabolises several drugs. In combination with SSRIs, this can raise SSRI plasma levels. Discuss with prescriber.</p>
+      <p><strong>Gut microbiome:</strong> PPIs significantly alter gut microbiome composition — reducing diversity and promoting pathogenic overgrowth (C. difficile risk). The Mediterranean diet's high fibre content and diverse plant intake partially mitigates this.</p>`,
+      rec: `<strong>Recommendations:</strong> (1) Magnesium glycinate 200–400mg/day — most important PPI-related supplement. (2) Methylcobalamin 500–1,000µg/day if on PPIs >12 months. (3) Monitor serum magnesium annually. (4) Take PPI 30 minutes before the first meal for best efficacy. (5) Use minimum effective dose — discuss long-term necessity with prescriber.`
+    });
+  }
+
+  // HRT
+  if (meds.includes('hrt')) {
+    interactions.push({
+      icon: '🌸', title: 'HRT / oestrogen therapy (menopause or gender-affirming)', priority: 'low',
+      body: `<p><strong>Sleep effects:</strong> Oestrogen replacement generally improves sleep quality by reducing vasomotor symptoms (hot flashes, night sweats) that fragment architecture. Progesterone component (in combined HRT) has sedating properties via GABA-A modulation — may actually improve sleep.</p>
+      <p><strong>Cognitive effects:</strong> Oestrogen supports PFC function, verbal memory, and neuroprotection. The "critical window hypothesis" suggests oestrogen initiated within 10 years of menopause provides cognitive protection; delayed initiation may be less effective.</p>
+      <p><strong>CBT-I interaction:</strong> CBT-I and HRT are complementary for menopausal insomnia — pooled RCT data shows CBT-I has the larger insomnia severity reduction (−5.2 ISI points) vs HRT alone. Combined approach is optimal for vasomotor-driven sleep disruption.</p>
+      <p><strong>EDC load consideration:</strong> Exogenous oestrogen adds to the overall hormonal load. EDC reduction (especially xenooestrogenic compounds like BPA and phthalates) is particularly relevant to reduce unnecessary oestrogenic stimulation on top of HRT.</p>`,
+      rec: `<strong>Routine note:</strong> Continue EDC reduction priority — xenoestrogens add to HRT oestrogen load. CBT-I remains the gold-standard for any residual insomnia on HRT. Mediterranean diet and resistance training are strongly synergistic with HRT for bone density and cardiovascular risk management.`
+    });
+  }
+
+  // No interactions
+  if (interactions.length === 0) return null;
+  return interactions;
+}
+
 function calculate() {
   // Show loading state
   const btn = document.getElementById('calcBtn');
@@ -2202,18 +2810,23 @@ function calculate() {
   const sleep = parseFloat(document.getElementById('sleep').value) || 7;
   const stress = document.getElementById('stress').value;
   const toxScore = getToxScore();
+  const meds = getMeds();
   const cycleStatus = sex === 'female' ? (document.getElementById('cycleStatus').value || 'regular') : null;
+  const ageBand = getAgeBand(age);
+  const targetWeight = getTargetKg();
+  const weightDir = document.getElementById('weightDir').value;
+  const bodyFatPct = getBodyFatPct();
 
   if (!weight || !height || isNaN(weight) || isNaN(height)) {
-    let errEl = document.getElementById('calcError');
-    if (!errEl) {
-      errEl = document.createElement('div');
-      errEl.id = 'calcError';
-      errEl.style.cssText = 'margin-top:10px;padding:10px 14px;background:var(--red-l);border:1px solid #fecaca;border-radius:var(--r);font-size:0.83rem;color:var(--red);';
-      btn.parentNode.insertBefore(errEl, btn.nextSibling);
+    let errorEl = document.getElementById('calcError');
+    if (!errorEl) {
+      errorEl = document.createElement('div');
+      errorEl.id = 'calcError';
+      errorEl.style.cssText = 'margin-top:10px;padding:10px 14px;background:var(--red-l);border:1px solid #fecaca;border-radius:var(--r);font-size:0.83rem;color:var(--red);';
+      btn.parentNode.insertBefore(errorEl, btn.nextSibling);
     }
-    errEl.textContent = '⚠️ Please enter valid height and weight values to generate your routine.';
-    errEl.style.display = 'block';
+    errorEl.textContent = '⚠️ Please enter valid height and weight values to generate your routine.';
+    errorEl.style.display = 'block';
     btn.disabled = false;
     btnText.style.display = 'inline';
     btnLoading.style.display = 'none';
@@ -2232,11 +2845,6 @@ function calculate() {
     ? 10*weight + 6.25*height - 5*age + 5
     : 10*weight + 6.25*height - 5*age - 161;
   const tdee = Math.round(bmr * act);
-
-  // Protein targets
-  const protBase = sex === 'male' ? (goals.includes('hormonal') ? 1.9 : 1.7) : 1.6;
-  const protMin  = Math.round(weight * protBase);
-  const protMax  = Math.round(weight * (sex === 'male' ? 2.2 : 2.0));
 
   /* ── Fasting window logic ── */
   let fastWindow, eatStart, eatEnd, fastNote;
@@ -2270,17 +2878,131 @@ function calculate() {
   // Meditation
   const medMin = stress === 'high' ? 25 : stress === 'moderate' ? 15 : 10;
 
-  // Calorie target
-  let calTarget;
-  if (goals.includes('weight') && bmi > 24) calTarget = Math.round(tdee * 0.88);
-  else if (goals.includes('hormonal') && sex === 'male') calTarget = Math.round(tdee * 0.98);
-  else calTarget = tdee;
+  // ── AGE-BASED ADJUSTMENTS ──
+  // Protein: increases with age (anabolic resistance after 55 requires higher leucine threshold)
+  let protBase;
+  if (sex === 'male') {
+    protBase = age >= 56 ? 2.0 : age >= 46 ? 1.9 : (goals.includes('hormonal') ? 1.9 : 1.7);
+  } else {
+    protBase = age >= 56 ? 1.9 : age >= 46 ? 1.8 : 1.6;
+  }
+  const protMin = Math.round(weight * protBase);
+  const protMax = Math.round(weight * (age >= 56 ? (sex === 'male' ? 2.4 : 2.2) : sex === 'male' ? 2.2 : 2.0));
 
-  // Toxin risk tier
+  // Sleep target by age (NSF guidelines)
+  const sleepTarget = age <= 25 ? '8–10h' : age <= 64 ? '7–9h' : '7–8h';
+  const sleepMin    = age <= 25 ? 8 : age <= 64 ? 7 : 7;
+
+  // Fasting: more conservative above 65 (risk of lean mass loss and hypoglycaemia)
+  // (window already set above — apply modifier here)
+  let fastCaution = '';
+  if (age >= 65) fastCaution = ' Note: at 65+ prioritise protein sufficiency and caloric adequacy over extending the fast; lean muscle mass loss accelerates sharply. Consider 12:12 as starting point.';
+  if (fastNote && fastCaution) fastNote += fastCaution;
+
+  // ─── WEIGHT MANAGEMENT ENGINE ───────────────────────────────
+  // Determine effective direction from form + goals + BMI context
+  const effectiveDir = weightDir !== 'maintain'
+    ? weightDir
+    : goals.includes('weight') ? 'lose'
+    : goals.includes('muscle') ? 'gain'
+    : 'maintain';
+
+  // Body fat & lean mass estimates (from input or BMI-based estimate)
+  const estimatedBF = bodyFatPct !== null ? bodyFatPct
+    : sex === 'male'
+      ? Math.max(5, bmi * 1.2 + age * 0.23 - 10.8 - 5.4)
+      : Math.max(10, bmi * 1.2 + age * 0.23 - 10.8 + 0);
+  const leanMass = weight * (1 - estimatedBF / 100);
+  const fatMass = weight * (estimatedBF / 100);
+
+  // Safe rate of loss as % of bodyweight per week (evidence-based: 0.5–1.0%/week)
+  // More conservative at lower body fat (less fat to lose → more risk of lean mass loss)
+  const safeLossRate = estimatedBF < 15 ? 0.005
+    : estimatedBF < 20 ? 0.006
+    : estimatedBF < 25 ? 0.007
+    : estimatedBF < 30 ? 0.008
+    : 0.01; // 1% max for higher body fat
+
+  const weeklyLossKg = weight * safeLossRate;
+  const dailyDeficit = Math.round(weeklyLossKg * 7700 / 7); // 7700 kcal/kg fat
+  const safeDeficitCapped = Math.min(dailyDeficit, 750); // never exceed 750 kcal/day
+
+  // Calorie targets
+  let calTarget, calNote, deficitSize;
+  if (effectiveDir === 'lose') {
+    calTarget = Math.round(tdee - safeDeficitCapped);
+    deficitSize = safeDeficitCapped;
+    calNote = `−${safeDeficitCapped} deficit (${(safeLossRate*100).toFixed(1)}%/week target)`;
+  } else if (effectiveDir === 'gain') {
+    // Evidence: 8–10% surplus is optimal for lean gaining; too aggressive → excess fat
+    const surplusPct = age >= 40 ? 0.06 : act >= 1.725 ? 0.10 : 0.08;
+    calTarget = Math.round(tdee * (1 + surplusPct));
+    deficitSize = 0;
+    calNote = `+${Math.round(tdee * surplusPct)} surplus (lean gaining)`;
+  } else if (effectiveDir === 'recomp') {
+    // Body recomposition: maintenance ±50 kcal; works best at higher body fat or with training history
+    calTarget = Math.round(tdee * 1.0);
+    deficitSize = 0;
+    calNote = 'maintenance (recomposition protocol)';
+  } else {
+    calTarget = tdee;
+    deficitSize = 0;
+    calNote = goals.includes('hormonal') && sex === 'male' ? 'maintenance (hormonal support)' : 'maintenance';
+  }
+
+  // Adaptive thermogenesis: warn if likely ongoing (>6 weeks of deficit)
+  // We can't know how long they've been in deficit, but we note the mechanism
+
+  // Macro targets (evidence-based for each goal)
+  const protTarget = protMax; // Use upper end of protein range during deficit/recomp
+  const protKcal = protTarget * 4;
+  let carbTarget, fatTarget;
+  if (effectiveDir === 'lose') {
+    // High protein, moderate fat, lower carbs — but carbs based on activity
+    fatTarget = Math.round(Math.max(calTarget * 0.25, 50 * 9) / 9); // min 50g fat always
+    carbTarget = Math.round((calTarget - protKcal - fatTarget * 9) / 4);
+    if (carbTarget < 50) { carbTarget = 50; fatTarget = Math.round((calTarget - protKcal - carbTarget * 4) / 9); }
+  } else if (effectiveDir === 'gain') {
+    // Higher carbs for muscle synthesis signalling
+    fatTarget = Math.round(calTarget * 0.25 / 9);
+    carbTarget = Math.round((calTarget - protKcal - fatTarget * 9) / 4);
+  } else {
+    // Balanced maintenance
+    fatTarget = Math.round(calTarget * 0.30 / 9);
+    carbTarget = Math.round((calTarget - protKcal - fatTarget * 9) / 4);
+  }
+
+  // Timeline calculation
+  let timelineStr = '';
+  let weeksToGoal = null;
+  if (targetWeight && targetWeight > 0) {
+    const delta = weight - targetWeight;
+    if (effectiveDir === 'lose' && delta > 0) {
+      weeksToGoal = Math.ceil(delta / weeklyLossKg);
+      const months = (weeksToGoal / 4.33).toFixed(1);
+      timelineStr = `~${weeksToGoal} weeks (${months} months) to ${targetWeight.toFixed(1)}kg at ${weeklyLossKg.toFixed(2)}kg/week`;
+    } else if (effectiveDir === 'gain' && delta < 0) {
+      // Realistic lean gain: 0.5–1kg/month for experienced, 1–2kg/month for beginners
+      const monthlyGain = age > 40 ? 0.5 : act >= 1.725 ? 0.8 : 0.6;
+      const monthsNeeded = Math.ceil(Math.abs(delta) / monthlyGain);
+      timelineStr = `~${monthsNeeded} months realistic lean gain to ${targetWeight.toFixed(1)}kg`;
+    }
+  }
+
+  // Diet break schedule (MATADOR study: 2-week breaks reduce adaptive thermogenesis)
+  let dietBreakSchedule = '';
+  if (effectiveDir === 'lose' && deficitSize >= 300) {
+    dietBreakSchedule = 'After every 6 consecutive weeks of deficit: take 7–14 days at TDEE (maintenance calories). Evidence: MATADOR RCT found 2-week maintenance breaks improved weight loss efficiency vs continuous restriction by reducing adaptive thermogenesis. Keep protein high and training consistent during breaks.';
+  }
+
+  // Lean mass protection estimate
+  const leanLossPctNoTraining = 24; // % of weight lost that is lean mass without training
+  const leanLossPctWithTraining = 11; // with resistance training
+  const weeklyFatLossKg = effectiveDir === 'lose' ? weeklyLossKg * (1 - leanLossPctWithTraining/100) : 0;
+
+  // Calories and notes
   const toxRisk = toxScore <= 3 ? 'Low' : toxScore <= 8 ? 'Moderate' : 'High';
   const toxColour = toxScore <= 3 ? 'var(--green)' : toxScore <= 8 ? 'var(--amber)' : 'var(--red)';
-
-  // Caffeine
   const caffLimit = stress === 'high' ? '1 cup before 12:00' : age > 40 ? 'up to 2 cups, none after 14:00' : 'up to 2–3 cups, none after 14:00';
 
   // Sleep note — fully sex-aware
@@ -2299,51 +3021,217 @@ function calculate() {
   /* ── STAT HEADER ── */
   document.getElementById('resultStats').innerHTML = `
     <div class="result-stat">
-      <div class="label">BMI</div>
+      <div class="label">Age Band</div>
+      <div class="value" style="font-size:1rem;">${ageBand.band}</div>
+      <div class="sub">${ageBand.label}</div>
+    </div>
+    <div class="result-stat">
+      <div class="label">BMI · Body Fat</div>
       <div class="value">${bmi.toFixed(1)}</div>
-      <div class="sub">${bmiC}</div>
+      <div class="sub">${bmiC} · ~${estimatedBF.toFixed(0)}% BF · ${leanMass.toFixed(1)}kg lean</div>
     </div>
     <div class="result-stat">
-      <div class="label">Daily Calories</div>
+      <div class="label">Target Calories</div>
       <div class="value">${calTarget.toLocaleString()}</div>
-      <div class="sub">kcal/day (TDEE ${tdee.toLocaleString()})</div>
+      <div class="sub">TDEE ${tdee.toLocaleString()} · ${calNote}</div>
     </div>
     <div class="result-stat">
-      <div class="label">Protein Target</div>
-      <div class="value">${protMin}–${protMax}g</div>
-      <div class="sub">${(protMin/weight).toFixed(1)}–${(protMax/weight).toFixed(1)} g/kg</div>
+      <div class="label">Protein / Carbs / Fat</div>
+      <div class="value" style="font-size:0.92rem;">${protTarget}g / ${carbTarget}g / ${fatTarget}g</div>
+      <div class="sub">${(protTarget/weight).toFixed(1)} g/kg protein · ${Math.round(protTarget*4+carbTarget*4+fatTarget*9)} kcal</div>
     </div>
+    ${effectiveDir === 'lose' ? `
+    <div class="result-stat">
+      <div class="label">Weekly Rate</div>
+      <div class="value" style="font-size:0.95rem;">${weeklyLossKg.toFixed(2)} kg/wk</div>
+      <div class="sub">−${deficitSize} kcal/day · safe for ${estimatedBF.toFixed(0)}% BF</div>
+    </div>` : effectiveDir === 'gain' ? `
+    <div class="result-stat">
+      <div class="label">Lean Gain Rate</div>
+      <div class="value" style="font-size:0.95rem;">0.5–1 kg/mo</div>
+      <div class="sub">Realistic with resistance training</div>
+    </div>` : effectiveDir === 'recomp' ? `
+    <div class="result-stat">
+      <div class="label">Recomposition</div>
+      <div class="value" style="font-size:0.9rem;">Maintenance</div>
+      <div class="sub">High protein + resistance training essential</div>
+    </div>` : ''}
+    ${timelineStr ? `
+    <div class="result-stat">
+      <div class="label">Goal Timeline</div>
+      <div class="value" style="font-size:0.85rem;">${timelineStr.split('(')[1] ? timelineStr.split('(')[1].replace(')','') : timelineStr.split(' ')[0]+' '+timelineStr.split(' ')[1]}</div>
+      <div class="sub">to ${targetWeight ? targetWeight.toFixed(1)+'kg' : 'target'}</div>
+    </div>` : ''}
     <div class="result-stat">
       <div class="label">Fasting Window</div>
       <div class="value">${fastWindow}</div>
       <div class="sub">${eatStart !== 'N/A' ? `Eat ${eatStart}–${eatEnd}` : 'Not recommended now'}</div>
     </div>
     <div class="result-stat">
-      <div class="label">Broccoli Sprouts</div>
-      <div class="value">${sulph_g}g</div>
-      <div class="sub">daily (Nrf2 / detox)</div>
-    </div>
-    <div class="result-stat">
-      <div class="label">EDC Risk Level</div>
+      <div class="label">EDC Risk</div>
       <div class="value" style="color:${toxColour}">${toxRisk}</div>
-      <div class="sub">Score: ${toxScore}/26 checked</div>
+      <div class="sub">Score: ${toxScore}/26</div>
     </div>
     <div class="result-stat">
-      <div class="label">Meditation</div>
-      <div class="value">${medMin} min</div>
-      <div class="sub">daily minimum</div>
+      <div class="label">Medications</div>
+      <div class="value" style="font-size:1rem;color:${meds.length > 0 ? 'var(--amber)' : 'var(--green)'}">${meds.length > 0 ? meds.length + ' flagged' : 'None'}</div>
+      <div class="sub">${meds.length > 0 ? 'See interactions tab' : 'No interactions'}</div>
     </div>`;
 
   /* ── ROUTINE BODY ── */
   let html = '';
 
+  // ─── AGE BAND CALLOUT ───
+  const ageCallouts = {
+    peak:          { col: 'c-green', icon: '🚀', msg: `Age ${age} — peak hormonal and recovery capacity. Interventions work fastest here. Establish habits now; the compound interest is highest in your 20s. Focus: sulforaphane, TRF adherence, resistance training, and EDC reduction before damage accumulates.` },
+    prime:         { col: 'c-blue',  icon: '⚡', msg: `Age ${age} — prime intervention window. Free testosterone and IGF-1 begin declining ~1–2%/year but lifestyle leverage is at its highest. The gap between well-optimised and unoptimised health starts widening here. Resistance training, sleep, and Mediterranean diet have their highest evidence-to-effort ratio now.` },
+    early_decline: { col: 'c-amber', icon: '📈', msg: `Age ${age} — early decline phase. Free testosterone typically 30–40% lower than peak due to rising SHBG and reduced Leydig cell output (males); perimenopause may be approaching (females). ${sex === 'male' ? 'Aromatisation to oestradiol increases with rising visceral fat — body composition is directly hormonal. Zinc, sleep, and resistance training are highest-priority interventions.' : 'Track cycle length changes — variable cycles (>7 days variation) are an early perimenopause signal. Prioritise sleep quality and stress management; HPA-HPG axis interactions amplify at this stage.'}` },
+    mid:           { col: 'c-amber', icon: '🔄', msg: `Age ${age} — mid-life hormonal transition. ${sex === 'male' ? 'Testosterone levels vary enormously between well and poorly optimised men of this age. Sleep disruption at this stage accelerates the testosterone decline trajectory significantly. Vitamin D status often declines — test and supplement.' : 'Perimenopause/menopause transition: oestrogen fluctuation and eventual withdrawal drives sleep disruption, cognitive changes, and vasomotor symptoms. CBT-I is first-line for sleep; MBSR is evidence-based for the associated brain fog. Discuss HRT timing with a gynaecologist — the "critical window" for neuroprotection is within 10 years of menopause.'}` },
+    later:         { col: 'c-rose',  icon: '🛡️', msg: `Age ${age} — prevention and maintenance priority. Protein requirements increase significantly (1.8–2.0 g/kg minimum to prevent sarcopenia — well above general population guidelines). Resistance training is the single most effective longevity intervention at this age. Fasting window should be conservative (12:12–14:10 max) — prioritise caloric and protein adequacy above metabolic stress.` },
+    senior:        { col: 'c-red',   icon: '🛡️', msg: `Age ${age} — frailty prevention is the primary objective. Protein 1.9–2.4 g/kg/day. Resistance training 2–3×/week (reduces all-cause mortality ~30%). Creatine monohydrate 3–5g/day has strong evidence for muscle mass preservation and cognitive function in older adults — discuss with physician. Avoid extended fasting; 12:12 is the maximum recommended at this age. Fall prevention, balance training, and sleep quality are top priorities.` }
+  };
+  const ac = ageCallouts[ageBand.phase];
+  html += `<div class="callout ${ac.col}" style="margin-bottom:16px;">
+    <span class="callout-i">${ac.icon}</span>
+    <div><strong>Age-specific context (${ageBand.band}):</strong> ${ac.msg}</div>
+  </div>`;
+
+  // ─── MEDICATION ALERT ───
+  if (meds.length > 0) {
+    const highPrioMeds = meds.filter(m => ['ssri','snri','benzo','betablocker','ocp','metformin','steroid'].includes(m));
+    html += `<div class="callout c-amber" style="margin-bottom:16px;">
+      <span class="callout-i">💊</span>
+      <div><strong>${meds.length} medication${meds.length > 1 ? 's' : ''} detected — see the Medication Interactions tab.</strong> ${highPrioMeds.length > 0 ? `${highPrioMeds.length} of your medications have <span style="color:var(--red);font-weight:700;">high-priority</span> interactions with sleep, nutrient absorption, or this protocol. Review that tab before implementing changes.` : 'Low-to-moderate priority interactions identified. Review the Medication Interactions tab for specific adjustments.'}</div>
+    </div>`;
+  }
+
   // ─── PRIORITY ALERT ───
-  if (sleep < 7 || stress === 'high' || toxScore > 8) {
+  if (sleep < sleepMin || stress === 'high' || toxScore > 8) {
     html += `<div class="callout c-red" style="margin-bottom:20px;"><span class="callout-i">⚠️</span><div><strong>Priority flags in your profile:</strong><ul style="margin-top:6px;margin-left:14px;font-size:0.83rem;">`;
-    if (sleep < 7) html += `<li>Sleep below optimal — prioritise this above all supplements or diet tweaks.</li>`;
+    if (sleep < sleepMin) html += `<li>Sleep below optimal (target ${sleepTarget}) — prioritise this above all supplements or diet tweaks.</li>`;
     if (stress === 'high') html += `<li>Chronic high stress: cortisol is your #1 ${sex === 'male' ? 'testosterone, sleep,' : 'hormonal, sleep,'} and cognitive suppressor. MBSR is your highest-ROI intervention.</li>`;
     if (toxScore > 8) html += `<li>High EDC exposure score: EDC reduction should be immediate priority, especially for reproductive health.</li>`;
     html += `</ul></div></div>`;
+  }
+
+  // ─── BODY COMPOSITION BLOCK ───
+  if (effectiveDir !== 'maintain' || bmi < 18.5 || bmi > 27 || goals.includes('weight') || goals.includes('muscle')) {
+    const trainingLevel = act >= 1.725 ? 'intermediate/advanced' : act >= 1.55 ? 'intermediate' : 'beginner';
+    const isLoss   = effectiveDir === 'lose';
+    const isGain   = effectiveDir === 'gain';
+    const isRecomp = effectiveDir === 'recomp';
+    const isUnder  = bmi < 18.5;
+    const protCut  = protMax;
+    const protBulk = Math.round(weight * 2.0);
+    const weightGainMeds  = meds.filter(m => ['ssri','snri','other_ad','betablocker','steroid','ocp'].includes(m));
+    const weightNeutralMeds = meds.filter(m => ['metformin'].includes(m));
+
+    // Specific quantified medication weight data (evidence-based)
+    const medWeightData = {
+      ssri:       { name:'SSRI', effect:'Paroxetine: +2.73 kg average long-term (Cochrane review). Fluoxetine/sertraline: more weight-neutral but appetite increases reported by ~30% of users. Effect amplified with mirtazapine co-prescription.', strategy:'Track weight monthly. If gaining >1 kg/month: discuss switching to bupropion (−3–5% bodyweight effect) or fluoxetine/sertraline (most weight-neutral SSRIs). Very-high-volume protein foods mitigate appetite increase.' },
+      snri:       { name:'SNRI', effect:'Duloxetine and venlafaxine: mild weight gain long-term (~0.5–1 kg at 6 months). Less than SSRIs. Noradrenergic component may modestly increase metabolism.', strategy:'Monitor weight every 4 weeks. Diet and exercise strategies effective as for general weight management.' },
+      other_ad:   { name:'Mirtazapine/other antidepressant', effect:'Mirtazapine: most weight-promoting antidepressant — +7.35 kg average at 24 months; 88% of users gain weight (Lancet meta-analysis). Mechanism: H1 antagonism → appetite increase + metabolic slowing.', strategy:'If on mirtazapine and weight is a concern: discuss switching to agomelatine or bupropion with prescriber. If staying on mirtazapine: caloric deficit must account for 200–300 kcal/day additional resistance. Protein satiation is the single most effective tool.' },
+      betablocker:{ name:'Beta-blocker', effect:'Reduces maximal heart rate ~10–12 bpm and perceived exertion. This reduces calorie burn from exercise by ~8–10%. Propranolol and atenolol also reduce resting metabolic rate modestly. Not direct weight gain, but impairs the exercise caloric balance.', strategy:'Add 10% to your calorie tracking target to compensate for reduced exercise calorie burn. Carvedilol/nebivolol are metabolically superior — discuss with prescriber if on propranolol/atenolol.' },
+      steroid:    { name:'Corticosteroid', effect:'Dose-dependent central adiposity (visceral fat accumulation), insulin resistance, and fluid retention. Short courses (<2 weeks): mostly fluid. Long courses (>4 weeks): genuine fat accumulation, muscle catabolism, bone resorption.', strategy:'During active course: maintenance calories only, no deficit. Aggressive protein (2.2–2.4 g/kg) to minimise muscle catabolism. Post-course: restriction can begin, but cortisol may remain elevated — stress response and fasting are both harder during this period.' },
+      ocp:        { name:'OCP', effect:'Mixed evidence — population studies show ~1–2 kg average gain over years, mostly fluid/lean mass redistribution rather than true fat gain. Some formulations (higher progestogen activity) more prone to weight changes.', strategy:'If gaining weight on OCP: this is often fluid/lean mass shift, not fat gain. Track waist circumference not just scale weight. If genuine fat gain: discuss switching to lower-progestogen formulation or non-hormonal contraception with prescriber.' }
+    };
+
+    let compHtml = `<div class="routine-block">
+      <div class="rb-head"><span class="rb-badge" style="background:var(--blue-l);color:var(--blue);">⚖️ Body Composition Protocol</span></div>
+      <div style="padding:14px 0 4px;">`;
+
+    // Stats display using engine data
+    compHtml += `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px;padding:14px;background:var(--off);border-radius:var(--r2);border:1px solid var(--border);">
+      <div style="text-align:center;"><div style="font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--ink);">${weight.toFixed(1)}kg</div><div style="font-size:0.7rem;color:var(--muted);">Current weight</div></div>
+      <div style="text-align:center;"><div style="font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--rose);">~${fatMass.toFixed(1)}kg</div><div style="font-size:0.7rem;color:var(--muted);">Est. fat mass (~${estimatedBF.toFixed(0)}% BF)</div></div>
+      <div style="text-align:center;"><div style="font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--blue);">~${leanMass.toFixed(1)}kg</div><div style="font-size:0.7rem;color:var(--muted);">Est. lean mass</div></div>
+      <div style="text-align:center;"><div style="font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--amber);">${calTarget.toLocaleString()}</div><div style="font-size:0.7rem;color:var(--muted);">kcal/day target</div></div>
+    </div>
+    <p style="font-size:0.72rem;color:var(--faint);margin-bottom:14px;">⚠️ Body fat estimate uses validated population regression (±5% accuracy). For clinical precision use DEXA scan.</p>`;
+
+    // Macro breakdown display
+    compHtml += `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;">
+      <div style="padding:10px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--blue);">${protTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Protein · ${Math.round(protTarget*4)} kcal</div>
+        <div style="font-size:0.67rem;color:var(--faint);">${(protTarget/weight).toFixed(1)} g/kg</div>
+      </div>
+      <div style="padding:10px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--amber);">${carbTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Carbs · ${Math.round(carbTarget*4)} kcal</div>
+        <div style="font-size:0.67rem;color:var(--faint);">${Math.round(carbTarget*4/calTarget*100)}% of calories</div>
+      </div>
+      <div style="padding:10px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--green);">${fatTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Fat · ${Math.round(fatTarget*9)} kcal</div>
+        <div style="font-size:0.67rem;color:var(--faint);">min 50g always</div>
+      </div>
+    </div>`;
+
+    if (isUnder) {
+      compHtml += `<div class="callout c-red" style="margin-bottom:12px;"><span class="callout-i">⚠️</span><div><strong>Underweight (BMI ${bmi.toFixed(1)}):</strong> Priority is caloric sufficiency — not restriction or fasting. Insufficient dietary fat suppresses ${sex === 'male' ? 'testosterone and anabolic signalling' : 'oestrogen, GnRH pulsatility, and ovulatory function'}. Target: 10% surplus above TDEE (${Math.round(tdee*1.1).toLocaleString()} kcal/day), protein ${protBulk}g/day, resistance training 3×/week. Do not fast aggressively.</div></div>`;
+    }
+
+    if (isLoss) {
+      const deficit500 = Math.round(tdee - 500);
+      const deficit700 = Math.round(tdee - 700);
+      compHtml += `<div class="callout c-blue" style="margin-bottom:12px;"><span class="callout-i">📉</span><div><strong>Fat loss — personalised to your profile:</strong> Target deficit ${deficitSize} kcal/day (${(safeLossRate*100).toFixed(1)}%/week rate) based on your estimated body fat. At this rate with resistance training: ~${(weeklyLossKg*(1-leanLossPctWithTraining/100)).toFixed(2)}kg fat loss and ~${(weeklyLossKg*leanLossPctWithTraining/100).toFixed(2)}kg lean mass loss per week (vs ~${(weeklyLossKg*leanLossPctNoTraining/100).toFixed(2)}kg lean loss without training — 3× more lean mass protection from resistance training).</div></div>`;
+
+      compHtml += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;font-size:0.82rem;">
+        <div style="padding:10px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);">
+          <div style="font-weight:700;color:var(--blue);margin-bottom:4px;">Conservative cut</div>
+          <div style="font-size:1rem;font-weight:700;">${deficit500.toLocaleString()} kcal/day</div>
+          <div style="color:var(--muted);">~0.36kg/week · lowest lean loss · sustainable 8–16 weeks</div>
+        </div>
+        <div style="padding:10px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);">
+          <div style="font-weight:700;color:var(--amber);margin-bottom:4px;">Moderate cut</div>
+          <div style="font-size:1rem;font-weight:700;">${deficit700.toLocaleString()} kcal/day</div>
+          <div style="color:var(--muted);">~0.45kg/week · protein ≥${protCut}g essential · 4–6 week max before diet break</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;margin-bottom:12px;">
+        <div style="display:flex;gap:8px;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">Protein protection:</span><span style="color:var(--muted);">${protCut}g/day minimum during cut — distribute 3–4 meals, ~30–40g per meal (leucine threshold for MPS activation). Without this, up to 24% of weight lost is lean tissue.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">NEAT compensation:</span><span style="color:var(--muted);">Step count deliberately maintained at 8,000–10,000/day — your involuntary movement drops ~10–15% during caloric restriction (adaptive NEAT reduction). A step target counters this and adds 200–400 kcal/day without structured exercise.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">Diet break schedule:</span><span style="color:var(--muted);">${dietBreakSchedule || 'Every 4–6 weeks: 7–14 days at TDEE ('+tdee.toLocaleString()+' kcal). Restores leptin, reverses adaptive thermogenesis. Keep protein at '+protCut+'g; fill extra calories with carbohydrates. MATADOR RCT confirmed this improves fat loss efficiency vs continuous restriction.'}</span></div>
+        ${sex === 'female' ? `<div style="display:flex;gap:8px;"><span style="color:var(--rose);font-weight:700;flex-shrink:0;">Cycle phase:</span><span style="color:var(--muted);">Follicular (days 1–14): optimal fat loss window, apply full deficit. Luteal (days 15–28): hunger increases 150–300 kcal/day physiologically — this is hormonal, not failure. Reduce deficit by ~200 kcal rather than fighting with willpower.</span></div>` : ''}
+        <div style="display:flex;gap:8px;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">Plateau rule:</span><span style="color:var(--muted);">No scale change for 2 weeks AND tracking accurate → increase daily steps first (not further calorie cuts). Hunger normalises after 2–3 weeks at a given deficit — ride it out before adjusting.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">Sleep + fat loss:</span><span style="color:var(--muted);">Sleeping &lt;6h increases the % of weight lost as lean mass by ~55% (Annals of Internal Medicine RCT) and elevates ghrelin by 24%. Sleep is the single most underrated fat-loss intervention.</span></div>
+      </div>`;
+
+      // Quantified medication weight interactions
+      if (weightGainMeds.length > 0) {
+        weightGainMeds.forEach(m => {
+          const d = medWeightData[m];
+          if (d) compHtml += `<div class="callout c-rose" style="margin-bottom:10px;"><span class="callout-i">💊</span><div><strong>${d.name} — weight interaction:</strong> ${d.effect} <em>Strategy: ${d.strategy}</em></div></div>`;
+        });
+      }
+      if (meds.includes('betablocker') && !meds.includes('carvedilol')) {
+        compHtml += `<div class="callout c-amber" style="margin-bottom:10px;"><span class="callout-i">❤️</span><div><strong>Beta-blocker exercise impact:</strong> Reduces maximal heart rate ~10–12 bpm and reduces exercise calorie burn ~8–10%. Add 100–150 kcal to your daily caloric budget to compensate for reduced EAT. Carvedilol/nebivolol have less metabolic impact — discuss with prescriber if on atenolol/metoprolol.</div></div>`;
+      }
+    }
+
+    if (isGain) {
+      const gainRateStr = sex === 'male'
+        ? (trainingLevel === 'beginner' ? '0.8–1.5 kg/month' : trainingLevel === 'intermediate' ? '0.4–0.8 kg/month' : '0.1–0.4 kg/month')
+        : (trainingLevel === 'beginner' ? '0.5–1.0 kg/month' : '0.2–0.5 kg/month');
+      const surplus200 = Math.round(tdee + 200), surplus300 = Math.round(tdee + 300);
+      compHtml += `<div class="callout c-green" style="margin-bottom:12px;"><span class="callout-i">💪</span><div><strong>Muscle gain — ${trainingLevel} level:</strong> Realistic rate ~${gainRateStr}. Scale gains faster than this = fat, not muscle. Monitor waist circumference alongside bodyweight.</div></div>
+      <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;margin-bottom:12px;">
+        <div style="display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">Calorie surplus:</span><span style="color:var(--muted);">200–300 kcal above TDEE is optimal (${surplus200.toLocaleString()}–${surplus300.toLocaleString()} kcal/day). Larger surpluses don't build muscle faster — only add fat. If scale rises >0.3kg/week consistently: reduce surplus by 100 kcal.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">Protein:</span><span style="color:var(--muted);">${protBulk}g/day across ≥3 meals, ~30–40g per meal (leucine threshold for MPS). Post-workout: 30–50g protein + carbohydrates within 2 hours.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">Progressive overload:</span><span style="color:var(--muted);">Without weekly increases in load or volume there is no stimulus for growth regardless of calories. Log every session. Compound lifts (squat, deadlift, press, row) — optimal stimulus per time unit.</span></div>
+        <div style="display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;flex-shrink:0;">Sleep for muscle:</span><span style="color:var(--muted);">~80% of GH release occurs during SWS (slow-wave sleep). Inadequate sleep impairs MPS directly. Target ${sleepTarget}; prioritise this above supplements.</span></div>
+        ${age >= 40 ? `<div style="display:flex;gap:8px;"><span style="color:var(--amber);font-weight:700;flex-shrink:0;">Age factor:</span><span style="color:var(--muted);">Anabolic resistance increases from age 40 — you need more leucine per meal (~3.5g) to activate MPS vs younger adults. Prioritise high-leucine sources: whey, eggs, chicken breast, cottage cheese. Creatine 3–5g/day recommended at your age.</span></div>` : ''}
+      </div>`;
+    }
+
+    if (isRecomp) {
+      const eligible = bmi > 25 || act <= 1.375;
+      compHtml += `<div class="callout c-amber" style="margin-bottom:12px;"><span class="callout-i">🔄</span><div><strong>Recomposition (lose fat + gain muscle simultaneously):</strong> ${eligible ? `You are a good candidate — ${bmi > 25 ? 'higher body fat provides substrate' : 'beginner status means gains occur even without surplus'}. Protocol: ${tdee.toLocaleString()} kcal (maintenance ±50), protein ${protCut}g/day, resistance training 3–4×/week with progressive overload. Measure success by waist size and strength, not scale weight — it may not move for weeks while body composition improves substantially.` : 'At your training level and body fat %, dedicated cut-then-bulk cycles are ~30% more efficient than recomp. Consider 6–8 week cut first, then lean bulk.'}</div></div>`;
+    }
+
+    compHtml += `</div></div>`;
+    html += compHtml;
   }
 
   // ─── EDC REDUCTION PLAN ───
@@ -2498,6 +3386,36 @@ function calculate() {
   if (goals.includes('cognitive') && sex === 'female' && (cycleStatus === 'peri' || cycleStatus === 'post')) {
     html += rbItem('cog', 'MBSR for menopausal brain fog', '8-week programme', 'Oestrogen withdrawal impairs PFC function and verbal memory. MBIs showed specific cognitive benefit in post-menopausal cohorts — stronger than in pre-menopausal women. Start with 15 min FA meditation daily; escalate to full MBSR programme if brain fog persists more than 4 weeks.');
   }
+
+  // ─── AGE-SPECIFIC WEEKLY ITEMS ───
+  if (age >= 46) {
+    html += rbItem('hor', 'Bone health check', 'Annual monitoring from 46+', sex === 'male'
+      ? 'Testosterone decline from mid-40s directly reduces osteoblast activity. Resistance training is the most potent non-pharmacological bone preservation intervention. Ensure calcium 1,000–1,200mg/day from food, Vitamin D3 2,000 IU, and K2 100µg MK-7. DEXA scan if not done in 5 years.'
+      : 'Oestrogen decline accelerates bone density loss significantly. Resistance training + calcium + D3 + K2 is the foundation. DEXA scan is recommended at perimenopause onset. HRT initiated within the "critical window" provides substantial bone protection.');
+  }
+  if (age >= 56) {
+    html += rbItem('hor', 'Creatine monohydrate', '3–5g/day with food', sex === 'male'
+      ? 'Multiple RCTs confirm creatine significantly improves lean mass retention, strength, and cognitive performance in adults 55+. The sarcopenia (age-related muscle loss) prevention evidence is strong at this age — creatine synergises powerfully with resistance training. 5g/day; no loading phase needed. Discuss with physician if on kidney-affecting medications.'
+      : 'Evidence in older women: creatine 3–5g/day improves lean mass, strength, and bone density when combined with resistance training. A 2021 systematic review confirmed cognitive benefits in older adults (55+). Particularly important post-menopause when anabolic signalling is reduced. Discuss with physician.');
+    html += rbItem('cog', 'Cognitive screening', 'Annual self-assessment', 'Subjective cognitive complaints at 56+ warrant tracking. Use validated tools: MoCA online self-test annually. Note: up to 40% of "brain fog" at this age responds to sleep optimisation, vitamin D correction, and thyroid optimisation — check these before assuming cognitive decline.');
+  }
+  if (age >= 65) {
+    html += rbItem('hor', 'Balance and fall prevention', '2×/week, 10–15 min', 'Falls are the leading cause of injury-related death in adults 65+. Balance training (single-leg stands, heel-toe walking, tai chi) significantly reduces fall risk in RCTs. Combine with resistance training. Vitamin D deficiency doubles fall risk — ensure levels are adequate.');
+  }
+
+  // ─── GOAL-SPECIFIC WEEKLY ───
+  if (goals.includes('muscle')) {
+    html += rbItem('hor', 'Resistance training priority', '3–4 sessions/week, progressive overload', sex === 'male'
+      ? `Muscle goal selected: compound lifts (squat, deadlift, press, row) with progressive overload are essential. Protein ${protMin}–${protMax}g/day distributed across ${eatStart !== 'N/A' ? 'your eating window' : 'the day'} — leucine threshold per meal is ~2.5–3g. Post-workout anabolic window: consume 30–40g protein within 2 hours of training.`
+      : `Muscle goal selected: resistance training improves insulin sensitivity (critical for PCOS), preserves bone density, and raises resting metabolic rate. Compound lifts most efficient. Protein ${protMin}–${protMax}g/day. Adequate dietary fat is essential — low-fat diets impair hormonal signalling needed for muscle adaptation.`);
+  }
+  if (goals.includes('sleep')) {
+    html += rbItem('cog', 'Sleep goal — CBT-I priority', 'Active protocol this week', `Sleep goal selected. Implement stimulus control this week: (1) bed only for sleep and sex, (2) if awake >20 min get up and do something calm in dim light until sleepy, (3) consistent wake time ${sleepTarget} regardless of when you fell asleep. CBT-I has 24-week durability — better than any sleep medication long-term.`);
+  }
+  if (goals.includes('longevity')) {
+    html += rbItem('det', 'Longevity protocol', 'Highest-evidence interventions', `Longevity goal selected. Evidence hierarchy for human lifespan and healthspan: (1) Resistance training 2–3×/week — strongest all-cause mortality reduction intervention. (2) Mediterranean diet — strongest evidence for longevity nutrition. (3) Sleep 7–9h — each hour below 6h adds ~13% all-cause mortality risk. (4) Fasting — activates autophagy and mitophagy (cellular renewal). (5) Stress management — chronic cortisol accelerates telomere shortening. This protocol covers all five.${age >= 56 ? ' Creatine 3–5g/day added for your age group.' : ''}`);
+  }
+
   html += `</div></div>`;
 
   // ─── SCORE BARS (tab 2) ───
@@ -2525,59 +3443,260 @@ function calculate() {
     ['EDC / Toxin Protection', toxBar], ['Body Composition', bmiScore], ['Physical Activity', actScore]
   ].sort((a,b) => a[1]-b[1])[0][0];
 
-  scoresHtml += `<div class="callout c-blue">
+  scoresHtml += `<div class="callout c-blue" style="margin-bottom:10px;">
     <span class="callout-i">🎯</span>
     <div><strong>Highest priority area:</strong> ${lowestLabel} (score: ${Math.round(lowestScore)}%). This is where targeted effort will yield the greatest systemic benefit. See the Smart Notes tab for specific guidance.</div>
   </div>`;
+  scoresHtml += `<div class="callout c-green">
+    <span class="callout-i">${ageBand.phase === 'peak' || ageBand.phase === 'prime' ? '🚀' : ageBand.phase === 'early_decline' || ageBand.phase === 'mid' ? '📈' : '🛡️'}</span>
+    <div><strong>Age ${age} context (${ageBand.band}):</strong> ${ageBand.label}. ${
+      sex === 'male' && ageBand.phase === 'early_decline' ? 'Free testosterone declines ~1–2%/year from age 30; SHBG rises with age, further reducing free fraction. Sleep quality and body composition are the two highest-leverage modifiable factors at this stage.' :
+      sex === 'male' && ageBand.phase === 'mid' ? 'Testosterone variance between well-optimised and sedentary men of this age is enormous — up to 2× difference. The interventions in this protocol have the largest relative impact here.' :
+      sex === 'female' && (ageBand.phase === 'early_decline' || ageBand.phase === 'mid') ? 'Track cycle length changes — variability is an early perimenopause signal. Oestrogen fluctuations drive sleep disruption years before menopause. The interventions here directly buffer these effects.' :
+      ageBand.phase === 'later' || ageBand.phase === 'senior' ? 'Protein sufficiency and resistance training are non-negotiable at this age — the anabolic resistance of ageing means higher doses of both are needed to achieve the same muscular response as younger adults.' :
+      'The earlier these habits are established, the greater the compound benefit over time.'
+    }</div>
+  </div>`;
 
   // ─── NOTES (tab 3) ───
+
+  // Derived for notes
+  const isWeightLoss = goals.includes('weight') && bmi > 21;
+  const isMuscle = goals.includes('muscle');
+  const tdeeNote = tdee;
+  const deficit = isWeightLoss ? (bmi > 30 ? 600 : 500) : 0;
+  const surplus = (isMuscle && !isWeightLoss) ? 250 : 0;
+  const targetCals = isWeightLoss ? tdeeNote - deficit : isMuscle ? tdeeNote + surplus : tdeeNote;
+
+  // Macro split — goal-adjusted
+  let protG, carbG, fatG, fibreG;
+  if (isWeightLoss) {
+    protG  = Math.round(weight * 2.4);           // high protein during cut
+    fatG   = Math.round(targetCals * 0.28 / 9);  // 28% fat
+    carbG  = Math.round((targetCals - protG*4 - fatG*9) / 4);
+    fibreG = sex === 'female' ? 25 : 30;
+  } else if (isMuscle) {
+    protG  = Math.round(weight * 2.0);
+    fatG   = Math.round(targetCals * 0.25 / 9);
+    carbG  = Math.round((targetCals - protG*4 - fatG*9) / 4);
+    fibreG = sex === 'female' ? 25 : 38;
+  } else {
+    protG  = Math.round(weight * 1.8);
+    fatG   = Math.round(targetCals * 0.30 / 9);
+    carbG  = Math.round((targetCals - protG*4 - fatG*9) / 4);
+    fibreG = sex === 'female' ? 25 : 30;
+  }
+  carbG = Math.max(80, carbG); // floor
+
+  // Timeline projection
+  const weeklyChangeKg = isWeightLoss ? (deficit * 7 / 7700) : isMuscle ? (ageBand.phase === 'peak' || ageBand.phase === 'prime' ? 0.3 : 0.15) : 0;
+  const month3Change   = +(weeklyChangeKg * 13).toFixed(1);
+  const month6Change   = +(weeklyChangeKg * 26).toFixed(1);
+  const projectedWeight   = isWeightLoss ? Math.round(weight - month6Change) : isMuscle ? Math.round(weight + month6Change) : weight;
+
+  // Hydration by goal
+  const hydrationBase  = Math.round(weight * 35);
+  const hydrationBoost = isWeightLoss ? 200 : isMuscle ? 400 : 0;
+  const hydrationTotal = hydrationBase + hydrationBoost;
+
   let notesHtml = `<h3 style="margin-bottom:16px;">Personalised smart notes</h3><div class="notes-grid">`;
+
+  // ── MACRO TARGETS ──
+  notesHtml += `<div class="note-card" style="grid-column:1/-1;border-top:3px solid var(--blue);">
+    <div class="note-title">🔢 Your Daily Macro Targets</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:10px;">
+      <div style="text-align:center;padding:8px;background:var(--blue-l);border-radius:var(--r);"><div style="font-size:1.2rem;font-weight:800;color:var(--blue);">${targetCals.toLocaleString()}</div><div style="font-size:0.68rem;color:var(--muted);">kcal/day</div></div>
+      <div style="text-align:center;padding:8px;background:var(--green-l);border-radius:var(--r);"><div style="font-size:1.2rem;font-weight:800;color:var(--green);">${protG}g</div><div style="font-size:0.68rem;color:var(--muted);">Protein (${(protG*4/targetCals*100).toFixed(0)}%)</div></div>
+      <div style="text-align:center;padding:8px;background:var(--amber-l);border-radius:var(--r);"><div style="font-size:1.2rem;font-weight:800;color:var(--amber);">${carbG}g</div><div style="font-size:0.68rem;color:var(--muted);">Carbs (${(carbG*4/targetCals*100).toFixed(0)}%)</div></div>
+      <div style="text-align:center;padding:8px;background:var(--rose-l);border-radius:var(--r);"><div style="font-size:1.2rem;font-weight:800;color:var(--rose);">${fatG}g</div><div style="font-size:0.68rem;color:var(--muted);">Fat (${(fatG*9/targetCals*100).toFixed(0)}%)</div></div>
+      <div style="text-align:center;padding:8px;background:var(--off);border-radius:var(--r);border:1px solid var(--border);"><div style="font-size:1.2rem;font-weight:800;color:var(--ink);">${fibreG}g+</div><div style="font-size:0.68rem;color:var(--muted);">Fibre/day</div></div>
+    </div>
+    <p style="font-size:0.78rem;color:var(--muted);">Per meal (${eatStart !== 'N/A' ? '3–4 meals in your eating window' : '3–4 meals/day'}): ~${Math.round(targetCals/4).toLocaleString()} kcal, ${Math.round(protG/4)}g protein minimum. Leucine threshold for muscle protein synthesis: 2.5–3g leucine per meal ≈ ${sex === 'male' ? '30–40g' : '25–35g'} total protein from quality source.</p>
+  </div>`;
+
+  // ── TIMELINE ──
+  if (isWeightLoss || isMuscle) {
+    notesHtml += `<div class="note-card" style="border-top:3px solid var(--amber);">
+      <div class="note-title">📅 Realistic Timeline</div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:8px;">${isWeightLoss ? `At a ~${deficit} kcal/day deficit:` : `At a ~${surplus} kcal/day surplus (${ageBand.band}):`}</p>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:var(--ink);">4 weeks</span><span style="color:${isWeightLoss ? 'var(--rose)' : 'var(--green)'};">${isWeightLoss ? '−' : '+'}${(weeklyChangeKg*4).toFixed(1)}kg${isWeightLoss ? ' fat (expect more on scale — water fluctuation normal)' : ' lean (scale may show less — fat loss may offset)'}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:var(--ink);">3 months</span><span style="color:${isWeightLoss ? 'var(--rose)' : 'var(--green)'};">${isWeightLoss ? '−' : '+'}${month3Change}kg → ~${isWeightLoss ? Math.round(weight-month3Change) : Math.round(weight+month3Change)}kg</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:var(--ink);">6 months</span><span style="color:${isWeightLoss ? 'var(--rose)' : 'var(--green)'};">${isWeightLoss ? '−' : '+'}${month6Change}kg → ~${projectedWeight}kg</span></div>
+        ${isWeightLoss ? `<div style="font-size:0.74rem;color:var(--faint);margin-top:4px;">⚠️ Plateau expected at weeks 6–10. Plan a 1-week diet break (eat at ${tdee.toLocaleString()} kcal) then resume.</div>` : `<div style="font-size:0.74rem;color:var(--faint);margin-top:4px;">Scale weight is unreliable for muscle gain. Strength progression and tape measurements are better indicators.</div>`}
+      </div>
+    </div>`;
+  }
+
+  // ── FOOD QUALITY BASICS ──
+  notesHtml += `<div class="note-card">
+    <div class="note-title">🥗 Food Quality Basics</div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:0.8rem;">
+      <div><span style="font-weight:700;color:var(--green);">Best protein sources:</span><span style="color:var(--muted);"> Eggs (~6g/egg, highest bioavailability), Greek yoghurt (17g/100g), chicken breast (31g/100g), salmon (25g/100g), lentils (9g/100g cooked). Aim for 30–40g protein per meal.</span></div>
+      <div><span style="font-weight:700;color:var(--amber);">Best carb sources:</span><span style="color:var(--muted);"> Oats, quinoa, sweet potato, rice, legumes — all low–moderate GI. Time the largest carb meal ${isMuscle ? 'post-workout for glycogen replenishment' : 'in the earlier part of your eating window for better insulin response'}.</span></div>
+      <div><span style="font-weight:700;color:var(--blue);">Best fat sources:</span><span style="color:var(--muted);"> EVOO (polyphenols + oleic acid), avocado, nuts, fatty fish (EPA/DHA). ${isWeightLoss ? 'Fats are calorie-dense — measure portions during a cut.' : 'Fat is essential for hormonal synthesis — never go below 20% of calories.'}</span></div>
+      <div><span style="font-weight:700;color:var(--rose);">Fibre target ${fibreG}g:</span><span style="color:var(--muted);"> Supports satiety, gut microbiome diversity, oestrogen clearance, and stable blood sugar. Practical: 2 cups leafy greens, 1 cup legumes, 1 apple, 40g oats = ~25–30g. Every 10g/day fibre increase → 10% reduction in all-cause mortality (meta-analysis).</span></div>
+      <div><span style="font-weight:700;color:var(--ink);">Volume eating${isWeightLoss ? ' (key for cut)' : ''}:</span><span style="color:var(--muted);"> Vegetables (non-starchy), broth soups, leafy greens, berries — highest satiety per calorie. Fill 50% of each plate before adding protein and carbs.</span></div>
+    </div>
+  </div>`;
+
+  // ── SATIETY & HUNGER MANAGEMENT ──
+  if (isWeightLoss) {
+    notesHtml += `<div class="note-card">
+      <div class="note-title">🍽️ Hunger Management During Cut</div>
+      <p style="font-size:0.8rem;color:var(--muted);">Hunger is physiological — ghrelin rises during restriction regardless of willpower. These strategies reduce hunger <em>without</em> reducing calories:</p>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:0.79rem;margin-top:6px;">
+        <div>• <strong>Protein first</strong> at every meal — the highest-satiety macronutrient. 30–40g before other foods.</div>
+        <div>• <strong>500ml water</strong> 20 min before each meal reduces ad-hoc intake by ~13% (RCT evidence).</div>
+        <div>• <strong>Slow eating</strong> (20+ min per meal) allows CCK and GLP-1 to signal fullness — hunger signal lags ~15 min behind intake.</div>
+        <div>• <strong>Sleep</strong> is the most underrated hunger regulator — each hour below 7h raises ghrelin and reduces leptin measurably.</div>
+        <div>• <strong>Stress</strong> elevates cortisol → elevates ghrelin → drives high-calorie food seeking. MBSR reduces stress-eating episodes significantly.</div>
+        ${sex === 'female' ? '<div>• <strong>Luteal phase (days 15–28):</strong> 150–300 kcal/day hunger increase is physiological — add volume foods (vegetables, broth) not calorie-dense foods during this window.</div>' : ''}
+      </div>
+    </div>`;
+  }
+
+  // ── TRAINING BASICS FOR GOALS ──
+  if (isMuscle || isWeightLoss) {
+    notesHtml += `<div class="note-card">
+      <div class="note-title">🏋️ Training Principles</div>
+      <div style="display:flex;flex-direction:column;gap:5px;font-size:0.8rem;">
+        ${isMuscle ? `<div><span style="font-weight:700;color:var(--green);">Progressive overload:</span><span style="color:var(--muted);"> Non-negotiable for muscle gain. Every 1–2 weeks: add weight (2.5–5kg lower body, 1–2.5kg upper body) when you complete all reps cleanly. No progression = no stimulus.</span></div>` : ''}
+        ${isMuscle ? `<div><span style="font-weight:700;color:var(--green);">Compound lifts first:</span><span style="color:var(--muted);"> Squat, deadlift, bench, row, overhead press. These drive the most hormonal response and recruit the most muscle mass. Isolation exercises supplement — don't replace — compounds.</span></div>` : ''}
+        ${isWeightLoss ? `<div><span style="font-weight:700;color:var(--blue);">Resistance training during cut:</span><span style="color:var(--muted);"> More important than cardio. Without resistance training, 25–30% of weight lost is lean tissue. 3×/week minimum, same weights as maintenance — signals the body to preserve muscle.</span></div>` : ''}
+        ${isWeightLoss ? `<div><span style="font-weight:700;color:var(--blue);">Cardio strategy:</span><span style="color:var(--muted);"> LISS (30–45 min walking/cycling) is better than HIIT during a deficit — less cortisol, less appetite stimulation, no interference with resistance training recovery. Target 7,000–10,000 steps/day as foundation.</span></div>` : ''}
+        <div><span style="font-weight:700;color:var(--amber);">Recovery:</span><span style="color:var(--muted);"> Muscle grows during rest, not during training. 48h minimum between sessions targeting the same muscle group. Sleep ${sleepTarget} is when 80% of GH release occurs.</span></div>
+        ${isMuscle && age >= 40 ? `<div><span style="font-weight:700;color:var(--rose);">Age ${age} note:</span><span style="color:var(--muted);"> Recovery takes longer with age. Consider 72h between heavy lower body sessions. Protein timing becomes more important — front-loading protein in the first meal post-workout has larger effect vs younger trainees.</span></div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  // ── PLATEAU PROTOCOL ──
+  if (isWeightLoss) {
+    notesHtml += `<div class="note-card">
+      <div class="note-title">📊 Plateau Diagnostic Protocol</div>
+      <p style="font-size:0.79rem;color:var(--muted);margin-bottom:6px;">No scale change for 2+ weeks? Run this checklist before cutting calories further:</p>
+      <ol style="font-size:0.79rem;color:var(--muted);margin-left:16px;display:flex;flex-direction:column;gap:3px;">
+        <li><strong>Step count:</strong> Has your daily movement dropped? Check step history — NEAT suppression is the #1 cause of plateaus. Increase by 2,000 steps/day.</li>
+        <li><strong>Protein:</strong> Are you hitting ${protG}g/day consistently? Under-eating protein causes lean mass loss and reduces metabolic rate.</li>
+        <li><strong>Sleep:</strong> Below ${sleepTarget}? Every hour lost raises ghrelin and reduces fat oxidation by measurable amounts.</li>
+        <li><strong>Tracking accuracy:</strong> Oils, sauces, and beverages are common hidden calorie sources. Weigh solids and measure liquids for 3 days.</li>
+        <li><strong>Diet break:</strong> If no progress after above — 1 week at ${tdeeNote.toLocaleString()} kcal (maintenance). Restores leptin, reverses NEAT suppression. Resume cut after.</li>
+        <li><strong>Stress:</strong> Chronic cortisol elevates blood glucose, promotes visceral fat retention, and blunts lipolysis. High stress can prevent fat loss at an otherwise adequate deficit.</li>
+      </ol>
+    </div>`;
+  }
+
+  // ── MEDICATION WEIGHT NOTE ──
+  if (meds.some(m => ['ssri','snri','other_ad','betablocker','steroid','ocp'].includes(m))) {
+    const weightMedMap = { ssri:'SSRI (escitalopram/paroxetine most — fluoxetine neutral)', snri:'SNRI', other_ad:'Antidepressant (mirtazapine highest risk)', betablocker:'Beta-blocker', steroid:'Corticosteroid (highest risk)', ocp:'OCP (mostly fluid retention)' };
+    const wMeds = meds.filter(m => weightMedMap[m]).map(m => weightMedMap[m]);
+    notesHtml += `<div class="note-card" style="border-top:3px solid var(--amber);">
+      <div class="note-title">💊 Medication × Weight Interaction</div>
+      <p style="font-size:0.79rem;color:var(--muted);margin-bottom:6px;">You are on: ${wMeds.join(', ')}. These can contribute to weight changes via appetite increase, NEAT reduction, insulin effects, or fluid retention.</p>
+      <div style="font-size:0.79rem;display:flex;flex-direction:column;gap:4px;">
+        <div>• <strong>5% body weight change in first 4 weeks</strong> of a new medication predicts long-term trajectory — this is the intervention window. Discuss alternatives early if applicable.</div>
+        <div>• <strong>Counter-strategy:</strong> Very high-protein diet (${protG}g/day), resistance training, and deliberate step count targets are the strongest non-pharmacological counters to medication-driven weight gain.</div>
+        <div>• <strong>Bupropion</strong> is the only antidepressant with consistent weight-neutral or weight-loss data — discuss with prescriber if switching is appropriate clinically.</div>
+        ${meds.includes('betablocker') ? '<div>• <strong>Beta-blocker cardio note:</strong> Max HR is suppressed — cardio feels harder. Use RPE (Rate of Perceived Exertion) not heart rate to gauge exercise intensity.</div>' : ''}
+        ${meds.includes('steroid') ? '<div>• <strong>Corticosteroid:</strong> Causes insulin resistance and central adiposity. Resistance training directly opposes muscle-wasting effects. Pause aggressive TRF during high-dose courses.</div>' : ''}
+      </div>
+    </div>`;
+  }
+
   notesHtml += `<div class="note-card"><div class="note-title">☕ Caffeine</div>
-    <p>Permitted during fast (black only). Limit: ${caffLimit}. Avoid after 14:00 — caffeine half-life of 5–6h impairs sleep even when you feel unaffected. In the luteal phase, women metabolise caffeine slightly faster, but sensitivity to sleep disruption increases.</p></div>`;
+    <p>Permitted during fast (black only). Limit: ${caffLimit}. Avoid after 14:00 — caffeine half-life of 5–6h impairs sleep even when you feel unaffected. ${isWeightLoss ? 'Caffeine mildly increases fat oxidation and thermogenesis (~3–4% increase in metabolic rate) — an evidence-based ergogenic during a cut.' : ''} ${sex === 'female' ? 'In the luteal phase, sensitivity to sleep disruption increases.' : ''}</p></div>`;
   notesHtml += `<div class="note-card"><div class="note-title">💧 Hydration</div>
-    <p>Target ${Math.round(weight * 35)} ml/day (${(weight * 35 / 1000).toFixed(1)} L). Use glass or stainless containers. Filtered preferred. Increase by 500 ml per hour of exercise. ${sex === 'female' ? 'Fluid needs increase slightly in the luteal phase due to progesterone-driven temperature rise.' : ''}</p></div>`;
+    <p>Target ${Math.round(hydrationTotal / 100) * 100} ml/day (${(hydrationTotal/1000).toFixed(1)} L). ${isWeightLoss ? 'Drink 500ml water 20 min before each meal — reduces intake by ~13% (RCT). ' : ''}${isMuscle ? 'Dehydration >2% of body weight reduces strength by 5–8% and delays recovery. ' : ''}Use glass or stainless containers. Increase by 500ml per hour of exercise. ${sex === 'female' ? 'Fluid needs increase in the luteal phase.' : ''}</p></div>`;
   notesHtml += `<div class="note-card"><div class="note-title">🧠 Cognition</div>
     <p>${goals.includes('cognitive')
       ? (sex === 'female' && (cycleStatus === 'peri' || cycleStatus === 'post')
-        ? 'Post-menopausal brain fog has a specific biological driver: oestrogen withdrawal impairs PFC function and verbal memory. MBIs showed the strongest cognitive benefit specifically in post-menopausal cohorts. Start with 15 min FA meditation daily; escalate to 8-week MBSR if fog persists.'
-        : 'Your primary goal. Start: 15 min FA meditation daily for 4 weeks. If brain fog persists: 8-week MBSR programme. Still persists: discuss pharmacological options with a physician.')
-      : 'Consider 15 min/day FA meditation. NCCIH evidence base is strongest of all non-pharmacological cognitive interventions — effects compound significantly after 8 weeks.'}</p></div>`;
+        ? 'Post-menopausal brain fog: oestrogen withdrawal impairs PFC and verbal memory. MBIs showed strongest cognitive benefit in post-menopausal cohorts. Start 15 min FA meditation daily; escalate to 8-week MBSR if persistent.'
+        : 'Your primary goal. 15 min FA meditation daily → 8-week MBSR if persistent fog → pharmacological discussion if severe.')
+      : 'Consider 15 min/day FA meditation. NCCIH evidence is strongest of all non-pharmacological cognitive interventions — compounds significantly after 8 weeks.'}</p></div>`;
   notesHtml += `<div class="note-card"><div class="note-title">🌿 Sulforaphane</div>
-    <p>Best absorbed fasted. Avoid cooking above 70°C — destroys myrosinase. Add raw mustard seed powder to cooked broccoli to restore enzymatic conversion. Never freeze sprouts. 50g raw sprouts ≈ 200g mature broccoli in sulforaphane content.</p></div>`;
+    <p>Best absorbed fasted. Never cook above 70°C. Add raw mustard seed powder to cooked broccoli to restore myrosinase. 50g sprouts ≈ 200g broccoli. ${isWeightLoss ? 'Sulforaphane activates Nrf2, which may also support lipid oxidation and reduce inflammatory markers that impair fat loss.' : ''}</p></div>`;
   notesHtml += `<div class="note-card"><div class="note-title">🌡️ Sleep environment</div>
-    <p>Bedroom: 20–25°C, &lt;10 lux at night, &lt;40 dB. ${sex === 'female' ? '<strong>Luteal phase (days 15–28):</strong> progesterone raises core temperature ~0.4°C — cooler bedroom (20–22°C) is more critical in this window. REM sleep is physiologically reduced; this is normal and not a CBT-I target.' : 'Testosterone peaks during early AM REM sleep — temperature and light control protect this window.'} CBT-I (Sleepio, NHS-validated) if insomnia persists &gt;4 weeks.</p></div>`;
+    <p>20–25°C, &lt;10 lux, &lt;40 dB. ${sex === 'female' ? 'Luteal phase: cooler bedroom (20–22°C) more critical — progesterone raises core temp ~0.4°C.' : 'Early AM REM peak for testosterone and GH — protect this window.'} ${isWeightLoss ? 'Each hour below 7h sleep: ghrelin rises ~15%, leptin drops ~15% — direct sabotage of fat loss efforts.' : ''} CBT-I if insomnia persists &gt;4 weeks.</p></div>`;
   notesHtml += `<div class="note-card"><div class="note-title">🛡️ EDC audit</div>
-    <p>Priority order: (1) switch food storage to glass/stainless, (2) filter drinking water, (3) swap synthetic fragrances, (4) choose organic for high-pesticide produce. ${sex === 'female' ? 'Additional female priorities: check non-stick cookware (PFAS off-gassing is a thyroid disruptor), avoid thermal paper receipts (BPA/BPS absorbed transdermally).' : ''} Check EWG Skin Deep for personal care products.</p></div>`;
+    <p>Priority: (1) glass/stainless food storage, (2) filter water, (3) fragrance-free personal care, (4) organic Dirty Dozen. ${sex === 'female' ? 'Non-stick cookware and thermal paper receipts are thyroid disruptors — particularly relevant for women.' : ''}</p></div>`;
   if (sex === 'female') {
     notesHtml += `<div class="note-card"><div class="note-title">🦋 Thyroid check</div>
-      <p>Women are 5–8× more susceptible to thyroid disease than men. PFASs and PCBs are thyroid disruptors. Subclinical hypothyroidism is frequently confused with PCOS, hormonal fatigue, and depression. If you have unexplained fatigue, weight gain, cycle irregularity, or brain fog: ask for TSH, free T4, and TPO antibodies. This is low-cost and often the first productive step.</p></div>`;
+      <p>5–8× higher thyroid disease risk vs men. Subclinical hypothyroidism mimics PCOS, fatigue, and depression — and reduces metabolic rate by 5–15%, making weight loss harder. TSH + free T4 + TPO antibodies. If TSH &gt;2.5 and weight loss is stalled despite adherence, discuss with prescriber.</p></div>`;
     if (cycleStatus === 'regular' || cycleStatus === 'irregular') {
       notesHtml += `<div class="note-card"><div class="note-title">💊 Iron status</div>
-        <p>Iron deficiency is the single most correctable cause of fatigue and brain fog in menstruating women. Serum ferritin &lt;30 µg/L impairs cognitive function and energy even without anaemia. Test serum ferritin (not just haemoglobin). If low: iron-rich foods + vitamin C at each meal, or physician-guided supplementation. Don't supplement without testing.</p></div>`;
+        <p>Iron deficiency (serum ferritin &lt;30 µg/L) impairs fat oxidation and exercise capacity — making weight management harder even without anaemia. Test ferritin not haemoglobin. Correct before aggressive exercise or deficit protocols.</p></div>`;
     }
     if (cycleStatus === 'irregular') {
       notesHtml += `<div class="note-card"><div class="note-title">🔬 Myo-inositol (PCOS)</div>
-        <p>2g twice daily (40:1 myo:D-chiro-inositol ratio). RCT evidence shows improved HOMA-IR, fasting insulin, menstrual regularity, and spontaneous ovulation in PCOS. The 2023 international PCOS guidelines note the metabolic evidence is strong; fertility evidence is still limited. Generally safe and low-cost. Discuss with physician — may take 3 months for full effect.</p></div>`;
+        <p>2g twice daily (40:1 ratio). Strong evidence for insulin sensitisation — directly improves HOMA-IR and supports weight management in PCOS. Discuss with physician. Takes 3 months for full effect.</p></div>`;
     }
   }
-  if (bmi > 27) notesHtml += `<div class="note-card"><div class="note-title">⚡ BMI ${bmi.toFixed(1)} note</div><p>Visceral fat drives ${sex === 'male' ? 'testosterone-to-oestrogen aromatisation, suppressing free testosterone. Fat loss will have an outsized hormonal benefit.' : 'insulin resistance and hyperandrogenism in PCOS. Even 5–10% weight reduction restores ovulatory function.'} The TRF window + Mediterranean diet will synergise strongly here.</p></div>`;
-  if (bmi < 19) notesHtml += `<div class="note-card"><div class="note-title">⚠️ Low body weight</div><p>Insufficient dietary fat suppresses ${sex === 'male' ? 'testosterone' : 'oestrogen and ovulatory function — hypothalamic amenorrhoea is common at low body fat in women'}. Ensure ≥25–30% of calories from fat (predominantly unsaturated). Do not restrict calories.</p></div>`;
-  if (sex === 'female' && cycleStatus !== 'pregnant') notesHtml += `<div class="note-card"><div class="note-title">🌸 Cycle-phase fasting</div><p>Follicular phase (days 1–14): lower progesterone, better sleep, lower core temp — optimal window for 14:10 or 16:8. Luteal phase (days 15–28): progesterone raises temperature and fragments REM — consider reducing to 12:12, prioritising caloric adequacy and a cooler bedroom over extending the fast.</p></div>`;
-  if (stress === 'high') notesHtml += `<div class="note-card"><div class="note-title">🧘 Stress — top priority</div><p>Chronic cortisol is your #1 ${sex === 'male' ? 'testosterone,' : 'hormonal,'} cognitive, and sleep suppressor. MBSR for ${medMin} min/day has the strongest ROI of any single intervention — prioritise this above all other additions.</p></div>`;
-  if (age >= 60) notesHtml += `<div class="note-card"><div class="note-title">🎮 Exergaming note</div><p>For age 60+, interactive exergaming shows a large effect on sleep quality (SMD = −1.38) when maintained ≥8 weeks. No significant benefit found in 18–60 age group. Consider Wii Fit, Ring Fit Adventure, or dance games.</p></div>`;
+  if (sex === 'female' && cycleStatus !== 'pregnant') notesHtml += `<div class="note-card"><div class="note-title">🌸 Cycle-phase nutrition</div><p>Follicular (days 1–14): best fat loss window, better insulin sensitivity. Luteal (days 15–28): 150–300 kcal higher physiological hunger — add volume foods, not calorie-dense. Pre-menstrual: cravings are often for magnesium/iron — dark chocolate and iron-rich foods are appropriate responses.</p></div>`;
+  if (bmi > 27) notesHtml += `<div class="note-card"><div class="note-title">⚡ BMI ${bmi.toFixed(1)} — hormonal context</div><p>Visceral fat drives ${sex === 'male' ? 'testosterone→oestrogen aromatisation, lowering free testosterone by up to 50% in severe cases. Each kg of fat lost meaningfully raises free testosterone.' : 'insulin resistance and hyperandrogenism. Even 5–10% weight reduction restores ovulatory function in PCOS and reduces LH, free testosterone, and FAI.'}</p></div>`;
+  if (bmi < 19) notesHtml += `<div class="note-card"><div class="note-title">⚠️ Low body weight</div><p>Insufficient fat suppresses ${sex === 'male' ? 'testosterone' : 'oestrogen and GnRH pulsatility — hypothalamic amenorrhoea at &lt;18–20% body fat in women'}. ≥25–30% calories from fat is mandatory. Caloric surplus required — target ${Math.round(tdee * 1.1).toLocaleString()} kcal/day.</p></div>`;
+  if (stress === 'high') notesHtml += `<div class="note-card"><div class="note-title">🧘 Stress — top priority</div><p>Chronic cortisol: #1 ${sex === 'male' ? 'testosterone,' : 'hormonal,'} cognitive, and sleep suppressor. ${isWeightLoss ? 'Also directly impairs fat loss — cortisol promotes visceral fat retention and blunts lipolysis regardless of caloric deficit. ' : ''}MBSR for ${medMin} min/day is the highest-ROI intervention.</p></div>`;
+  if (age >= 56) notesHtml += `<div class="note-card"><div class="note-title">💪 Creatine (55+)</div><p>3–5g/day: strong evidence for lean mass preservation, strength, and cognitive function. No loading phase. Synergises with resistance training. ${isWeightLoss ? 'Safe to use during a cut — does not cause fat gain, only intramuscular water retention.' : ''}</p></div>`;
+  if (age >= 46 && sex === 'male') notesHtml += `<div class="note-card"><div class="note-title">📉 Testosterone trajectory</div><p>Free testosterone at age ${age} is typically 30–50% below peak. ${isWeightLoss ? 'Fat loss is one of the highest-impact testosterone interventions at this age — visceral fat aromatises testosterone to oestradiol. ' : ''}Sleep, body composition, zinc, and stress management are the four biggest modifiable drivers.</p></div>`;
+  if (age >= 60) notesHtml += `<div class="note-card"><div class="note-title">🎮 Exergaming (60+)</div><p>SMD = −1.38 for sleep quality when maintained ≥8 weeks. No benefit in 18–60 age group.</p></div>`;
   notesHtml += `</div>
   <div class="result-disclaimer">
     ⚠️ <strong>Medical disclaimer:</strong> This routine is generated from population-level research adjusted for your biometric and lifestyle inputs. It is not personalised medical advice. Consult a qualified physician before starting any new dietary, fasting, or supplementation protocol — especially if you have existing health conditions, PCOS, fertility concerns, or are pregnant/breastfeeding. Pharmacological interventions require a valid prescription and individual risk assessment.
   </div>`;
 
+  // ─── BUILD MEDICATION TAB ───
+  const medInteractions = buildMedInteractions(meds, sex, age, sleep, stress);
+  let medsHtml = '';
+
+  if (!medInteractions) {
+    medsHtml = `<div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:2.5rem;margin-bottom:12px;">💊</div>
+      <h3 style="margin-bottom:8px;font-size:1rem;">No medications selected</h3>
+      <p style="font-size:0.84rem;color:var(--muted);max-width:380px;margin:0 auto;">If you are taking any medications, go back to the form and tick the relevant boxes. This tab will show you evidence-based drug–nutrient and drug–sleep interactions, and specific adjustments to this routine.</p>
+    </div>`;
+  } else {
+    medsHtml = `<div style="margin-bottom:16px;">
+      <h3 style="margin-bottom:6px;">Medication–protocol interactions</h3>
+      <p style="font-size:0.83rem;color:var(--muted);">Based on your selected medications. Each section explains the interaction mechanism, its clinical significance, and specific adjustments to this routine. <strong>Always discuss supplementation changes with your prescriber before acting on these recommendations.</strong></p>
+    </div>`;
+    const priorityOrder = { high: 0, med: 1, low: 2 };
+    medInteractions.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    medInteractions.forEach(m => {
+      const pLabel = m.priority === 'high' ? 'Review with prescriber' : m.priority === 'med' ? 'Worth discussing' : 'Informational';
+      medsHtml += `<div class="interaction-card">
+        <div class="ic-header">
+          <span class="ic-icon">${m.icon}</span>
+          <span class="ic-title">${m.title}</span>
+          <span class="ic-priority ic-p-${m.priority}">${pLabel}</span>
+        </div>
+        <div class="ic-body">
+          ${m.body}
+          <div class="ic-rec"><strong>→ Routine adjustment:</strong> ${m.rec}</div>
+        </div>
+      </div>`;
+    });
+    medsHtml += `<div class="result-disclaimer" style="margin-top:16px;">⚠️ <strong>Important:</strong> This analysis is informational only. Do not start, stop, or change any medication or supplement without consulting your prescriber. Drug interactions and individual responses vary significantly. The recommendations above are based on population-level evidence, not your specific clinical situation.</div>`;
+  }
+
+  // Update meds tab label
+  const medsTabBtn = document.querySelector('.rtab[data-tab="meds"]');
+  if (medsTabBtn) {
+    medsTabBtn.textContent = meds.length > 0
+      ? `💊 Medications (${meds.length})`
+      : '💊 Medications';
+    if (meds.length > 0) medsTabBtn.style.fontWeight = '700';
+  }
+
   // ─── INJECT INTO TABS ───
   document.getElementById('resultRoutine').innerHTML = html;
   document.getElementById('resultScores').innerHTML = scoresHtml;
+  document.getElementById('resultMeds').innerHTML = medsHtml;
   document.getElementById('resultNotes').innerHTML = notesHtml;
 
-  // Show tabs
+  // Auto-open meds tab if medications are selected
+  const defaultTab = meds.length > 0 ? 'meds' : 'routine';
   document.getElementById('resultTabs').style.display = 'flex';
-  switchTab('routine', document.querySelector('.rtab[data-tab="routine"]'));
+  switchTab(defaultTab, document.querySelector(`.rtab[data-tab="${defaultTab}"]`));
 
   document.getElementById('resultPanel').classList.add('visible');
   setTimeout(() => document.getElementById('resultPanel').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
