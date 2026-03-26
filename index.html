@@ -792,6 +792,164 @@ td:first-child { color: var(--ink); font-weight: 600; }
 }
 .ic-rec strong { color: var(--blue); }
 
+/* ─── DARK MODE ──────────────────────────────────────────── */
+body.dark {
+  --white:   #0f1117;
+  --off:     #161a22;
+  --stone:   #1c2130;
+  --border:  rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.15);
+  --ink:     #f0f2f8;
+  --ink2:    #cdd3e0;
+  --muted:   #8890a4;
+  --faint:   #4e5670;
+  --blue-l:  rgba(29,78,216,0.15);
+  --blue-m:  rgba(29,78,216,0.3);
+  --amber-l: rgba(180,83,9,0.15);
+  --amber-m: rgba(180,83,9,0.3);
+  --green-l: rgba(15,110,80,0.15);
+  --green-m: rgba(15,110,80,0.3);
+  --rose-l:  rgba(157,23,77,0.15);
+  --rose-m:  rgba(157,23,77,0.3);
+  --red-l:   rgba(185,28,28,0.15);
+}
+body.dark .nav { background: rgba(15,17,23,0.95); }
+body.dark .mob-menu { background: var(--white); }
+body.dark .calc-form,
+body.dark .card,
+body.dark .acc,
+body.dark .acc-body { background: var(--off); }
+body.dark .form-group input,
+body.dark .form-group select { background: var(--off); color: var(--ink); }
+body.dark .result-panel { background: var(--off); border-color: var(--border2); }
+body.dark table thead { background: var(--stone); }
+body.dark .tbl-wrap { background: var(--off); }
+body.dark footer { background: #0a0c10 !important; }
+body.dark .hero { background: #07090e; }
+
+.dm-btn {
+  flex-shrink: 0;
+  width: 36px; height: 36px; border-radius: 8px;
+  border: 1.5px solid var(--border); background: var(--off);
+  font-size: 1rem; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s; color: var(--muted);
+}
+.dm-btn:hover { border-color: var(--border2); color: var(--ink); background: var(--stone); }
+
+/* ─── SUPPLEMENT TIERS ───────────────────────────────────── */
+.tier-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 10px; border-radius: 99px;
+  font-size: 0.64rem; font-weight: 800; letter-spacing: .08em;
+  text-transform: uppercase; flex-shrink: 0;
+}
+.tier-1 { background: var(--green-l); color: var(--green); border: 1px solid var(--green-m); }
+.tier-2 { background: var(--blue-l);  color: var(--blue);  border: 1px solid var(--blue-m); }
+.tier-3 { background: var(--stone);   color: var(--muted); border: 1px solid var(--border2); }
+.tier-f { background: var(--rose-l);  color: var(--rose);  border: 1px solid var(--rose-m); }
+.tier-m { background: var(--blue-l);  color: var(--blue);  border: 1px solid var(--blue-m); }
+.tier-rx { background: var(--amber-l);color: var(--amber); border: 1px solid var(--amber-m); }
+
+.supp-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r2); overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.supp-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-color: var(--border2); }
+.supp-header {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 18px 0;
+}
+.supp-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; flex-shrink: 0;
+}
+.supp-meta { flex: 1; }
+.supp-name { font-family: 'Libre Baskerville', serif; font-size: 0.93rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.supp-sub  { font-size: 0.7rem; color: var(--muted); }
+.supp-body { padding: 12px 18px 16px; }
+.supp-row {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 4px 10px; font-size: 0.8rem; margin-bottom: 4px; align-items: baseline;
+}
+.supp-label { font-weight: 700; color: var(--ink2); }
+.supp-val   { color: var(--muted); }
+.supp-val.highlight { color: var(--blue); font-weight: 700; }
+.supp-note { font-size: 0.77rem; color: var(--muted); line-height: 1.6; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.supp-warn { font-size: 0.76rem; color: var(--amber); background: var(--amber-l); border: 1px solid var(--amber-m); border-radius: var(--r); padding: 6px 10px; margin-top: 8px; }
+
+.supp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: 14px;
+}
+
+/* ─── BIOMARKER RANGE BARS ───────────────────────────────── */
+.bm-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 140px;
+  gap: 14px; align-items: center; padding: 12px 16px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r); transition: border-color 0.12s;
+}
+.bm-row:hover { border-color: var(--border2); }
+.bm-name  { font-size: 0.82rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.bm-unit  { font-size: 0.67rem; color: var(--faint); font-family: 'Figtree', sans-serif; }
+.bm-track { position: relative; height: 8px; background: var(--stone); border-radius: 99px; overflow: hidden; }
+.bm-zone-danger { position: absolute; top:0; height:100%; background: rgba(185,28,28,0.3); border-radius: 3px; }
+.bm-zone-caution { position: absolute; top:0; height:100%; background: rgba(180,83,9,0.3); border-radius: 3px; }
+.bm-zone-optimal { position: absolute; top:0; height:100%; background: var(--green); opacity: 0.75; border-radius: 3px; }
+.bm-values { display: flex; flex-direction: column; gap: 2px; }
+.bm-opt { font-size: 0.75rem; font-weight: 700; color: var(--green); }
+.bm-norm { font-size: 0.68rem; color: var(--faint); }
+@media(max-width:700px) { .bm-row { grid-template-columns: 1fr 1fr; } .bm-track { grid-column: 1/-1; } }
+
+/* ─── NUTRITION SECTION ──────────────────────────────────── */
+.macro-ring-wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.macro-swatch {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; font-weight: 500; color: var(--ink2);
+}
+.macro-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+.food-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 12px;
+}
+.food-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 14px 16px;
+  transition: box-shadow 0.2s;
+}
+.food-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.food-card .fc-icon { font-size: 1.4rem; margin-bottom: 6px; }
+.food-card .fc-name { font-size: 0.84rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.food-card .fc-prot { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; font-weight: 700; color: var(--blue); }
+.food-card .fc-note { font-size: 0.72rem; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+.phase-strip {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 10px;
+}
+.phase-card {
+  border-radius: var(--r2); padding: 14px; text-align: center;
+  border: 1px solid var(--border);
+}
+.phase-card .ph-day { font-size: 0.67rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+.phase-card .ph-name { font-family: 'Libre Baskerville', serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.phase-card .ph-items { font-size: 0.74rem; color: var(--muted); line-height: 1.6; }
+
+/* form-section-label */
+.form-section-label {
+  font-size: 0.73rem; font-weight: 700; letter-spacing:.07em; text-transform:uppercase;
+  color: var(--muted); margin-bottom: 10px; margin-top: 4px;
+  display: flex; align-items: center; gap: 8px;
+}
+.form-section-label::after {
+  content:''; flex:1; height:1px; background: var(--border);
+}
+
 /* ─── PRINT STYLES ───────────────────────────────────────── */
 @media print {
   .nav, .mob-menu, #prog, .ham, .nav-cta, footer, .calc-form, #resultActions,
@@ -888,12 +1046,16 @@ td:first-child { color: var(--ink); font-weight: 600; }
       <li><a href="#edc">EDC &amp; Toxins</a></li>
       <li><a href="#hormonal">Hormonal</a></li>
       <li><a href="#fasting">Fasting</a></li>
-      <li><a href="#bodycomp">Body Composition</a></li>
+      <li><a href="#bodycomp">Body Comp</a></li>
+      <li><a href="#nutrition">Nutrition</a></li>
+      <li><a href="#supplementation">Supplements</a></li>
       <li><a href="#detox">Detox</a></li>
       <li><a href="#sleep">Sleep</a></li>
+      <li><a href="#biomarkers">Biomarkers</a></li>
       <li><a href="#summary">Summary</a></li>
       <li><a href="#calculator">Routine</a></li>
     </ul>
+    <button class="dm-btn" id="dmBtn" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
     <a href="#calculator" class="nav-cta">Build My Routine ↓</a>
     <button class="ham" id="ham" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -909,8 +1071,11 @@ td:first-child { color: var(--ink); font-weight: 600; }
   <a href="#hormonal">Hormonal Optimisation</a>
   <a href="#fasting">Fasting &amp; Metabolism</a>
   <a href="#bodycomp">⚖️ Body Composition</a>
-  <a href="#detox">Detox &amp; Nrf2</a>
-  <a href="#sleep">Sleep Optimisation</a>
+  <a href="#nutrition">🥗 Nutrition Targets</a>
+  <a href="#supplementation">💊 Supplementation</a>
+  <a href="#detox">🌿 Detox &amp; Nrf2</a>
+  <a href="#sleep">😴 Sleep Optimisation</a>
+  <a href="#biomarkers">🔬 Biomarker Reference</a>
   <a href="#summary">Evidence Summary</a>
   <a href="#calculator">🗓 Build My Routine</a>
 </div>
@@ -937,36 +1102,46 @@ td:first-child { color: var(--ink); font-weight: 600; }
       <span class="hero-tag">😴 Sleep Optimisation</span>
     </div>
     <div class="hero-cards fu d3">
-      <div class="hero-card">
+      <a href="#cognitive" class="hero-card" style="text-decoration:none;">
         <div class="hero-card-em">🧠</div>
         <h3>Cognitive Enhancement</h3>
         <p>CBT, MBSR, rehabilitation — ranked by evidence strength</p>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="#pharmacological" class="hero-card" style="text-decoration:none;">
         <div class="hero-card-em">💊</div>
         <h3>Pharmacological</h3>
         <p>Methylphenidate, modafinil, guanfacine — what trials show</p>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="#hormonal" class="hero-card" style="text-decoration:none;">
         <div class="hero-card-em">⚡</div>
         <h3>Hormonal Optimisation</h3>
         <p>TRF, Mediterranean diet, EDC reduction — male &amp; female</p>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="#edc" class="hero-card" style="text-decoration:none;">
         <div class="hero-card-em">☣️</div>
         <h3>EDC &amp; Toxin Defence</h3>
         <p>BPA, phthalates, microplastics — what the data actually shows</p>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-em">🌿</div>
-        <h3>Endogenous Detox</h3>
-        <p>Nrf2, autophagy, sulforaphane — activated from within</p>
-      </div>
-      <div class="hero-card">
+      </a>
+      <a href="#supplementation" class="hero-card" style="text-decoration:none;">
+        <div class="hero-card-em">💊</div>
+        <h3>Evidence-Based Supplements</h3>
+        <p>Tiered protocols with dosing, timing &amp; drug interactions</p>
+      </a>
+      <a href="#sleep" class="hero-card" style="text-decoration:none;">
         <div class="hero-card-em">😴</div>
         <h3>Sleep Architecture</h3>
         <p>CBT-I, environment targets, female lifespan sleep shifts</p>
-      </div>
+      </a>
+      <a href="#nutrition" class="hero-card" style="text-decoration:none;">
+        <div class="hero-card-em">🥗</div>
+        <h3>Nutrition Targets</h3>
+        <p>Protein by age/sex, Mediterranean protocol, micronutrients</p>
+      </a>
+      <a href="#biomarkers" class="hero-card" style="text-decoration:none;">
+        <div class="hero-card-em">🔬</div>
+        <h3>Biomarker Reference</h3>
+        <p>Optimal vs normal — glucose, HbA1c, ApoB, hormones &amp; more</p>
+      </a>
     </div>
   </div>
 </section>
@@ -1788,6 +1963,683 @@ td:first-child { color: var(--ink); font-weight: 600; }
   </div>
 </section>
 
+      <span class="callout-i">🔑</span>
+      <div><strong>Early warning signal:</strong> A ≥5% change in body weight within the first 4 weeks of starting a new medication strongly predicts the long-term weight trajectory (PMC review). This is the critical intervention window — if weight gain is occurring and is unacceptable, discuss alternatives with your prescriber early rather than after significant gain has occurred.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     NUTRITION TARGETS
+════════════════════════════════════════════════════════ -->
+<section id="nutrition" class="alt">
+  <div class="wrap">
+    <div class="eyebrow amber fu">Nutrition Science</div>
+    <h2 class="fu">Evidence-Based Nutrition Targets</h2>
+    <p class="lead fu" style="margin-bottom:36px;">Not diet culture. Not marketing. These are the quantified, age-adjusted targets derived from meta-analyses, centenarian cohort studies, and clinical trial data — for body composition, hormonal health, and longevity.</p>
+
+    <!-- PROTEIN -->
+    <div class="fu" style="margin-bottom:36px;">
+      <h3 style="margin-bottom:14px;">Protein — the most evidence-loaded macronutrient</h3>
+      <div class="callout c-blue" style="margin-bottom:16px;">
+        <span class="callout-i">🔬</span>
+        <div><strong>Why protein targets matter more than calorie counting:</strong> Protein is the only macronutrient with a body-composition-specific effect independent of total calories. Its satiety signal (via GLP-1, CCK, PYY) is 2–3× stronger than carbohydrates or fat. Leucine threshold per meal (~2.5–3g) is the rate-limiting factor for muscle protein synthesis activation — not daily total alone.</div>
+      </div>
+      <div class="tbl-wrap fu">
+        <table>
+          <thead>
+            <tr>
+              <th>Age / Goal</th>
+              <th>Male (g/kg LBM/day)</th>
+              <th>Female (g/kg LBM/day)</th>
+              <th>Priority sources</th>
+              <th>Clinical basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>18–35, maintenance</td><td>1.6–2.0</td><td>1.4–1.8</td><td>Eggs, fish, chicken, legumes</td><td>Position statement: ISSN, Nutrients 2017</td></tr>
+            <tr><td>18–35, fat loss (cut)</td><td>2.0–2.4</td><td>1.8–2.2</td><td>Whey, casein, cottage cheese</td><td>High protein preserves lean mass during deficit — up to 3× less lean tissue lost</td></tr>
+            <tr><td>18–35, muscle gain</td><td>1.8–2.2</td><td>1.6–2.0</td><td>Leucine-rich: eggs, whey, chicken</td><td>Meta-analysis Morton et al. 2018 (n=1,800+)</td></tr>
+            <tr><td>36–55, all goals</td><td>1.9–2.2</td><td>1.7–2.0</td><td>Same + higher leucine per meal</td><td>Anabolic resistance begins — higher dose needed for same MPS response</td></tr>
+            <tr><td>56+, maintenance</td><td>2.0–2.4</td><td>1.9–2.2</td><td>+Dairy, +fish, consider whey</td><td>Sarcopenia prevention: PROT-AGE consensus, 2013</td></tr>
+            <tr><td>56+, fat loss</td><td>2.2–2.6</td><td>2.0–2.4</td><td>Distribute 30–40g/meal minimum</td><td>Higher leucine threshold with ageing (~3.5g/meal needed)</td></tr>
+            <tr style="background:rgba(157,23,77,0.04)"><td>Post-menopause ♀</td><td>—</td><td>1.8–2.2</td><td>Dairy calcium + protein, fatty fish</td><td>Oestrogen withdrawal worsens anabolic resistance — needs higher protein + resistance training</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FOOD SOURCES -->
+    <div class="fu" style="margin-bottom:36px;">
+      <h3 style="margin-bottom:14px;">Best protein sources — per 100g</h3>
+      <div class="food-grid">
+        <div class="food-card"><div class="fc-icon">🥚</div><div class="fc-name">Eggs (whole)</div><div class="fc-prot">13g</div><div class="fc-note">Highest bioavailability (BV 100). All essential amino acids. ~6g per egg. Best morning protein source.</div></div>
+        <div class="food-card"><div class="fc-icon">🐟</div><div class="fc-name">Salmon / Mackerel</div><div class="fc-prot">25g</div><div class="fc-note">+EPA/DHA omega-3 (anti-inflammatory). Vitamin D. 2–3 servings/week recommended.</div></div>
+        <div class="food-card"><div class="fc-icon">🐔</div><div class="fc-name">Chicken breast</div><div class="fc-prot">31g</div><div class="fc-note">Leanest complete protein. High leucine. Versatile. No omega-3 benefit — rotate with fish.</div></div>
+        <div class="food-card"><div class="fc-icon">🧀</div><div class="fc-name">Cottage cheese</div><div class="fc-prot">11g</div><div class="fc-note">Casein-based — slow digesting. Ideal pre-sleep for overnight MPS. Low calorie density.</div></div>
+        <div class="food-card"><div class="fc-icon">🫘</div><div class="fc-name">Lentils (cooked)</div><div class="fc-prot">9g</div><div class="fc-note">+ fibre, folate, iron. Low GI. Combine with rice for complete amino acid profile. Gut microbiome benefit.</div></div>
+        <div class="food-card"><div class="fc-icon">🫙</div><div class="fc-name">Greek yoghurt</div><div class="fc-prot">10g</div><div class="fc-note">Probiotic benefit. Calcium source. Convenient. Full-fat has higher satiety — negligible calorie difference vs 0%.</div></div>
+        <div class="food-card"><div class="fc-icon">🦑</div><div class="fc-name">Oysters / shellfish</div><div class="fc-prot">9g</div><div class="fc-note">Highest zinc source. Critical for testosterone synthesis and immune function. 2–3 servings/week.</div></div>
+        <div class="food-card"><div class="fc-icon">🌱</div><div class="fc-name">Tofu (firm)</div><div class="fc-prot">8g</div><div class="fc-note">Complete plant protein. Fermented preferred (tempeh, miso) — better bioavailability, probiotic benefit.</div></div>
+      </div>
+    </div>
+
+    <!-- MEDITERRANEAN DIET -->
+    <div class="split fu" style="margin-bottom:36px;">
+      <div>
+        <h3 style="margin-bottom:14px;">Mediterranean Diet — the most evidence-supported dietary pattern</h3>
+        <p style="font-size:0.87rem;margin-bottom:14px;">The MedDiet has the strongest evidence base of any dietary pattern for cardiovascular health, cognitive function, hormonal support, and longevity. It works not through any single component but through synergy between hundreds of bioactive compounds.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num sn-green">1</div>
+            <div class="step-content">
+              <h4>Cruciferous vegetables daily</h4>
+              <p>Broccoli, kale, Brussels sprouts, cabbage. Rich in glucoraphanin (sulforaphane precursor). Nrf2 activator — 600+ detoxification genes. 50g sprouts = 10–100× the glucoraphanin of mature broccoli.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-green">2</div>
+            <div class="step-content">
+              <h4>Extra-virgin olive oil — primary fat source</h4>
+              <p>50+ polyphenol compounds. Oleocanthal (anti-inflammatory, comparable effect to ibuprofen at 4 tbsp). Replaces butter, margarine, vegetable oils entirely. Target: 2–4 tbsp/day.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-green">3</div>
+            <div class="step-content">
+              <h4>Fatty fish 3×/week</h4>
+              <p>EPA+DHA 2–3g/day anti-inflammatory target. Sardines, mackerel, salmon (lowest mercury). Directly supports testosterone synthesis (steroidogenesis requires polyunsaturated fats), ovarian health, and brain lipid composition.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-green">4</div>
+            <div class="step-content">
+              <h4>30+ plant species/week</h4>
+              <p>Gut microbiome diversity directly correlates with number of different plant foods consumed weekly. Each additional plant species increases diversity — associated with lower inflammation, better oestrogen clearance, and improved mental health outcomes.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num sn-green">5</div>
+            <div class="step-content">
+              <h4>Legumes 4–5×/week</h4>
+              <p>Beans, lentils, chickpeas. Highest fibre density of any food group. Gut bacteria ferment fibre to butyrate — the primary fuel for colonocytes and an anti-inflammatory short-chain fatty acid. Low GI — critical for insulin sensitisation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="callout c-green" style="margin-bottom:16px;">
+          <span class="callout-i">📊</span>
+          <div><strong>What the data shows for hormones:</strong> Higher Mediterranean diet adherence is associated with higher serum testosterone in men after controlling for BMI and age. Low-fat diets are associated with lower testosterone (meta-analysis, 2019). The diet's monounsaturated and polyunsaturated fats are the cholesterol precursors essential for steroidogenesis.</div>
+        </div>
+        <div class="card" style="margin-bottom:14px;">
+          <h4 style="margin-bottom:12px;">Cycle-phase nutrition (female)</h4>
+          <div class="phase-strip">
+            <div class="phase-card" style="background:var(--blue-l);border-color:var(--blue-m);">
+              <div class="ph-day">Days 1–5</div>
+              <div class="ph-name">Menstrual</div>
+              <div class="ph-items">Iron-rich foods<br>Magnesium<br>Anti-inflammatory</div>
+            </div>
+            <div class="phase-card" style="background:var(--green-l);border-color:var(--green-m);">
+              <div class="ph-day">Days 6–13</div>
+              <div class="ph-name">Follicular</div>
+              <div class="ph-items">Optimal deficit window<br>Best insulin sensitivity<br>Higher intensity OK</div>
+            </div>
+            <div class="phase-card" style="background:var(--amber-l);border-color:var(--amber-m);">
+              <div class="ph-day">Day 14</div>
+              <div class="ph-name">Ovulation</div>
+              <div class="ph-items">Peak strength<br>Zinc, B6<br>Fibre critical</div>
+            </div>
+            <div class="phase-card" style="background:var(--rose-l);border-color:var(--rose-m);">
+              <div class="ph-day">Days 15–28</div>
+              <div class="ph-name">Luteal</div>
+              <div class="ph-items">+150–300 kcal hunger<br>Volume foods<br>Magnesium, B6</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:10px;">Key micronutrient targets</h4>
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;">
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Zinc (M/F)</span><span style="color:var(--muted);">11mg / 8mg/day — oysters, pumpkin seeds, beef</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Magnesium</span><span style="color:var(--muted);">400mg M / 310mg F — dark leafy, nuts, legumes</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Vitamin D</span><span style="color:var(--muted);">75–100 nmol/L serum target — test first</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Iron (F, menstruating)</span><span style="color:var(--muted);">18mg/day — test ferritin, not Hb</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Folate</span><span style="color:var(--muted);">400µg/day — leafy greens, lentils, asparagus</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Omega-3 (EPA+DHA)</span><span style="color:var(--muted);">2–3g/day from fatty fish or algae supplement</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--ink);font-weight:600;">Fibre</span><span style="color:var(--muted);">30–38g M / 25–32g F — 10g/day = 10% ↓ mortality</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOW GI EVIDENCE -->
+    <div class="banner-callout fu">
+      <div class="bc-icon">📉</div>
+      <div>
+        <div class="bc-title">Low-GI diet and PCOS — quantified evidence</div>
+        <div class="bc-text">Meta-analyses of isocaloric RCTs in women with PCOS: low-GI diet vs control diet significantly reduced total testosterone, LH, and free androgen index while increasing FSH and SHBG. Low-GI also associated with higher fertility rates vs control. A calorie-restricted DASH diet additionally reduced weight and improved glucose control in multiple RCTs.</div>
+        <div class="bc-stats">
+          <div><div class="bc-stat-n">↓ Testosterone</div><div class="bc-stat-l">with low-GI vs control</div></div>
+          <div><div class="bc-stat-n">↑ SHBG</div><div class="bc-stat-l">improves free T availability</div></div>
+          <div><div class="bc-stat-n">↑ Fertility</div><div class="bc-stat-l">vs control diet (multiple RCTs)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     SUPPLEMENTATION
+════════════════════════════════════════════════════════ -->
+<section id="supplementation">
+  <div class="wrap">
+    <div class="eyebrow green fu">Evidence-Based Supplementation</div>
+    <h2 class="fu">Supplementation — Tiered by Evidence</h2>
+    <p class="lead fu" style="margin-bottom:16px;">Three tiers based on quality, consistency, and effect size of evidence. Tier 1 = strong evidence for most people. Tier 2 = good evidence for specific indications. Tier 3 = emerging or conditional. <strong>Food first; supplements fill genuine gaps.</strong></p>
+    <div class="callout c-red fu" style="margin-bottom:32px;">
+      <span class="callout-i">⚠️</span>
+      <span>Do not supplement without understanding why. Test before supplementing for nutrients that carry toxicity risk at excess (Vitamin D, iron, zinc, fat-soluble vitamins). Discuss with your physician if on medications — several supplements interact with common drugs. Timing and form matter as much as dose.</span>
+    </div>
+
+    <!-- TIER 1 -->
+    <h3 class="fu" style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+      <span class="tier-badge tier-1">Tier 1</span> Universal — strong evidence, low risk, most adults benefit
+    </h3>
+    <div class="supp-grid fu" style="margin-bottom:36px;">
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-amber">☀️</div>
+          <div class="supp-meta">
+            <div class="supp-name">Vitamin D3 + K2</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-1">Tier 1</span><span class="sex-badge sb-both">Both</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">2,000–4,000 IU D3 + 100µg K2 (MK-7)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With largest fat-containing meal</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">D3 (cholecalciferol), not D2. K2 as MK-7, not MK-4</span></div>
+          <div class="supp-row"><span class="supp-label">Target</span><span class="supp-val">Serum 25(OH)D: 75–100 nmol/L (30–40 ng/mL)</span></div>
+          <div class="supp-row"><span class="supp-label">Test first</span><span class="supp-val">Yes — adjust dose to serum level, not body weight</span></div>
+          <div class="supp-note">K2 (MK-7) directs calcium to bones rather than arteries. Critical when supplementing D3. Lab "normal" for D is >50 nmol/L — optimal for reproductive health and testosterone synthesis is higher (75–100 nmol/L). Prevalence of deficiency in South Asian populations: 60–80%. Toxicity threshold: >150 nmol/L serum (not dietary — very hard to reach at ≤4,000 IU).</div>
+          <div class="supp-warn">⚠️ Interacts with: corticosteroids (reduces efficacy), thiazide diuretics (hypercalcaemia risk). Separate levothyroxine by 4h.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🌊</div>
+          <div class="supp-meta">
+            <div class="supp-name">Magnesium Glycinate</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-1">Tier 1</span><span class="sex-badge sb-both">Both</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">200–400mg elemental magnesium/evening</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">60–90 min before bed</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Glycinate or malate — best absorbed, least GI disturbance. Avoid oxide (≤4% bioavailability)</span></div>
+          <div class="supp-row"><span class="supp-label">Test</span><span class="supp-val">Serum Mg not reliable — most Mg is intracellular. RBC magnesium more accurate.</span></div>
+          <div class="supp-note">Cofactor for 300+ enzymatic reactions. Depleted by: PPIs (confirmed depletion), OCP, stress, alcohol, heavy exercise. Glycine component has independent sleep-promoting effects. Reduces cortisol, supports GABA signalling, reduces muscle cramps (OCP-associated), and improves sleep quality — all confirmed in RCTs. Deficiency estimated in 50–70% of Western adults despite normal serum levels.</div>
+          <div class="supp-warn">⚠️ Separate from levothyroxine by 4h. High doses cause GI upset (loose stools) — start at 200mg and titrate up.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🐟</div>
+          <div class="supp-meta">
+            <div class="supp-name">Omega-3 (EPA + DHA)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-1">Tier 1</span><span class="sex-badge sb-both">Both</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">2–3g combined EPA+DHA/day (not total fish oil)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With meals — fat improves absorption</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Triglyceride form preferred (not ethyl ester). Algae-based DHA for vegetarians.</span></div>
+          <div class="supp-row"><span class="supp-label">Quality</span><span class="supp-val">IFOS-certified for oxidation/purity. Refrigerate after opening.</span></div>
+          <div class="supp-note">EPA: anti-inflammatory, mood/depression RCTs. DHA: brain lipid composition, photoreceptors, fetal brain development. For PCOS: 2–3g EPA+DHA/day reduces free testosterone, LH, and triglycerides in multiple RCTs, supports folliculogenesis. For males: supports Leydig cell function and reduces testicular inflammation. Food-first: sardines, mackerel, salmon 3×/week provides ~2–3g.</div>
+          <div class="supp-warn">⚠️ Blood-thinning effect at >3g/day — flag to surgeon before any procedure. Interacts with warfarin. Store away from heat/light — omega-3s oxidise rapidly.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-green">⚡</div>
+          <div class="supp-meta">
+            <div class="supp-name">Creatine Monohydrate</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-1">Tier 1</span><span class="sex-badge sb-both">Both · especially 55+</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">3–5g/day (no loading phase needed)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">Any time — consistency matters more than timing</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Monohydrate — most studied, cheapest, most effective. No benefit to creatine HCL, ethyl ester, or other forms.</span></div>
+          <div class="supp-row"><span class="supp-label">Age priority</span><span class="supp-val">Most important at 55+; beneficial at all ages with resistance training</span></div>
+          <div class="supp-note">Strongest evidence for lean mass preservation in adults 55+. Multiple RCTs confirm improvement in lean mass, strength, and cognitive function. Mechanism: replenishes phosphocreatine in muscle and brain — the immediate energy currency for high-intensity effort. Cognitive benefits confirmed in older adults (meta-analysis 2021). Causes intramuscular water retention (~0.5–1kg scale increase) — not fat. Safe for kidneys in healthy individuals. Women: same evidence, same dosing.</div>
+          <div class="supp-warn">⚠️ Discuss with prescriber if on kidney-affecting medications. Causes temporary scale weight increase (water in muscle). Not creatine kinase elevation — kidney function tests are unaffected at standard doses in healthy people.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIER 2 -->
+    <h3 class="fu" style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+      <span class="tier-badge tier-2">Tier 2</span> Conditional — good evidence for specific populations
+    </h3>
+    <div class="supp-grid fu" style="margin-bottom:36px;">
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-rose">🌸</div>
+          <div class="supp-meta">
+            <div class="supp-name">Methylfolate (active B9)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="sex-badge sb-female">♀ Female priority</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">400–800µg/day</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">Any time, consistent daily</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">L-methylfolate (5-MTHF) — not synthetic folic acid if MTHFR risk</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">OCP users, pre-conception (mandatory), MTHFR variant, vegans</span></div>
+          <div class="supp-note">OCP significantly impairs folate metabolism — 75% of users have measurably reduced folate status. Methylfolate is the pre-activated form that bypasses the MTHFR enzyme step (20–40% of the population has reduced MTHFR activity). Critical for neural tube development — must be started ≥3 months before conception. Also reduces homocysteine (cardiovascular risk marker). Homocysteine elevated by: OCP, metformin, PPIs, B12 deficiency, smoking, alcohol.</div>
+          <div class="supp-warn">⚠️ Take methylfolate, not standard folic acid — 30–40% of population has MTHFR C677T variant reducing conversion efficiency by up to 70%.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🔵</div>
+          <div class="supp-meta">
+            <div class="supp-name">Methylcobalamin (B12)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="sex-badge sb-both">Both · metformin/vegan priority</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">500–1,000µg/day orally</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With food (sublingual: empty stomach, hold 30s)</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Methylcobalamin preferred (not cyanocobalamin — requires conversion step that is impaired by metformin)</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">Metformin users (mandatory), vegans/plant-based, 50+, PPI users, OCP users</span></div>
+          <div class="supp-note">Metformin depletes B12 via impaired ileal calcium-dependent uptake — confirmed by meta-analysis of 6 RCTs. In PCOS-metformin users: 57.7% have subnormal B12 vs 25% untreated controls. Deficiency clinically silent for 5–10 years (liver stores ~2,500µg). Symptoms: fatigue, peripheral neuropathy, cognitive impairment — all commonly attributed to other conditions. Annual testing: serum B12 + methylmalonic acid (MMA — the more sensitive functional marker). Vegans and plant-based dieters: supplement without question.</div>
+          <div class="supp-warn">⚠️ Test annually if on metformin. High-dose B12 supplementation (>2,000µg/day) can mask folate deficiency — supplement both together.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-amber">⚡</div>
+          <div class="supp-meta">
+            <div class="supp-name">CoQ10 (Ubiquinol)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="tier-badge tier-rx">Statin users</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">100–200mg/day (ubiquinol form)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With a fat-containing meal</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Ubiquinol (reduced form) preferred over ubiquinone — better absorbed, especially over 40</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">Statin users (muscle symptoms), 40+, heart failure, migraine prevention</span></div>
+          <div class="supp-note">Statins inhibit HMG-CoA reductase — the same pathway that produces CoQ10. Serum CoQ10 universally reduced. Whether supplementation resolves SAMS (statin-associated muscle symptoms) is contested. JAHA meta-analysis (12 RCTs, n=575): CoQ10 improved muscle pain, weakness, cramps. 2020 JACC review: insufficient evidence for routine use. Honest recommendation: reasonable 8–12 week trial if muscle symptoms present. No safety concerns. Endogenous production declines ~50% from age 20 to 80 — ubiquinol absorption significantly superior in older adults.</div>
+          <div class="supp-warn">⚠️ Interacts with warfarin (reduces anticoagulant effect — monitor INR). May slightly lower blood pressure — monitor if on antihypertensives.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-rose">🌸</div>
+          <div class="supp-meta">
+            <div class="supp-name">Myo-Inositol</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="sex-badge sb-female">♀ PCOS priority</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">4g/day (2g twice daily), 40:1 myo:DCI ratio</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">Before meals (improves insulin response)</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Myo-inositol + D-chiro-inositol in 40:1 ratio (physiological ratio in human ovarian tissue)</span></div>
+          <div class="supp-row"><span class="supp-label">Full effect</span><span class="supp-val">Allow 3 months minimum for menstrual regularity effects</span></div>
+          <div class="supp-note">Second messenger for insulin signalling in granulosa cells. Multiple RCTs in PCOS women show significant improvements in: HOMA-IR, fasting insulin, free androgen index, menstrual cycle regularity, and spontaneous ovulation rate. Comparable to metformin in some studies for insulin sensitisation, without GI side effects or B12 depletion. 40:1 ratio is important — the ovary uses myo-inositol primarily; D-chiro is needed for peripheral insulin signalling. Generally very well tolerated. Safe for long-term use.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-rose">🩸</div>
+          <div class="supp-meta">
+            <div class="supp-name">Iron (Ferrous Bisglycinate)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="sex-badge sb-female">♀ — test first, mandatory</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">25–50mg elemental iron/day (if deficient)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">On empty stomach; or with vitamin C (enhances absorption). Separate from tea/coffee by 2h.</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Ferrous bisglycinate — highest bioavailability, least GI disturbance vs ferrous sulphate</span></div>
+          <div class="supp-row"><span class="supp-label">Test mandatory</span><span class="supp-val">Serum ferritin — target >50 µg/L (not just >12). Do not supplement without testing.</span></div>
+          <div class="supp-note">Ferritin <30 µg/L in menstruating women impairs cognition, energy, and thyroid function even without anaemia — this is the most correctable cause of fatigue and "brain fog" in women under 45. Haemoglobin is a late marker — ferritin is the earlier, more sensitive indicator. Every 10-point ferritin increase shows measurable cognitive improvement. On alternate days (not daily) may reduce GI side effects with similar efficacy (RCT, 2017). Separate from all other supplements: tea, coffee, calcium, zinc all significantly reduce absorption.</div>
+          <div class="supp-warn">⚠️ Iron overload is toxic. NEVER supplement without confirmed deficiency. Separate from levothyroxine by 4h. Separate from calcium, zinc, coffee, tea by 2h. Stop when ferritin >80 µg/L.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🔵</div>
+          <div class="supp-meta">
+            <div class="supp-name">Zinc (Bisglycinate or Picolinate)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="sex-badge sb-male">♂ priority</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">15–25mg/day (if deficient or OCP user)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With food (reduces GI upset). Not with iron.</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Bisglycinate or picolinate — superior to sulphate (best bioavailability)</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">Men with hormonal goals, OCP users (depletes zinc), athletes, plant-based dieters</span></div>
+          <div class="supp-note">Rate-limiting cofactor for testosterone synthesis — zinc is required for LH receptor function in Leydig cells. Deficiency directly suppresses LH and testosterone. Athletes lose zinc through sweat — 1–3mg/hour during heavy exercise. OCP significantly depletes zinc and paradoxically raises copper — zinc supplementation balances both. Food-first sources: oysters (highest), pumpkin seeds, beef. Supplement only if dietary intake is insufficient or confirmed deficiency. Long-term high-dose zinc (>40mg/day) depletes copper.</div>
+          <div class="supp-warn">⚠️ Do not exceed 25mg/day without testing — chronic excess depletes copper (essential for connective tissue and energy metabolism). Separate from iron by 2h.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🌙</div>
+          <div class="supp-meta">
+            <div class="supp-name">Melatonin</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="tier-badge tier-rx">Beta-blocker priority</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">0.5–2.5mg (NOT 5–10mg — standard doses are supraphysiological)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">60–90 min before sleep target time</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">Beta-blocker users (mandatory), jet lag, shift work, sleep phase correction</span></div>
+          <div class="supp-row"><span class="supp-label">Not for</span><span class="supp-val">Chronic insomnia (CBT-I is superior long-term)</span></div>
+          <div class="supp-note">Standard 5–10mg doses sold in the US/Canada are 5–20× higher than physiological levels. 0.5–1mg is equally effective for sleep onset and phase-shifting with fewer next-day effects (meta-analysis). Beta-blockers suppress nocturnal melatonin ~50–86% — Brigham & Women's Hospital RCT: 2.5mg nightly in atenolol/metoprolol patients significantly improved sleep quality with no tolerance or rebound. Jet lag: take at destination bedtime 3 days before travel. Does NOT replace CBT-I for insomnia — addresses the signal, not the underlying habit disorder.</div>
+          <div class="supp-warn">⚠️ Avoid with SSRIs at high doses (theoretical serotonin syndrome — discuss with prescriber). Sedating — do not drive after taking. Not for long-term nightly use unless on beta-blockers. Fluvoxamine inhibits CYP1A2 and significantly raises melatonin — do not combine.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-amber">🌿</div>
+          <div class="supp-meta">
+            <div class="supp-name">Vitamin B6 (Pyridoxal-5-Phosphate)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-2">Tier 2</span><span class="tier-badge tier-rx">OCP users</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">25–50mg P5P form/day</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With food — can be taken with B-complex</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">P5P (pyridoxal-5-phosphate) — active form, bypasses conversion</span></div>
+          <div class="supp-row"><span class="supp-label">Who needs it</span><span class="supp-val">OCP users (75% depleted), premenstrual syndrome, elevated homocysteine</span></div>
+          <div class="supp-note">OCP depletes B6 (pyridoxine) in 75% of users in large-scale US studies. B6 is a cofactor for tryptophan→serotonin conversion — B6 depletion directly contributes to the low mood, irritability, and anxiety frequently reported on the pill. Also cofactor for GABA synthesis. P5P is the pre-activated form; standard pyridoxine requires hepatic conversion (impaired in B6-depleted states). Reduces homocysteine when combined with methylfolate and methylcobalamin. Premenstrual symptom reduction: 50–100mg/day in multiple RCTs.</div>
+          <div class="supp-warn">⚠️ Do not exceed 100mg/day chronically — sensory neuropathy reported at very high doses (>500mg/day). P5P form at ≤50mg/day is safe.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TIER 3 -->
+    <h3 class="fu" style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+      <span class="tier-badge tier-3">Tier 3</span> Emerging — conditional evidence, protocol-specific
+    </h3>
+    <div class="supp-grid fu" style="margin-bottom:36px;">
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-green">🌱</div>
+          <div class="supp-meta">
+            <div class="supp-name">Ashwagandha (KSM-66)</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-3">Tier 3</span><span class="sex-badge sb-both">Both · high stress</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">300–600mg KSM-66 extract/day</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With meals — morning and/or evening</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">KSM-66 or Sensoril standardised extracts (root-based, most studied)</span></div>
+          <div class="supp-note">Adaptogenic herb with the most robust human evidence among adaptogens. Multiple RCTs show significant reductions in serum cortisol, perceived stress (PSS), and anxiety in chronically stressed adults. Male RCT (n=57): significant increase in serum testosterone (+17%) and LH vs placebo. Mechanism: likely HPA axis regulation via withanolide glycosides. The cortisol-reducing effect is the primary benefit — chronic cortisol suppresses testosterone and GnRH pulsatility. Allow 4–8 weeks for full effect.</div>
+          <div class="supp-warn">⚠️ Thyroid stimulating effect — monitor TSH if on levothyroxine. Sedating in some individuals. Avoid in autoimmune thyroid disease (Hashimoto's). Avoid in pregnancy. Small number of hepatotoxicity cases reported — use licensed products and cycle off every 3 months.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-rose">🌺</div>
+          <div class="supp-meta">
+            <div class="supp-name">Rhodiola Rosea</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-3">Tier 3</span><span class="sex-badge sb-both">Fatigue/stress</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">200–400mg extract (3% rosavins, 1% salidroside)/day</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">Morning or pre-exercise (mildly stimulating)</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Standardised extract (SHR-5 most studied); not raw root powder</span></div>
+          <div class="supp-note">Systematic review confirmed improvements in physical and mental fatigue, concentration, and perceived stress in healthy adults under chronic stress load. Mechanism: HPA axis modulation, MAO inhibition (mild), cortisol regulation. Complementary to ashwagandha (different mechanisms). Cognitive study cited in the PDFs: significant reduction in fatigue and improvement in attention/cognitive performance in students during exam stress. Cycles of 8–12 weeks on, 2 weeks off are commonly used.</div>
+          <div class="supp-warn">⚠️ Mild MAO inhibitory activity — avoid with SSRI/SNRI combination without physician review. Stimulating — avoid in the evening if sleep is a concern. Avoid in bipolar disorder.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-blue">🧠</div>
+          <div class="supp-meta">
+            <div class="supp-name">Phosphatidylserine</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-3">Tier 3</span><span class="sex-badge sb-both">Cognitive · 50+</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">100–300mg/day</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">With meals — twice daily dosing (100mg + 100mg)</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Soy-derived or sunflower-derived (soy-derived most studied)</span></div>
+          <div class="supp-note">Phospholipid component of cell membranes — particularly abundant in brain neurons. FDA qualified health claim for cognitive decline risk reduction. RCTs show modest but consistent improvements in memory, learning, and attention in older adults. Also reduces exercise-induced cortisol (athletic performance application). Mechanism: directly incorporated into neuronal membranes, improves membrane fluidity and receptor function. Most benefit at 50+ or with established cognitive complaints. Normal young adults: limited benefit.</div>
+        </div>
+      </div>
+
+      <div class="supp-card">
+        <div class="supp-header">
+          <div class="supp-icon iw-green">🥦</div>
+          <div class="supp-meta">
+            <div class="supp-name">Sulforaphane Supplement</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;"><span class="tier-badge tier-3">Tier 3</span><span class="sex-badge sb-both">When sprouts not possible</span></div>
+          </div>
+        </div>
+        <div class="supp-body">
+          <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">5–17mg sulforaphane/day (or ~100mg glucoraphanin + myrosinase)</span></div>
+          <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">Morning, fasted or semi-fasted for peak Nrf2 activation</span></div>
+          <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">Products with both glucoraphanin AND myrosinase (the conversion enzyme). Stable sulforaphane supplements are most reliable.</span></div>
+          <div class="supp-note">Supplements are inferior to fresh broccoli sprouts because sulforaphane degrades rapidly once produced. Best option: raw broccoli sprouts (50g = 10–100× the glucoraphanin of mature broccoli). If using supplement: choose products that contain both glucoraphanin and myrosinase (the enzyme that converts it) — many products contain only glucoraphanin without the enzyme. Alternatively: add raw mustard seed powder to cooked broccoli to restore myrosinase activity. Never heat above 70°C.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MEDICATION-SPECIFIC PROTOCOLS -->
+    <h3 class="fu" style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+      <span class="tier-badge tier-rx">Rx Protocol</span> Medication-specific nutrient repletion
+    </h3>
+    <div class="callout c-amber fu" style="margin-bottom:20px;">
+      <span class="callout-i">💊</span>
+      <div><strong>These are not optional suggestions — they address documented, mechanistically confirmed depletions caused by specific medications.</strong> In most cases, physicians do not routinely prescribe these supplements despite the evidence. Review with your prescriber before starting.</div>
+    </div>
+    <div class="tbl-wrap fu">
+      <table>
+        <thead>
+          <tr>
+            <th>Medication</th>
+            <th>Depletes / Disrupts</th>
+            <th>Recommended supplement + form</th>
+            <th>Dose</th>
+            <th>Evidence quality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>OCP (combined or POP)</td><td>B6, folate, B12, B2, C, E, zinc, magnesium, selenium; ↑ copper</td><td>Methylfolate + P5P B6 + methylcobalamin + Mg glycinate + zinc picolinate</td><td>400µg + 25mg + 500µg + 200mg + 15mg</td><td>WHO-acknowledged; studies since 1970s</td></tr>
+          <tr><td>Metformin</td><td>Vitamin B12 (dose-dependent, ileal uptake impairment)</td><td>Methylcobalamin — NOT cyanocobalamin</td><td>1,000µg/day orally; test MMA annually</td><td>Meta-analysis 6 RCTs; NICE recommends monitoring</td></tr>
+          <tr><td>Statin (any)</td><td>CoQ10 (ubiquinone pathway inhibition)</td><td>Ubiquinol — active reduced form</td><td>100–200mg/day with fat</td><td>JAHA meta-analysis (12 RCTs); contested efficacy</td></tr>
+          <tr><td>Beta-blocker (propranolol/atenolol/metoprolol)</td><td>Melatonin (pineal β1 blockade; 50–86% suppression)</td><td>Melatonin</td><td>2.5mg, 60 min before sleep</td><td>Brigham & Women's RCT; carvedilol/nebivolol sparing</td></tr>
+          <tr><td>PPI (any)</td><td>Magnesium, B12, non-haem iron (reduced gastric acid)</td><td>Mg glycinate + methylcobalamin</td><td>200–400mg Mg + 500µg B12</td><td>FDA warning on Mg depletion; B12 — multiple cohort studies</td></tr>
+          <tr><td>Corticosteroid (chronic)</td><td>Calcium absorption, bone density, DHEA/testosterone</td><td>D3 + K2 MK-7 + calcium (food-first)</td><td>2,000–4,000 IU D3 + 100µg K2</td><td>NICE guidelines; standard of care for long-term steroids</td></tr>
+          <tr><td>SSRI/SNRI</td><td>Disrupts REM architecture (not depletion — mechanistic)</td><td>Melatonin (low-dose)</td><td>0.5–1mg at bedtime (discuss with prescriber)</td><td>Safety: melatonin + SSRI is generally safe at ≤3mg; avoid high doses</td></tr>
+          <tr style="background:rgba(244,114,182,0.04)"><td>Any (general)</td><td>Vitamin D (interaction/competition; high prevalence of deficiency)</td><td>D3 + K2</td><td>2,000–4,000 IU + 100µg (test 25(OH)D first)</td><td>Near-universal benefit; testing recommended</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     BIOMARKER REFERENCE
+════════════════════════════════════════════════════════ -->
+<section id="biomarkers" class="stone">
+  <div class="wrap">
+    <div class="eyebrow amber fu">Biomarker Reference</div>
+    <h2 class="fu">Optimal vs Lab "Normal" — Key Biomarkers</h2>
+    <p class="lead fu" style="margin-bottom:16px;">Lab "normal" is the 2.5th–97.5th percentile of a cross-section of the population — most of whom are sedentary or subclinically unwell. These are the <em>optimal</em> ranges associated with lowest all-cause mortality, best metabolic function, and centenarian health profiles.</p>
+    <div class="callout c-amber fu" style="margin-bottom:28px;">
+      <span class="callout-i">⚠️</span>
+      <div><strong>"Within normal range" ≠ optimal.</strong> Fasting glucose of 95 mg/dL is technically "normal" (under 100). But the risk of cardiovascular disease and type 2 diabetes begins accumulating measurably above 85 mg/dL. These are the targets associated with the lowest disease risk — not the minimum threshold to avoid a diagnosis.</div>
+    </div>
+    <div class="fu" style="display:flex;flex-direction:column;gap:6px;">
+
+      <div class="bm-row">
+        <div><div class="bm-name">Fasting Glucose</div><div class="bm-unit">mmol/L (mg/dL)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-danger" style="left:0;width:10%;"></div>
+            <div class="bm-zone-optimal" style="left:10%;width:30%;"></div>
+            <div class="bm-zone-caution" style="left:40%;width:35%;"></div>
+            <div class="bm-zone-danger" style="left:75%;width:25%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.64rem;color:var(--faint);margin-top:3px;"><span>Low</span><span>Optimal (3.9–4.7 mmol/L)</span><span>Normal (5.6)</span><span>Diabetic</span></div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">3.9–4.7 mmol/L (70–85 mg/dL)</div><div class="bm-norm">Lab "normal": &lt;5.6 (100)</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">Fasting Insulin</div><div class="bm-unit">µIU/mL (mU/L)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:5%;width:20%;"></div>
+            <div class="bm-zone-caution" style="left:25%;width:25%;"></div>
+            <div class="bm-zone-danger" style="left:50%;width:50%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.64rem;color:var(--faint);margin-top:3px;"><span>Optimal (2–5)</span><span>Early resistance</span><span>Resistance (&gt;20)</span></div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">2–5 µIU/mL</div><div class="bm-norm">Lab "normal": &lt;25 µIU/mL</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">HbA1c</div><div class="bm-unit">% (mmol/mol)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:5%;width:25%;"></div>
+            <div class="bm-zone-caution" style="left:30%;width:30%;"></div>
+            <div class="bm-zone-danger" style="left:60%;width:40%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.64rem;color:var(--faint);margin-top:3px;"><span>Optimal 4.8–5.2%</span><span>Pre-diabetic zone</span><span>Diabetic (&gt;6.5%)</span></div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">4.8–5.2% (29–33 mmol/mol)</div><div class="bm-norm">Lab "normal": &lt;5.7%</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">Triglycerides</div><div class="bm-unit">mmol/L (mg/dL)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:0%;width:30%;"></div>
+            <div class="bm-zone-caution" style="left:30%;width:25%;"></div>
+            <div class="bm-zone-danger" style="left:55%;width:45%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">&lt;1.13 mmol/L (&lt;100 mg/dL)</div><div class="bm-norm">Lab "normal": &lt;1.7 (150)</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">ApoB</div><div class="bm-unit">mg/dL</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:0%;width:35%;"></div>
+            <div class="bm-zone-caution" style="left:35%;width:30%;"></div>
+            <div class="bm-zone-danger" style="left:65%;width:35%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">&lt;90 mg/dL (ideal: &lt;70)</div><div class="bm-norm">Lab "normal": &lt;130 mg/dL</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">hs-CRP</div><div class="bm-unit">mg/L</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:0%;width:25%;"></div>
+            <div class="bm-zone-caution" style="left:25%;width:25%;"></div>
+            <div class="bm-zone-danger" style="left:50%;width:50%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">&lt;0.5 mg/L (ideal) / &lt;1.0 (good)</div><div class="bm-norm">Lab "normal": &lt;3.0 mg/L</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">Vitamin D (25-OH)</div><div class="bm-unit">nmol/L (ng/mL)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-danger" style="left:0%;width:20%;"></div>
+            <div class="bm-zone-caution" style="left:20%;width:20%;"></div>
+            <div class="bm-zone-optimal" style="left:40%;width:35%;"></div>
+            <div class="bm-zone-caution" style="left:75%;width:25%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">75–125 nmol/L (30–50 ng/mL)</div><div class="bm-norm">Lab "normal": &gt;50 nmol/L</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">TSH</div><div class="bm-unit">mIU/L</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:20%;width:25%;"></div>
+            <div class="bm-zone-caution" style="left:45%;width:30%;"></div>
+            <div class="bm-zone-danger" style="left:75%;width:25%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.64rem;color:var(--faint);margin-top:3px;"><span>Low</span><span>Optimal (1.0–2.0)</span><span>Normal to (4.5)</span><span>High</span></div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">1.0–2.0 mIU/L</div><div class="bm-norm">Lab "normal": 0.4–4.5</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">Homocysteine</div><div class="bm-unit">µmol/L</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:0%;width:35%;"></div>
+            <div class="bm-zone-caution" style="left:35%;width:30%;"></div>
+            <div class="bm-zone-danger" style="left:65%;width:35%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">&lt;10 µmol/L (ideal: &lt;7)</div><div class="bm-norm">Lab "normal": &lt;15 µmol/L</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">Ferritin</div><div class="bm-unit">µg/L (ng/mL)</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-danger" style="left:0%;width:15%;"></div>
+            <div class="bm-zone-caution" style="left:15%;width:20%;"></div>
+            <div class="bm-zone-optimal" style="left:35%;width:35%;"></div>
+            <div class="bm-zone-caution" style="left:70%;width:30%;"></div>
+          </div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">M: 50–200 | F: 30–100 µg/L</div><div class="bm-norm">Lab "normal": M: 24–336 | F: 11–307</div></div>
+      </div>
+
+      <div class="bm-row">
+        <div><div class="bm-name">HOMA-IR</div><div class="bm-unit">calculated index</div></div>
+        <div>
+          <div class="bm-track">
+            <div class="bm-zone-optimal" style="left:0%;width:30%;"></div>
+            <div class="bm-zone-caution" style="left:30%;width:25%;"></div>
+            <div class="bm-zone-danger" style="left:55%;width:45%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.64rem;color:var(--faint);margin-top:3px;"><span>Optimal (&lt;1.5)</span><span>Early resistance</span><span>Resistant (&gt;2.5)</span></div>
+        </div>
+        <div class="bm-values"><div class="bm-opt">&lt;1.5 (ideal: &lt;1.0)</div><div class="bm-norm">Formula: (Glucose × Insulin) ÷ 405</div></div>
+      </div>
+
+    </div>
+    <p style="font-size:0.74rem;color:var(--faint);margin-top:16px;font-family:'Figtree',sans-serif;" class="fu">★ Sources: AMORIS centenarian cohort (n=44,000), Nutrients 2022 optimal range review, AHA 2023 lipid guidelines, BSSM testosterone consensus, ZRT Laboratory reference ranges, PubMed meta-analyses. ApoB and HOMA-IR are not routinely tested in most GP settings but provide superior cardiovascular and metabolic risk prediction vs standard panels.</p>
+  </div>
+</section>
+
 <!-- ▸ DETOX -->
 <section id="detox">
   <div class="wrap">
@@ -2386,6 +3238,8 @@ td:first-child { color: var(--ink); font-weight: 600; }
       <div class="result-tabs" id="resultTabs" style="display:none;">
         <button class="rtab active" data-tab="routine" onclick="switchTab('routine',this)">📋 Daily Routine</button>
         <button class="rtab" data-tab="scores" onclick="switchTab('scores',this)">📊 Profile Scores</button>
+        <button class="rtab" data-tab="supps" onclick="switchTab('supps',this)">💊 Supplements</button>
+        <button class="rtab" data-tab="targets" onclick="switchTab('targets',this)">🎯 Your Targets</button>
         <button class="rtab" data-tab="meds" onclick="switchTab('meds',this)">💊 Medication Interactions</button>
         <button class="rtab" data-tab="notes" onclick="switchTab('notes',this)">💡 Smart Notes</button>
       </div>
@@ -2398,6 +3252,14 @@ td:first-child { color: var(--ink); font-weight: 600; }
         <!-- Tab: Scores -->
         <div id="tab-scores" class="tab-content" style="display:none;">
           <div id="resultScores"></div>
+        </div>
+        <!-- Tab: Supplements -->
+        <div id="tab-supps" class="tab-content" style="display:none;">
+          <div id="resultSupps"></div>
+        </div>
+        <!-- Tab: Targets -->
+        <div id="tab-targets" class="tab-content" style="display:none;">
+          <div id="resultTargets"></div>
         </div>
         <!-- Tab: Medications -->
         <div id="tab-meds" class="tab-content" style="display:none;">
@@ -3687,13 +4549,21 @@ function calculate() {
     if (meds.length > 0) medsTabBtn.style.fontWeight = '700';
   }
 
+  // ─── SUPPLEMENTS TAB ───
+  const suppHtml = buildSupplementPlan(sex, age, meds, goals, cycleStatus, stress, bmi, estimatedBF, weight);
+  document.getElementById('resultSupps').innerHTML = suppHtml;
+
+  // ─── TARGETS TAB ───
+  const targetsHtml = buildTargetsPanel(sex, age, weight, height, leanMass, fatMass, estimatedBF, bmi, protTarget, carbTarget, fatTarget, calTarget, tdee, fastWindow, eatStart, eatEnd, sleepTarget);
+  document.getElementById('resultTargets').innerHTML = targetsHtml;
+
   // ─── INJECT INTO TABS ───
   document.getElementById('resultRoutine').innerHTML = html;
   document.getElementById('resultScores').innerHTML = scoresHtml;
   document.getElementById('resultMeds').innerHTML = medsHtml;
   document.getElementById('resultNotes').innerHTML = notesHtml;
 
-  // Auto-open meds tab if medications are selected
+  // Auto-open meds tab if medications are selected, else routine
   const defaultTab = meds.length > 0 ? 'meds' : 'routine';
   document.getElementById('resultTabs').style.display = 'flex';
   switchTab(defaultTab, document.querySelector(`.rtab[data-tab="${defaultTab}"]`));
@@ -3764,6 +4634,440 @@ function scoreBar(label, pct, colour) {
     <div class="score-bar"><div class="score-fill" style="width:${rounded}%;background:${colour};transition:width 1s ease;"></div></div>
   </div>`;
 }
+
+/* ══════════════════════════════════════════
+   SUPPLEMENT PLAN BUILDER
+══════════════════════════════════════════ */
+function buildSupplementPlan(sex, age, meds, goals, cycleStatus, stress, bmi, estimatedBF, weight) {
+  const isFemale = sex === 'female';
+  const isPCOS   = cycleStatus === 'irregular';
+  const isMeno   = cycleStatus === 'peri' || cycleStatus === 'post';
+  const isPregnant = cycleStatus === 'pregnant';
+  const isSenior = age >= 56;
+  const isHighStress = stress === 'high';
+  const isOnStatin   = meds.includes('statin');
+  const isOnOCP      = meds.includes('ocp');
+  const isOnMetformin= meds.includes('metformin');
+  const isOnBetaBlock= meds.includes('betablocker') && !meds.includes('carvedilol');
+  const isOnPPI      = meds.includes('ppi');
+  const isOnSteroid  = meds.includes('steroid');
+
+  function suppRow(icon, name, tier, tierClass, sexTag, dose, timing, form, note, warn) {
+    return `<div class="supp-card">
+      <div class="supp-header">
+        <div class="supp-icon iw-${tierClass === 'tier-1' ? 'amber' : tierClass === 'tier-rx' ? 'rose' : tierClass === 'tier-f' ? 'rose' : 'blue'}">${icon}</div>
+        <div class="supp-meta">
+          <div class="supp-name">${name}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
+            <span class="tier-badge ${tierClass}">${tier}</span>
+            ${sexTag ? `<span class="sex-badge ${isFemale ? 'sb-female' : 'sb-male'}">${sexTag}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="supp-body">
+        <div class="supp-row"><span class="supp-label">Dose</span><span class="supp-val highlight">${dose}</span></div>
+        <div class="supp-row"><span class="supp-label">Timing</span><span class="supp-val">${timing}</span></div>
+        <div class="supp-row"><span class="supp-label">Form</span><span class="supp-val">${form}</span></div>
+        <div class="supp-note">${note}</div>
+        ${warn ? `<div class="supp-warn">⚠️ ${warn}</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  let html = `<h3 style="margin-bottom:8px;">Your personalised supplement protocol</h3>
+  <p style="font-size:0.83rem;color:var(--muted);margin-bottom:20px;">Generated from your age (${age}), sex, goals, medications, and health status. Ranked by priority — start with Tier 1 before adding others. <strong>Always test before supplementing where indicated. Discuss with your physician if on any medications.</strong></p>`;
+
+  // ─── TIER 1: UNIVERSAL ───
+  const tier1 = [];
+  tier1.push(suppRow('☀️','Vitamin D3 + K2','Tier 1 · Universal','tier-1',null,
+    '2,000–4,000 IU D3 + 100µg K2 MK-7',
+    'With largest fat-containing meal',
+    'D3 (cholecalciferol) + K2 MK-7 form — NOT D2 or K2 MK-4',
+    `Deficiency is near-universal in modern indoor populations. Target serum 25(OH)D: 75–100 nmol/L. ${isFemale ? 'Deficiency significantly more prevalent in PCOS; 4 of 7 studies link 25(OH)D to ovarian reserve markers.' : 'Linked to testosterone synthesis — D receptors present on Leydig cells. Men with D deficiency have significantly lower testosterone.'}`,
+    'Test serum 25(OH)D before starting — adjust dose to reach 75–100 nmol/L. Separate from levothyroxine by 4h.'));
+
+  tier1.push(suppRow('🌊','Magnesium Glycinate','Tier 1 · Universal','tier-1',null,
+    '200–400mg elemental Mg/evening',
+    '60–90 min before bed',
+    'Glycinate or malate — NOT oxide (≤4% bioavailability)',
+    `Cofactor for 300+ enzymatic reactions including cortisol regulation, GABA signalling, and insulin sensitivity. ${isHighStress ? '<strong>Critical at your stress level</strong> — cortisol depletes magnesium rapidly and magnesium deficiency amplifies the HPA stress response (bidirectional).' : ''} Improves sleep quality (RCT-confirmed via glycine component). Depleted by PPIs, OCP, stress, exercise.`,
+    isOnPPI ? 'PPI interaction: PPIs significantly reduce Mg absorption — this supplement is particularly important for you. Monitor serum Mg annually.' : 'Separate from levothyroxine by 4h.'));
+
+  tier1.push(suppRow('🐟','Omega-3 EPA+DHA','Tier 1 · Universal','tier-1',null,
+    '2–3g combined EPA+DHA/day',
+    'With meals — absorption needs fat',
+    'Triglyceride form (not ethyl ester). Algae DHA if plant-based. Refrigerate.',
+    `${isFemale ? 'For PCOS: multiple RCTs show 2–3g EPA+DHA/day reduces free testosterone, LH, and triglycerides and supports folliculogenesis. Anti-inflammatory effect reduces ovarian stromal inflammation.' : 'Supports Leydig cell function and reduces testicular inflammation. Anti-inflammatory effect reduces cytokine-driven testosterone suppression.'} Brain health: DHA is the primary lipid in neuronal membranes — determines membrane fluidity and receptor function.`,
+    'Blood-thinning effect at >3g/day — flag to surgeon before procedures. Interacts with warfarin.'));
+
+  if (isSenior || goals.includes('muscle') || goals.includes('longevity')) {
+    tier1.push(suppRow('⚡','Creatine Monohydrate', isSenior ? 'Tier 1 · 55+' : 'Tier 1 · Muscle','tier-1',null,
+      '3–5g/day (no loading phase)',
+      'Any time — consistency matters more than timing',
+      'Monohydrate only — no benefit to HCL, ethyl ester, or other forms',
+      `${isSenior ? 'Most important supplement at your age. Multiple RCTs confirm: significant lean mass preservation, strength gains, and cognitive function improvement in adults 55+. Synergises powerfully with resistance training. Cognitive benefit confirmed in 2021 meta-analysis.' : 'Replenishes phosphocreatine — the immediate energy currency for high-intensity effort. Improves performance and muscle recovery.'} Causes ~0.5–1kg scale weight increase (intramuscular water) — not fat.`,
+      'Safe for healthy kidneys. Discuss with prescriber if on nephrotoxic medications.'));
+  }
+
+  html += `<h4 style="margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:0.88rem;"><span class="tier-badge tier-1">Tier 1</span> Universal — start here</h4>`;
+  html += `<div class="supp-grid" style="margin-bottom:28px;">${tier1.join('')}</div>`;
+
+  // ─── TIER 2: CONDITIONAL ───
+  const tier2 = [];
+
+  if (isOnOCP || isFemale) {
+    tier2.push(suppRow('🌸','Methylfolate (B9)', isOnOCP ? 'Tier 1 · OCP users' : 'Tier 2','tier-f','♀',
+      '400–800µg/day',
+      'Any time, consistently daily',
+      'L-methylfolate (5-MTHF) — NOT folic acid if MTHFR risk',
+      `${isOnOCP ? '<strong>OCP depletes folate in ~75% of users.</strong> OCP impairs folate metabolism directly. Methylfolate is the pre-activated form bypassing the MTHFR step (20–40% of people have reduced MTHFR activity).' : 'Folate supports ovarian health and, if pregnancy is a goal, neural tube protection (start 3+ months before conception).'} Also reduces homocysteine — elevated by OCP, metformin, PPIs, alcohol, and smoking.`,
+      '30–40% of people have MTHFR C677T reducing folic acid conversion by up to 70% — use methylfolate form.'));
+  }
+
+  if (isOnOCP || isOnMetformin || age >= 50 || isFemale && (cycleStatus === 'post' || cycleStatus === 'peri')) {
+    tier2.push(suppRow('🔵','Methylcobalamin (B12)', isOnMetformin ? 'Tier 1 · Metformin' : 'Tier 2','tier-f','',
+      '500–1,000µg/day orally',
+      'With food; or sublingual on empty stomach',
+      'Methylcobalamin — NOT cyanocobalamin (conversion impaired by metformin)',
+      `${isOnMetformin ? '<strong>Metformin depletes B12 via ileal uptake impairment — confirmed by meta-analysis of 6 RCTs. 57.7% of PCOS-metformin users have subnormal B12 vs 25% untreated controls.</strong> Deficiency is clinically silent for 5–10 years then presents as fatigue, neuropathy, brain fog.' : 'B12 deficiency common in 50+, plant-based diets, PPI users, OCP users. Test MMA (methylmalonic acid) annually — more sensitive functional marker than serum B12 alone.'}`,
+      isOnMetformin ? 'Test serum B12 and MMA annually. Supplement regardless of results if on metformin >12 months.' : null));
+  }
+
+  if (isOnOCP || stress === 'high' || isFemale) {
+    tier2.push(suppRow('🌿','Vitamin B6 (P5P)', isOnOCP ? 'Tier 1 · OCP' : 'Tier 2','tier-rx','',
+      '25–50mg P5P form/day',
+      'With food, any time',
+      'Pyridoxal-5-phosphate (P5P) — active form. NOT standard pyridoxine hydrochloride.',
+      `${isOnOCP ? '<strong>OCP depletes B6 in 75% of users</strong> — B6 is the rate-limiting cofactor for tryptophan → serotonin conversion. OCP-related low mood is frequently driven by B6 depletion, not the pill itself.' : ''} Also cofactor for GABA synthesis (calming neurotransmitter), reduces homocysteine, and supports progesterone receptor function. PMS symptom reduction: 50–100mg/day in multiple RCTs.`,
+      'Do not exceed 100mg/day chronically. P5P form at ≤50mg is safe.'));
+  }
+
+  if (isOnStatin) {
+    tier2.push(suppRow('⚡','CoQ10 (Ubiquinol)','Tier 1 · Statin','tier-rx','',
+      '100–200mg/day',
+      'With fat-containing meal',
+      'Ubiquinol (reduced form) — superior absorption, especially 40+',
+      `<strong>Statins inhibit HMG-CoA reductase — the same pathway that produces CoQ10.</strong> Serum CoQ10 universally reduced by statins. JAHA meta-analysis (12 RCTs, n=575): CoQ10 improved muscle pain, weakness, cramps. Evidence is contested but risk is low. Reasonable 8–12 week trial if muscle symptoms (SAMS) present. Endogenous production declines ~50% from age 20–80 — ubiquinol absorption significantly better in older adults.`,
+      'Interacts with warfarin — monitor INR. May mildly lower blood pressure.'));
+  }
+
+  if (isOnBetaBlock) {
+    tier2.push(suppRow('🌙','Melatonin','Tier 1 · Beta-blocker','tier-rx','',
+      '2.5mg nightly',
+      '60 min before sleep target time',
+      'Standard melatonin (0.5–3mg range). Avoid 5–10mg — supraphysiological.',
+      `<strong>Beta-blockers suppress nocturnal melatonin 50–86% (propranolol/atenolol/metoprolol).</strong> This is the confirmed mechanism behind beta-blocker-induced insomnia, vivid dreams, and nightmares. Brigham & Women's Hospital RCT (n=16, atenolol/metoprolol): 2.5mg nightly significantly improved sleep quality with no tolerance. Carvedilol and nebivolol are melatonin-sparing — this is specifically for propranolol, atenolol, metoprolol, bisoprolol.`,
+      'Avoid with high-dose SSRIs. Sedating — do not drive after. Fluvoxamine raises melatonin significantly — do not combine.'));
+  }
+
+  if (isOnPPI) {
+    tier2.push(suppRow('🔬','Mg Glycinate (PPI-specific)','Priority · PPI user','tier-rx','',
+      '200–400mg elemental Mg',
+      'Evening, separated from PPI by 2h',
+      'Glycinate form for best absorption despite reduced gastric acid',
+      '<strong>PPIs significantly reduce intestinal magnesium absorption — FDA has issued a warning.</strong> Hypomagnesaemia after 1+ year of use is strongly associated with muscle cramps, insomnia, anxiety, and constipation. Test serum Mg annually. Also supplement methylcobalamin 500µg if on PPIs >12 months (reduced gastric acid impairs food-bound B12 cleavage).',
+      'Monitor serum Mg annually with PPI use.'));
+  }
+
+  if (isOnSteroid) {
+    tier2.push(suppRow('🦴','D3 + K2 (Steroid-specific)','Priority · Steroid','tier-rx','',
+      '2,000–4,000 IU D3 + 100µg K2 MK-7',
+      'With fat-containing meal',
+      'D3 + MK-7 form specifically — needed for bone protection',
+      `<strong>Corticosteroids impair calcium absorption and accelerate bone density loss.</strong> This is NICE-guideline-supported supplementation for any course >2 weeks. D3 restores calcium absorption; K2 MK-7 directs calcium to bone (not arteries). Also ensure adequate dietary calcium (1,000–1,200mg/day from food). Weight-bearing exercise (resistance training) is the most potent non-pharmacological bone-density intervention.`,
+      'Do not take corticosteroid in the evening — take in the morning to mimic natural cortisol peak and reduce HPA suppression.'));
+  }
+
+  if (isPCOS) {
+    tier2.push(suppRow('🌺','Myo-Inositol','Tier 2 · PCOS','tier-f','♀',
+      '4g/day (2g twice daily) — 40:1 myo:DCI ratio',
+      'Before meals (improves insulin response)',
+      '40:1 ratio of myo-inositol to D-chiro-inositol — physiological ovarian ratio',
+      `Multiple RCTs in PCOS: significant improvements in HOMA-IR, fasting insulin, free androgen index, and menstrual cycle regularity. Ovulation rate improved. Comparable to metformin in some studies for insulin sensitisation — without GI side effects or B12 depletion. Allow 3 months for full effect on menstrual regularity. ${isOnMetformin ? 'Complementary to metformin — different mechanisms (insulin signalling vs AMPK). Discuss dose adjustment with prescriber.' : 'Generally very well tolerated at this dose.'}`,
+      null));
+  }
+
+  if ((isFemale && (cycleStatus === 'regular' || isPCOS)) || goals.includes('hormonal')) {
+    tier2.push(suppRow('🩸','Zinc Bisglycinate','Tier 2','tier-2','',
+      '15–25mg/day (if deficient or OCP user)',
+      'With food. Not within 2h of iron or coffee.',
+      'Bisglycinate or picolinate — superior to sulphate',
+      `${isOnOCP ? '<strong>OCP depletes zinc and paradoxically elevates copper — zinc supplementation addresses both.</strong>' : ''} ${!isFemale ? 'Zinc is rate-limiting cofactor for testosterone synthesis — required for LH receptor function in Leydig cells. Deficiency directly suppresses LH and testosterone.' : 'Supports follicular development and ovarian steroidogenesis.'} Athletes lose 1–3mg/hour zinc through sweat.`,
+      'Do not exceed 25mg/day without testing — chronic high-dose depletes copper. Separate from iron by 2h.'));
+  }
+
+  if (isHighStress || goals.includes('cognitive')) {
+    tier2.push(suppRow('🌿','Ashwagandha KSM-66','Tier 2 · Stress/Hormones','tier-2','',
+      '300–600mg KSM-66/day',
+      'Morning or split morning/evening with food',
+      'KSM-66 or Sensoril root extract (standardised withanolides)',
+      `Multiple RCTs: significant reductions in serum cortisol, perceived stress (PSS), and anxiety. Male RCT (n=57): +17% serum testosterone vs placebo. Mechanism: HPA axis regulation via withanolide glycosides. ${isHighStress ? '<strong>High stress is your flagged priority — cortisol is the primary testosterone and GnRH suppressor. Ashwagandha directly targets this.</strong>' : ''} Allow 4–8 weeks for full effect.`,
+      'Thyroid-stimulating effect — monitor TSH if on levothyroxine. Avoid in Hashimoto\'s/autoimmune thyroid, pregnancy, bipolar disorder. Cycle: 3 months on, 2 weeks off.'));
+  }
+
+  if ((isFemale && (cycleStatus === 'regular' || isPCOS)) || goals.includes('hormonal')) {
+    tier2.push(suppRow('🩸','Iron (Ferrous Bisglycinate)','Tier 2 · Menstruating ♀','tier-f','♀',
+      '25–50mg elemental iron (if ferritin <50 µg/L)',
+      'Empty stomach + vitamin C; or with food if GI upset',
+      'Ferrous bisglycinate — highest bioavailability, least GI disturbance vs sulphate',
+      `<strong>Test ferritin first — not haemoglobin (too late a marker).</strong> Ferritin <30 µg/L impairs cognition and energy even without anaemia — the most correctable cause of female fatigue and brain fog. Every 10-point ferritin increase: measurable cognitive improvement. Target: >50 µg/L. Alternate-day dosing (not daily) achieves similar efficacy with fewer GI effects (2017 RCT).`,
+      'NEVER supplement without confirmed deficiency — iron overload is toxic. Separate from tea, coffee, calcium, zinc, levothyroxine by 2–4h. Stop when ferritin >80 µg/L.'));
+  }
+
+  if (tier2.length > 0) {
+    html += `<h4 style="margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:0.88rem;"><span class="tier-badge tier-2">Tier 2</span> Conditional — based on your profile</h4>`;
+    html += `<div class="supp-grid" style="margin-bottom:28px;">${tier2.join('')}</div>`;
+  }
+
+  // ─── TIER 3: GOAL-SPECIFIC ───
+  const tier3 = [];
+
+  if (goals.includes('cognitive') || isHighStress) {
+    tier3.push(suppRow('🌺','Rhodiola Rosea','Tier 3 · Cognitive/Fatigue','tier-3','',
+      '200–400mg standardised extract/day',
+      'Morning or pre-exercise (mildly energising)',
+      'SHR-5 extract or equivalent standardised for 3% rosavins + 1% salidroside',
+      'Systematic review: significant reductions in physical and mental fatigue, improved concentration and cognitive performance under stress. Distinct from ashwagandha (different mechanism — mild MAO inhibition + cortisol regulation). Complementary use possible. 8–12 week cycles.',
+      'Mild MAO inhibitory activity — use with caution alongside SSRI/SNRI, discuss with prescriber. Stimulating — avoid evening.'));
+  }
+
+  if (isSenior && goals.includes('cognitive')) {
+    tier3.push(suppRow('🧠','Phosphatidylserine','Tier 3 · Cognitive 55+','tier-3','',
+      '100–300mg/day',
+      'With meals — split dosing twice daily',
+      'Soy-derived or sunflower-derived; soy-derived most studied',
+      'FDA qualified health claim for cognitive decline risk reduction. RCTs: modest but consistent memory and attention improvements in older adults. Directly incorporated into neuronal membranes — improves membrane fluidity and receptor function. Most benefit observed at 55+.',
+      null));
+  }
+
+  if (tier3.length > 0) {
+    html += `<h4 style="margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:0.88rem;"><span class="tier-badge tier-3">Tier 3</span> Emerging — for specific goals</h4>`;
+    html += `<div class="supp-grid" style="margin-bottom:28px;">${tier3.join('')}</div>`;
+  }
+
+  // ─── TIMING SCHEDULE ───
+  html += `<div style="background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:16px;">
+    <h4 style="margin-bottom:14px;font-size:0.88rem;">📅 Supplement timing schedule</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:0.8rem;">
+      <div><div style="font-weight:700;color:var(--amber);margin-bottom:6px;">With first meal</div>
+        <ul style="list-style:none;color:var(--muted);display:flex;flex-direction:column;gap:3px;">
+          <li>• Omega-3 (EPA+DHA)</li>
+          <li>• Vitamin D3 + K2</li>
+          ${isOnOCP ? '<li>• Methylfolate</li><li>• P5P (B6)</li>' : ''}
+          ${isOnMetformin ? '<li>• Methylcobalamin B12</li>' : ''}
+          ${isOnStatin ? '<li>• CoQ10 (Ubiquinol)</li>' : ''}
+          <li>• Ashwagandha (if taking)</li>
+        </ul>
+      </div>
+      <div><div style="font-weight:700;color:var(--blue);margin-bottom:6px;">Midday / lunch</div>
+        <ul style="list-style:none;color:var(--muted);display:flex;flex-direction:column;gap:3px;">
+          <li>• Zinc bisglycinate (if taking)</li>
+          <li>• Iron (if taking) — 2h gap from Mg</li>
+          <li>• Rhodiola (if taking)</li>
+          <li>• Second dose of split supplements</li>
+        </ul>
+      </div>
+      <div><div style="font-weight:700;color:var(--green);margin-bottom:6px;">Evening / before bed</div>
+        <ul style="list-style:none;color:var(--muted);display:flex;flex-direction:column;gap:3px;">
+          <li>• Magnesium glycinate</li>
+          ${isOnBetaBlock ? '<li>• Melatonin 2.5mg (60 min before sleep)</li>' : ''}
+          ${(goals.includes('cognitive') || stress === 'high') ? '<li>• Melatonin 0.5–1mg (if sleep goal)</li>' : ''}
+          ${isOnStatin ? '<li>• Statin (if simvastatin/lovastatin)</li>' : ''}
+          <li>• Casein/cottage cheese (protein)</li>
+        </ul>
+      </div>
+      <div><div style="font-weight:700;color:var(--rose);margin-bottom:6px;">Critical separations</div>
+        <ul style="list-style:none;color:var(--muted);display:flex;flex-direction:column;gap:3px;">
+          <li>• Levothyroxine: 4h from all Mg, Ca, Fe, Zn</li>
+          <li>• Iron: 2h from coffee, tea, calcium, zinc</li>
+          <li>• Zinc + Iron: not within 2h of each other</li>
+          <li>• Grapefruit: avoid with statins</li>
+        </ul>
+      </div>
+    </div>
+  </div>`;
+
+  html += `<div class="result-disclaimer">⚠️ This supplement plan is generated from your profile inputs. It is not personalised medical advice. Test before supplementing where indicated. Discuss with your physician before starting any supplement if you are on prescription medications.</div>`;
+  return html;
+}
+
+/* ══════════════════════════════════════════
+   PERSONAL TARGETS PANEL
+══════════════════════════════════════════ */
+function buildTargetsPanel(sex, age, weight, height, leanMass, fatMass, estimatedBF, bmi, protTarget, carbTarget, fatTarget, calTarget, tdee, fastWindow, eatStart, eatEnd, sleepTarget) {
+  const isFemale = sex === 'female';
+  const ffmi = leanMass / Math.pow(height/100, 2);
+  const optBF_lo = isFemale ? (age >= 50 ? 22 : 18) : (age >= 50 ? 12 : 8);
+  const optBF_hi = isFemale ? (age >= 50 ? 32 : 25) : (age >= 50 ? 20 : 18);
+  const bfStatus = estimatedBF < optBF_lo ? 'low' : estimatedBF > optBF_hi ? 'high' : 'optimal';
+  const bfColour = bfStatus === 'optimal' ? 'var(--green)' : bfStatus === 'low' ? 'var(--blue)' : 'var(--amber)';
+
+  const ffmiOptLo = isFemale ? 16 : 20;
+  const ffmiOptHi = isFemale ? 19 : 23;
+  const ffmiStatus = ffmi < ffmiOptLo ? 'low' : ffmi > ffmiOptHi ? 'high' : 'optimal';
+
+  const vo2Row = (ageG, mLo, mHi, fLo, fHi) => `<tr><td>${ageG}</td><td class="${!isFemale && age >= parseInt(ageG) && age < parseInt(ageG)+10 ? 'val-green' : ''}">${mLo}–${mHi}</td><td class="${isFemale && age >= parseInt(ageG) && age < parseInt(ageG)+10 ? 'val-green' : ''}">${fLo}–${fHi}</td></tr>`;
+
+  return `
+  <h3 style="margin-bottom:16px;">Your personalised targets &amp; reference ranges</h3>
+
+  <!-- BODY COMPOSITION SNAPSHOT -->
+  <div style="background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:20px;">
+    <h4 style="margin-bottom:14px;font-size:0.88rem;">⚖️ Body Composition Analysis</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:14px;">
+      <div style="text-align:center;padding:12px;background:var(--white);border-radius:var(--r);border:1px solid var(--border);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;color:var(--ink);">${bmi.toFixed(1)}</div>
+        <div style="font-size:0.7rem;color:var(--muted);">BMI</div>
+        <div style="font-size:0.68rem;color:${bmi < 18.5 ? 'var(--blue)' : bmi < 25 ? 'var(--green)' : bmi < 30 ? 'var(--amber)' : 'var(--red)'};">${bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Normal ✓' : bmi < 30 ? 'Overweight' : 'Obese'}</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--white);border-radius:var(--r);border:1px solid var(--border);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;color:${bfColour};">~${estimatedBF.toFixed(0)}%</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Est. Body Fat</div>
+        <div style="font-size:0.68rem;color:${bfColour};">${bfStatus === 'optimal' ? 'In optimal range ✓' : bfStatus === 'low' ? 'Below optimal' : 'Above optimal'}</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--white);border-radius:var(--r);border:1px solid var(--border);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;color:var(--blue);">~${leanMass.toFixed(1)}kg</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Lean Mass</div>
+        <div style="font-size:0.68rem;color:var(--faint);">fat mass: ~${fatMass.toFixed(1)}kg</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--white);border-radius:var(--r);border:1px solid var(--border);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;color:${ffmiStatus === 'optimal' ? 'var(--green)' : 'var(--amber)'};">${ffmi.toFixed(1)}</div>
+        <div style="font-size:0.7rem;color:var(--muted);">FFMI</div>
+        <div style="font-size:0.68rem;color:${ffmiStatus === 'optimal' ? 'var(--green)' : 'var(--amber)'};">${ffmiStatus === 'optimal' ? 'Optimal ✓' : ffmiStatus === 'low' ? 'Below optimal' : 'Athletic'}</div>
+      </div>
+    </div>
+    <div style="font-size:0.78rem;color:var(--muted);">
+      <strong>Optimal body fat for you (${isFemale ? '♀' : '♂'}, age ${age}):</strong> ${optBF_lo}–${optBF_hi}% · 
+      <strong>Optimal FFMI:</strong> ${ffmiOptLo}–${ffmiOptHi} (fat-free mass index = lean mass ÷ height² — muscle independent of height/weight) · 
+      <span style="color:var(--faint);font-size:0.73rem;">⚠️ Body fat estimate uses population regression (±5%). DEXA scan for clinical precision.</span>
+    </div>
+  </div>
+
+  <!-- DAILY MACRO TARGETS -->
+  <div style="background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:20px;">
+    <h4 style="margin-bottom:14px;font-size:0.88rem;">🔢 Daily Macro &amp; Calorie Targets</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:14px;">
+      <div style="text-align:center;padding:12px;background:var(--blue-l);border-radius:var(--r);border:1px solid var(--blue-m);">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--blue);">${calTarget.toLocaleString()}</div>
+        <div style="font-size:0.7rem;color:var(--muted);">kcal/day target</div>
+        <div style="font-size:0.67rem;color:var(--faint);">TDEE: ${tdee.toLocaleString()}</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--green-l);border-radius:var(--r);border:1px solid var(--green-m);">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--green);">${protTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Protein/day</div>
+        <div style="font-size:0.67rem;color:var(--faint);">${(protTarget/weight).toFixed(1)} g/kg · ${Math.round(protTarget*4)} kcal</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--amber-l);border-radius:var(--r);border:1px solid var(--amber-m);">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--amber);">${carbTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Carbs/day</div>
+        <div style="font-size:0.67rem;color:var(--faint);">${Math.round(carbTarget*4/calTarget*100)}% · ${Math.round(carbTarget*4)} kcal</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--rose-l);border-radius:var(--r);border:1px solid var(--rose-m);">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--rose);">${fatTarget}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Fat/day</div>
+        <div style="font-size:0.67rem;color:var(--faint);">${Math.round(fatTarget*9/calTarget*100)}% · ${Math.round(fatTarget*9)} kcal</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:var(--stone);border-radius:var(--r);border:1px solid var(--border2);">
+        <div style="font-size:1.3rem;font-weight:800;color:var(--ink);">${Math.round(protTarget/3)}g</div>
+        <div style="font-size:0.7rem;color:var(--muted);">Protein/meal</div>
+        <div style="font-size:0.67rem;color:var(--faint);">leucine threshold: 2.5–3g</div>
+      </div>
+    </div>
+    <div style="font-size:0.78rem;color:var(--muted);">
+      Distribute across 3–4 meals in your eating window (${eatStart !== 'N/A' ? `${eatStart}–${eatEnd}` : 'throughout the day'}).
+      Each meal needs ≥${Math.round(protTarget/4)}g protein to consistently hit the leucine threshold for muscle protein synthesis.
+      Minimum dietary fat: 50g/day regardless of goal — below this impairs ${isFemale ? 'oestrogen and progesterone synthesis' : 'testosterone and cortisol regulation'}.
+    </div>
+  </div>
+
+  <!-- FASTING WINDOW -->
+  <div style="background:var(--off);border:1px solid var(--border);border-radius:var(--r2);padding:18px;margin-bottom:20px;">
+    <h4 style="margin-bottom:10px;font-size:0.88rem;">⏱️ Fasting Protocol</h4>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+      <div style="text-align:center;padding:14px 20px;background:var(--white);border-radius:var(--r);border:2px solid var(--border2);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.6rem;font-weight:700;color:var(--ink);">${fastWindow}</div>
+        <div style="font-size:0.72rem;color:var(--muted);">Eating window</div>
+      </div>
+      ${eatStart !== 'N/A' ? `<div style="font-size:0.83rem;color:var(--muted);">
+        <div>🟢 <strong>Eat:</strong> ${eatStart} — ${eatEnd}</div>
+        <div style="margin-top:4px;">🔴 <strong>Fast:</strong> ${eatEnd} — ${eatStart} (next day)</div>
+        <div style="margin-top:4px;font-size:0.75rem;color:var(--faint);">Water, black coffee, plain tea: permitted during fast</div>
+      </div>` : '<div style="color:var(--amber);font-size:0.83rem;">Not recommended for your current profile</div>'}
+    </div>
+  </div>
+
+  <!-- VO2 MAX REFERENCE -->
+  <div style="margin-bottom:20px;">
+    <h4 style="margin-bottom:12px;font-size:0.88rem;">🫀 VO₂ Max — Optimal Targets by Age &amp; Sex (ml/kg/min)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Age</th><th>♂ Optimal target</th><th>♀ Optimal target</th></tr>
+        </thead>
+        <tbody>
+          ${vo2Row('20', '48','56','40','48')}
+          ${vo2Row('30', '44','52','38','44')}
+          ${vo2Row('40', '40','48','34','42')}
+          ${vo2Row('50', '36','44','30','38')}
+          ${vo2Row('60', '32','40','26','34')}
+          ${vo2Row('70', '26','34','20','28')}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.72rem;color:var(--faint);margin-top:8px;">★ Optimal = top 20th percentile for age/sex in active general population. AHA 2016 designated VO₂ max a clinical vital sign. Every 1 ml/kg/min increase = ~3–4% reduction in all-cause mortality. Declines ~10%/decade but active individuals lose it at half the rate of sedentary ones.</p>
+  </div>
+
+  <!-- HORMONE TARGETS -->
+  <div style="margin-bottom:16px;">
+    <h4 style="margin-bottom:12px;font-size:0.88rem;">${isFemale ? '♀ Female Hormone' : '♂ Male Hormone'} Optimal Targets (serum, fasting AM)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Marker</th><th>Optimal Range</th><th>Lab "Normal"</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          ${isFemale ? `
+          <tr><td>Testosterone (total)</td><td style="color:var(--green);font-weight:700;">${age >= 50 ? '15–40' : '25–65'} ng/dL</td><td>15–70 ng/dL</td><td>Free T more important — OCP elevates SHBG, masking low free T</td></tr>
+          <tr><td>Free Testosterone</td><td style="color:var(--green);font-weight:700;">${age >= 50 ? '0.5–2.0' : '1.0–4.0'} pg/mL</td><td>0.3–6.5 pg/mL</td><td>Most affected by SHBG changes from OCP or HRT</td></tr>
+          <tr><td>DHEA-S</td><td style="color:var(--green);font-weight:700;">${age >= 50 ? '60–200' : age >= 40 ? '80–250' : '150–380'} µg/dL</td><td>Wide range</td><td>Adrenal reserve marker; declines ~2%/year after 25</td></tr>
+          <tr><td>Estradiol (E2) — Day 3</td><td style="color:var(--green);font-weight:700;">30–80 pg/mL</td><td>12–166 pg/mL</td><td>Test day 2–4; ovulatory peak 150–500 pg/mL is normal</td></tr>
+          <tr><td>Progesterone — Day 21</td><td style="color:var(--green);font-weight:700;">10–25 ng/mL</td><td>>3 ng/mL (luteal)</td><td>Test day 19–23 of 28-day cycle. Pg/E2 ratio (optimal 100–500)</td></tr>
+          <tr><td>FSH — Day 3</td><td style="color:var(--green);font-weight:700;">3–8 mIU/mL</td><td>2.5–10 mIU/mL</td><td>>12 = reduced ovarian reserve; >25 = menopause approaching</td></tr>
+          <tr><td>AMH</td><td style="color:var(--green);font-weight:700;">${age >= 45 ? '<0.5 (expected)' : age >= 38 ? '0.5–2.0' : '1.5–4.5'} ng/mL</td><td>Age-dependent</td><td>Ovarian reserve — can test any day of cycle</td></tr>
+          <tr><td>TSH</td><td style="color:var(--green);font-weight:700;">1.0–2.0 mIU/L</td><td>0.4–4.5 mIU/L</td><td>Women: 5–8× higher thyroid disease risk; subclinical hypo mimics PCOS</td></tr>
+          ` : `
+          <tr><td>Total Testosterone</td><td style="color:var(--green);font-weight:700;">${age >= 60 ? '320–660' : age >= 50 ? '380–720' : age >= 40 ? '420–780' : age >= 30 ? '500–850' : '550–900'} ng/dL</td><td>264–916 ng/dL</td><td>AM sample (6–10am). Clinical symptoms often below 400</td></tr>
+          <tr><td>Free Testosterone</td><td style="color:var(--green);font-weight:700;">${age >= 60 ? '50–100' : age >= 50 ? '60–120' : age >= 40 ? '70–140' : age >= 30 ? '85–160' : '100–175'} pg/mL</td><td>35–155 pg/mL</td><td>Active fraction. SHBG rises with age — free T is the key measure 40+</td></tr>
+          <tr><td>Estradiol (E2) — Male</td><td style="color:var(--green);font-weight:700;">20–30 pg/mL</td><td>10–40 pg/mL</td><td>Essential for libido, joints, cognition. Excess = aromatisation from visceral fat</td></tr>
+          <tr><td>LH</td><td style="color:var(--green);font-weight:700;">3–8 mIU/mL</td><td>1.7–8.6 mIU/mL</td><td>Low LH + low T = secondary hypogonadism (treatable). High LH + low T = primary</td></tr>
+          <tr><td>SHBG</td><td style="color:var(--green);font-weight:700;">20–35 nmol/L</td><td>10–57 nmol/L</td><td>Rises with age, thyroid disease, high-fibre diet. Binds T — reduces free T</td></tr>
+          <tr><td>DHT</td><td style="color:var(--green);font-weight:700;">30–70 ng/dL</td><td>16–79 ng/dL</td><td>3× more potent than T. Libido, cognition. Also drives hair loss and BPH</td></tr>
+          <tr><td>TSH</td><td style="color:var(--green);font-weight:700;">1.0–2.0 mIU/L</td><td>0.4–4.5 mIU/L</td><td>Lab normal is too wide — symptoms common in the 2–4 range</td></tr>
+          `}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.72rem;color:var(--faint);margin-top:8px;">Sources: BSSM testosterone consensus, ZRT Laboratory, AUC, Endocrine Society guidelines. Optimal ranges represent upper-middle tertile of healthy, active individuals — not the statistical average of a cross-sectional population that includes the sedentary and subclinically ill.</p>
+  </div>
+
+  <div class="result-disclaimer">⚠️ These are reference ranges for educational purposes. Individual variation is significant. All values require interpretation by a qualified physician in the context of symptoms, history, and full panel results.</div>`;
+}
+
+/* ── DARK MODE ── */
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const btn = document.getElementById('dmBtn');
+  btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  localStorage.setItem('bioptima-dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+// Restore preference
+(function() {
+  if (localStorage.getItem('bioptima-dark') === '1') {
+    document.body.classList.add('dark');
+    const btn = document.getElementById('dmBtn');
+    if (btn) btn.textContent = '☀️';
+  }
+})();
 </script>
 </body>
 </html>
