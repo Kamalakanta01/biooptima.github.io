@@ -906,7 +906,118 @@ body.dark .hero { background: #07090e; }
 .bm-norm { font-size: 0.68rem; color: var(--faint); }
 @media(max-width:700px) { .bm-row { grid-template-columns: 1fr 1fr; } .bm-track { grid-column: 1/-1; } }
 
-/* ─── NUTRITION SECTION ──────────────────────────────────── */
+/* ─── MEAL PLAN SECTION ─────────────────────────────────── */
+.meal-budget-selector {
+  display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.meal-budget-btn {
+  padding: 8px 16px; border-radius: var(--r2);
+  border: 1.5px solid var(--border); background: var(--white);
+  font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 600;
+  color: var(--muted); cursor: pointer; transition: all 0.15s;
+}
+.meal-budget-btn:hover { border-color: var(--border2); color: var(--ink); }
+.meal-budget-btn.active {
+  background: var(--blue); color: var(--white); border-color: var(--blue);
+}
+.meal-budget-btn .budget-tag {
+  display: inline-block; padding: 2px 6px; border-radius: 4px;
+  font-size: 0.65rem; margin-left: 6px; text-transform: uppercase;
+}
+.meal-budget-btn.active .budget-tag { background: rgba(255,255,255,0.2); }
+.meal-budget-btn .budget-tag.econ { background: var(--green-l); color: var(--green); }
+.meal-budget-btn .budget-tag.std { background: var(--blue-l); color: var(--blue); }
+.meal-budget-btn .budget-tag.prem { background: var(--amber-l); color: var(--amber); }
+
+.meal-day-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r3); margin-bottom: 16px; overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.meal-day-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.meal-day-header {
+  background: var(--stone); padding: 14px 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.meal-day-title { font-family: 'Libre Baskerville', serif; font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+.meal-day-macros { display: flex; gap: 12px; font-size: 0.7rem; color: var(--muted); }
+.meal-day-macros span { background: var(--white); padding: 3px 8px; border-radius: 99px; border: 1px solid var(--border); }
+
+.meal-slot {
+  padding: 14px 18px; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 80px 1fr auto; gap: 14px; align-items: start;
+}
+.meal-slot:last-child { border-bottom: none; }
+.meal-slot-time {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--faint); padding-top: 4px;
+}
+.meal-slot-content { }
+.meal-slot-name { font-size: 0.88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.meal-slot-items { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.meal-slot-alt {
+  margin-top: 8px; padding: 8px 12px; background: var(--off);
+  border-radius: var(--r); border-left: 3px solid var(--amber);
+}
+.meal-slot-alt-label { font-size: 0.7rem; font-weight: 700; color: var(--amber); text-transform: uppercase; }
+.meal-slot-alt-items { font-size: 0.77rem; color: var(--muted); }
+
+.meal-cost-indicator {
+  text-align: right; font-size: 0.75rem; color: var(--muted);
+}
+.meal-cost-indicator .cost-level {
+  display: inline-flex; gap: 3px; margin-bottom: 4px;
+}
+.meal-cost-indicator .cost-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); }
+.meal-cost-indicator .cost-dot.active { background: var(--green); }
+.meal-cost-indicator .cost-text { font-size: 0.68rem; color: var(--faint); }
+
+.meal-shopping-list {
+  background: var(--off); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 18px; margin-top: 20px;
+}
+.meal-shopping-title { font-family: 'Libre Baskerville', serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.meal-shopping-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;
+}
+.meal-shop-category { }
+.meal-shop-cat-title { font-size: 0.75rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.meal-shop-items { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+.meal-shop-item { display: flex; justify-content: space-between; }
+.meal-shop-item .item-name { }
+.meal-shop-item .item-qty { color: var(--faint); font-size: 0.72rem; }
+
+.meal-prep-tips {
+  background: var(--blue-l); border: 1px solid var(--blue-m);
+  border-radius: var(--r2); padding: 14px 16px; margin-top: 16px;
+}
+.meal-prep-title { font-size: 0.8rem; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+.meal-prep-text { font-size: 0.78rem; color: var(--ink2); line-height: 1.6; }
+
+.swap-modal {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 3000; align-items: center; justify-content: center;
+}
+.swap-modal.open { display: flex; }
+.swap-modal-content {
+  background: var(--white); border-radius: var(--r3); max-width: 500px; width: 90%;
+  max-height: 80vh; overflow-y: auto; padding: 24px;
+}
+.swap-modal-title { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; margin-bottom: 16px; }
+.swap-option {
+  padding: 12px; border: 1.5px solid var(--border); border-radius: var(--r2);
+  margin-bottom: 8px; cursor: pointer; transition: all 0.15s;
+}
+.swap-option:hover { border-color: var(--blue); background: var(--blue-l); }
+.swap-option-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.swap-option-note { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+.swap-close {
+  margin-top: 16px; padding: 10px 20px; background: var(--ink); color: var(--white);
+  border: none; border-radius: var(--r); cursor: pointer; font-family: 'Figtree', sans-serif;
+}
+
+/* ─── NUTRITION SECTION ─────────────────────────────────── */
 .macro-ring-wrap { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .macro-swatch {
   display: flex; align-items: center; gap: 8px;
@@ -3237,6 +3348,7 @@ body.dark .hero { background: #07090e; }
       <!-- Tab navigation -->
       <div class="result-tabs" id="resultTabs" style="display:none;">
         <button class="rtab active" data-tab="routine" onclick="switchTab('routine',this)">📋 Daily Routine</button>
+        <button class="rtab" data-tab="meals" onclick="switchTab('meals',this)">🍽️ Meal Plans</button>
         <button class="rtab" data-tab="scores" onclick="switchTab('scores',this)">📊 Profile Scores</button>
         <button class="rtab" data-tab="supps" onclick="switchTab('supps',this)">💊 Supplements</button>
         <button class="rtab" data-tab="targets" onclick="switchTab('targets',this)">🎯 Your Targets</button>
@@ -3248,6 +3360,10 @@ body.dark .hero { background: #07090e; }
         <!-- Tab: Routine -->
         <div id="tab-routine" class="tab-content">
           <div id="resultRoutine"></div>
+        </div>
+        <!-- Tab: Meal Plans -->
+        <div id="tab-meals" class="tab-content" style="display:none;">
+          <div id="resultMeals"></div>
         </div>
         <!-- Tab: Scores -->
         <div id="tab-scores" class="tab-content" style="display:none;">
@@ -4557,6 +4673,10 @@ function calculate() {
   const targetsHtml = buildTargetsPanel(sex, age, weight, height, leanMass, fatMass, estimatedBF, bmi, protTarget, carbTarget, fatTarget, calTarget, tdee, fastWindow, eatStart, eatEnd, sleepTarget);
   document.getElementById('resultTargets').innerHTML = targetsHtml;
 
+  // ─── MEAL PLANS TAB ───
+  const mealsHtml = buildMealPlan(sex, age, weight, goals, cycleStatus, calTarget, protTarget, carbTarget, fatTarget, fastWindow, eatStart);
+  document.getElementById('resultMeals').innerHTML = mealsHtml;
+
   // ─── INJECT INTO TABS ───
   document.getElementById('resultRoutine').innerHTML = html;
   document.getElementById('resultScores').innerHTML = scoresHtml;
@@ -4617,6 +4737,445 @@ function rbItem(type, name, dose, note) {
     <div class="rb-dose">${dose}</div>
     <div class="rb-note">${note}</div>
   </div>`;
+}
+
+/* ══════════════════════════════════════════
+   MEAL PLAN DATABASE & BUILDER
+══════════════════════════════════════════ */
+
+// Budget tiers: economy ($), standard ($$), premium ($$$)
+const MEAL_DB = {
+  proteins: {
+    eggs: { name: 'Eggs', econ: 'Whole eggs (budget pack)', std: 'Free-range eggs', prem: 'Organic pasture-raised eggs', protein: 6, cost: 1, unit: 'per egg' },
+    chicken: { name: 'Chicken breast', econ: 'Frozen chicken breast', std: 'Fresh chicken breast', prem: 'Organic free-range chicken', protein: 31, cost: 2, unit: 'per 100g' },
+    fish: { name: 'Salmon', econ: 'Canned salmon', std: 'Fresh farmed salmon', prem: 'Wild-caught salmon', protein: 25, cost: 3, unit: 'per 100g' },
+    sardines: { name: 'Sardines', econ: 'Canned sardines in water', std: 'Canned sardines in olive oil', prem: 'Portuguese sardines', protein: 25, cost: 1, unit: 'per 100g' },
+    mackerel: { name: 'Mackerel', econ: 'Canned mackerel', std: 'Fresh mackerel', prem: 'Line-caught fresh mackerel', protein: 26, cost: 2, unit: 'per 100g' },
+    greek_yogurt: { name: 'Greek yoghurt', econ: 'Standard plain yoghurt', std: 'Greek yoghurt 10% fat', prem: 'Organic strained Greek yoghurt', protein: 17, cost: 2, unit: 'per 100g' },
+    cottage_cheese: { name: 'Cottage cheese', econ: 'Standard cottage cheese', std: 'Low-fat cottage cheese', prem: 'Organic cultured cottage cheese', protein: 12, cost: 2, unit: 'per 100g' },
+    lentils: { name: 'Lentils', econ: 'Dried lentils (bulk)', std: 'Canned lentils', prem: 'Organic pre-cooked lentils', protein: 9, cost: 1, unit: 'per 100g cooked' },
+    chickpeas: { name: 'Chickpeas', econ: 'Dried chickpeas (bulk)', std: 'Canned chickpeas', prem: 'Organic sprouted chickpeas', protein: 9, cost: 1, unit: 'per 100g cooked' },
+    tofu: { name: 'Tofu', econ: 'Standard firm tofu', std: 'Organic tofu', prem: 'Sprouted organic tofu', protein: 8, cost: 2, unit: 'per 100g' },
+    beef: { name: 'Lean beef', econ: 'Ground beef (80/20)', std: 'Lean ground beef (90/10)', prem: 'Grass-fed beef', protein: 26, cost: 3, unit: 'per 100g' },
+    turkey: { name: 'Turkey breast', econ: 'Ground turkey', std: 'Turkey breast', prem: 'Free-range turkey breast', protein: 29, cost: 2, unit: 'per 100g' },
+  },
+  carbs: {
+    oats: { name: 'Oats', econ: 'Large flake oats', std: 'Steel-cut oats', prem: 'Organic sprouted oats', carbs: 66, cost: 1, unit: 'per 100g dry' },
+    rice: { name: 'Rice', econ: 'White rice (bulk)', std: 'Brown rice', prem: 'Basmati/brown jasmine', carbs: 75, cost: 1, unit: 'per 100g dry' },
+    quinoa: { name: 'Quinoa', econ: 'White quinoa', std: 'Tri-colour quinoa', prem: 'Organic sprouted quinoa', carbs: 64, cost: 2, unit: 'per 100g dry' },
+    sweet_potato: { name: 'Sweet potato', econ: 'Standard orange', std: 'Organic sweet potato', prem: 'Purple/orange mix', carbs: 20, cost: 1, unit: 'per 100g' },
+    potato: { name: 'Potato', econ: 'Russet potatoes', std: 'Yukon gold/red', prem: 'New/baby potatoes', carbs: 17, cost: 1, unit: 'per 100g' },
+    pasta: { name: 'Pasta', econ: 'Standard wheat pasta', std: 'Whole wheat pasta', prem: 'Chickpea/lentil pasta', carbs: 75, cost: 1, unit: 'per 100g dry' },
+  },
+  fats: {
+    olive_oil: { name: 'Extra virgin olive oil', econ: 'Standard EVOO', std: 'Cold-pressed EVOO', prem: 'Single-origin EVOO', fat: 100, cost: 2, unit: 'per tbsp' },
+    avocado: { name: 'Avocado', econ: 'Conventional avocado', std: 'Ripe ready avocado', prem: 'Hass organic avocado', fat: 15, cost: 2, unit: 'per half' },
+    nuts: { name: 'Mixed nuts', econ: 'Peanuts (bulk)', std: 'Almonds/walnuts', prem: 'Raw mixed nuts', fat: 50, cost: 2, unit: 'per 30g' },
+    seeds: { name: 'Seeds', econ: 'Sunflower seeds', std: 'Pumpkin seeds', prem: 'Sprouted seed mix', fat: 45, cost: 1, unit: 'per 30g' },
+  },
+  veg: {
+    broccoli: { name: 'Broccoli', econ: 'Frozen broccoli', std: 'Fresh broccoli', prem: 'Organic fresh broccoli', note: 'Steam 3-4 min for sulforaphane' },
+    broccoli_sprouts: { name: 'Broccoli sprouts', econ: 'Grow your own', std: 'Pre-packaged sprouts', prem: 'Organic fresh sprouts', note: 'Eat raw - 10-100x more potent' },
+    spinach: { name: 'Spinach', econ: 'Frozen spinach', std: 'Fresh spinach', prem: 'Organic baby spinach', note: 'Folate-rich for female health' },
+    kale: { name: 'Kale', econ: 'Frozen kale', std: 'Fresh curly kale', prem: 'Organic lacinato kale', note: 'Massage with oil to soften' },
+    peppers: { name: 'Bell peppers', econ: 'Standard mixed', std: 'Colour variety', prem: 'Organic mini peppers', note: 'Vitamin C source' },
+    tomatoes: { name: 'Tomatoes', econ: 'Standard tomatoes', std: 'Roma/plum tomatoes', prem: 'Heirloom tomatoes', note: 'Cook with oil for lycopene' },
+    onions: { name: 'Onions', econ: 'Yellow onions (bulk)', std: 'Red/white mix', prem: 'Shallots/green onions', note: 'Prebiotic fibre' },
+    garlic: { name: 'Garlic', econ: 'Pre-minced jar', std: 'Fresh garlic heads', prem: 'Organic black garlic', note: 'Allicin activates when crushed' },
+    asparagus: { name: 'Asparagus', econ: 'Standard asparagus', std: 'Fresh asparagus', prem: 'Organic purple/green', note: 'Folate and prebiotic' },
+  },
+  fruit: {
+    berries: { name: 'Berries', econ: 'Frozen mixed berries', std: 'Fresh seasonal', prem: 'Organic fresh berries', note: 'Low glycemic, high antioxidants' },
+    citrus: { name: 'Citrus', econ: 'Standard oranges', std: 'Fresh lemons/limes', prem: 'Blood oranges/Meyer lemons', note: 'Vitamin C for iron absorption' },
+    apples: { name: 'Apples', econ: 'Standard varieties', std: 'Seasonal selection', prem: 'Organic heirloom', note: 'Pectin fibre' },
+    banana: { name: 'Banana', econ: 'Conventional', std: 'Ripe ready', prem: 'Red/organic bananas', note: 'Potassium, prebiotic' },
+  },
+  extras: {
+    sauerkraut: { name: 'Sauerkraut', econ: 'Canned', std: 'Raw refrigerated', prem: 'Organic artisan', note: 'Probiotic - start small' },
+    kimchi: { name: 'Kimchi', econ: 'Standard jar', std: 'Korean brand', prem: 'Organic small-batch', note: 'Probiotic + spicy' },
+    miso: { name: 'Miso', econ: 'White miso paste', std: 'Yellow/brown miso', prem: 'Organic unpasteurised', note: 'Add after cooking' },
+    seaweed: { name: 'Seaweed', econ: 'Nori sheets', std: 'Wakame', prem: 'Dulse/kombu variety', note: 'Iodine source' },
+  }
+};
+
+// Meal templates by goal and time of day
+const MEAL_TEMPLATES = {
+  breakfast: {
+    fasting: { name: 'Continue fast', items: ['Black coffee or plain tea allowed'], macros: { p:0, c:0, f:0 } },
+    mediterranean: {
+      name: 'Mediterranean Breakfast',
+      baseItems: ['greek_yogurt', 'berries', 'nuts'],
+      altItems: ['eggs', 'spinach', 'olive_oil'],
+      prep: 'Greek yoghurt with berries and nuts, OR eggs with sautéed spinach',
+      macros: { p:25, c:30, f:20 }
+    },
+    high_protein: {
+      name: 'High-Protein Breakfast',
+      baseItems: ['eggs', 'eggs', 'eggs', 'spinach', 'olive_oil'],
+      altItems: ['cottage_cheese', 'berries', 'nuts'],
+      prep: '3-egg omelette with spinach in olive oil, OR cottage cheese bowl',
+      macros: { p:35, c:15, f:22 }
+    },
+    pcos: {
+      name: 'PCOS-Friendly Breakfast',
+      baseItems: ['eggs', 'salmon', 'avocado', 'spinach'],
+      altItems: ['greek_yogurt', 'cinnamon', 'nuts'],
+      prep: 'Eggs with smoked salmon and avocado, OR Greek yoghurt with cinnamon',
+      macros: { p:30, c:12, f:25 }
+    }
+  },
+  lunch: {
+    mediterranean: {
+      name: 'Mediterranean Lunch',
+      baseItems: ['chicken', 'quinoa', 'olive_oil', 'tomatoes', 'peppers'],
+      altItems: ['lentils', 'rice', 'vegetables'],
+      prep: 'Grilled chicken with quinoa salad and olive oil dressing',
+      macros: { p:35, c:45, f:18 }
+    },
+    fish: {
+      name: 'Omega-3 Rich Lunch',
+      baseItems: ['sardines', 'sweet_potato', 'broccoli', 'olive_oil'],
+      altItems: ['mackerel', 'quinoa', 'asparagus'],
+      prep: 'Sardines or mackerel with sweet potato and steamed broccoli',
+      macros: { p:30, c:35, f:22 }
+    },
+    plant: {
+      name: 'Plant-Based Lunch',
+      baseItems: ['lentils', 'chickpeas', 'rice', 'spinach', 'olive_oil'],
+      altItems: ['tofu', 'quinoa', 'vegetables'],
+      prep: 'Lentil and chickpea curry with rice and greens',
+      macros: { p:20, c:50, f:15 }
+    },
+    low_carb: {
+      name: 'Low-Carb Lunch',
+      baseItems: ['beef', 'broccoli', 'avocado', 'olive_oil', 'garlic'],
+      altItems: ['chicken', 'kale', 'nuts'],
+      prep: 'Beef and broccoli stir-fry with avocado',
+      macros: { p:35, c:15, f:30 }
+    }
+  },
+  dinner: {
+    mediterranean: {
+      name: 'Mediterranean Dinner',
+      baseItems: ['fish', 'quinoa', 'olive_oil', 'asparagus', 'garlic'],
+      altItems: ['chicken', 'sweet_potato', 'broccoli'],
+      prep: 'Baked fish with quinoa and roasted asparagus',
+      macros: { p:35, c:40, f:20 }
+    },
+    high_protein: {
+      name: 'High-Protein Dinner',
+      baseItems: ['beef', 'potato', 'broccoli', 'olive_oil'],
+      altItems: ['turkey', 'rice', 'spinach'],
+      prep: 'Lean beef with potato and steamed broccoli',
+      macros: { p:40, c:35, f:20 }
+    },
+    light: {
+      name: 'Light Evening Meal',
+      baseItems: ['chicken', 'salad', 'olive_oil', 'lemon'],
+      altItems: ['eggs', 'vegetables', 'avocado'],
+      prep: 'Grilled chicken salad with olive oil and lemon',
+      macros: { p:30, c:20, f:18 }
+    },
+    pcos: {
+      name: 'PCOS-Support Dinner',
+      baseItems: ['salmon', 'quinoa', 'broccoli', 'olive_oil'],
+      altItems: ['sardines', 'lentils', 'spinach'],
+      prep: 'Salmon with quinoa and broccoli - omega-3 rich',
+      macros: { p:32, c:35, f:22 }
+    }
+  },
+  snacks: {
+    sulforaphane: {
+      name: 'Sulforaphane Boost',
+      items: ['broccoli_sprouts', 'mustard_seed'],
+      prep: '60-80g broccoli sprouts (raw) with mustard seed powder',
+      macros: { p:3, c:8, f:1 }
+    },
+    protein: {
+      name: 'Protein Snack',
+      items: ['greek_yogurt', 'nuts'],
+      prep: 'Greek yoghurt with handful of nuts',
+      macros: { p:20, c:12, f:15 }
+    },
+    pre_workout: {
+      name: 'Pre-Workout',
+      items: ['banana', 'oats'],
+      prep: 'Banana with small handful of oats',
+      macros: { p:3, c:35, f:2 }
+    }
+  }
+};
+
+function getBudgetLabel(budget) {
+  return budget === 'econ' ? '$' : budget === 'std' ? '$$' : '$$$';
+}
+
+function getItemByBudget(itemKey, category, budget) {
+  const item = MEAL_DB[category][itemKey];
+  if (!item) return null;
+  return {
+    name: item[budget] || item.std || item.name,
+    protein: item.protein || 0,
+    carbs: item.carbs || 0,
+    fat: item.fat || 0,
+    cost: item.cost,
+    unit: item.unit || 'serving'
+  };
+}
+
+function buildMealPlan(sex, age, weight, goals, cycleStatus, calTarget, protTarget, carbTarget, fatTarget, fastWindow, eatStart) {
+  const isFemale = sex === 'female';
+  const isPCOS = cycleStatus === 'irregular';
+  const isPregnant = cycleStatus === 'pregnant';
+  const isMeno = cycleStatus === 'peri' || cycleStatus === 'post';
+  const isFasting = fastWindow !== 'Not recommended' && eatStart !== 'N/A';
+
+  let html = `
+  <div style="margin-bottom:20px;">
+    <h3 style="margin-bottom:8px;">🍽️ Your Personalised Meal Plan</h3>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:16px;">Evidence-based meals aligned with your macros (${calTarget.toLocaleString()} kcal, ${protTarget}g protein). Select your budget tier to see ingredient options and alternatives.</p>
+
+    <div class="meal-budget-selector" id="budgetSelector">
+      <button class="meal-budget-btn active" onclick="setBudgetTier('econ', this)" data-tier="econ">
+        Economy <span class="budget-tag econ">$</span>
+      </button>
+      <button class="meal-budget-btn" onclick="setBudgetTier('std', this)" data-tier="std">
+        Standard <span class="budget-tag std">$$</span>
+      </button>
+      <button class="meal-budget-btn" onclick="setBudgetTier('prem', this)" data-tier="prem">
+        Premium <span class="budget-tag prem">$$$</span>
+      </button>
+    </div>
+
+    <div class="callout c-amber" style="margin-bottom:16px;">
+      <span class="callout-i">💡</span>
+      <div>
+        <strong>How to use this plan:</strong>
+        Each meal shows the <strong>Standard</strong> option. Click any budget tier above to see ingredient swaps.
+        <strong>Alternatives</strong> shown below each meal are nutritionally equivalent swaps if items are unavailable.
+        ${isFasting ? `<br><br><strong>Fasting schedule:</strong> First meal at ${eatStart}. All meals fit within your eating window.` : ''}
+      </div>
+    </div>
+  </div>`;
+
+  // Generate 7-day rotating meal plan
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  // Determine meal templates based on goals
+  const isWeightLoss = goals.includes('weight');
+  const isMuscle = goals.includes('muscle');
+  const isCognitive = goals.includes('cognitive');
+
+  // Build weekly rotation
+  const weeklyPlan = [];
+  for (let i = 0; i < 7; i++) {
+    const dayPlan = { day: days[i], meals: [] };
+
+    // Breakfast (if not fasting) - varies by day
+    if (isFasting) {
+      // First meal varies by day
+      const mealTypes = isPCOS ? ['pcos', 'mediterranean', 'high_protein'] :
+                         isWeightLoss ? ['high_protein', 'mediterranean', 'high_protein'] :
+                         ['mediterranean', 'high_protein', 'mediterranean'];
+      const type = mealTypes[i % 3];
+      dayPlan.meals.push({ time: eatStart, slot: 'firstMeal', ...MEAL_TEMPLATES.breakfast[type] });
+    } else {
+      dayPlan.meals.push({ time: '07:00', slot: 'breakfast', ...MEAL_TEMPLATES.breakfast.mediterranean });
+    }
+
+    // Lunch - fish 2x/week, varies otherwise
+    if (i === 0 || i === 3) {
+      dayPlan.meals.push({ time: '13:00', slot: 'lunch', ...MEAL_TEMPLATES.lunch.fish });
+    } else if (i === 2) {
+      dayPlan.meals.push({ time: '13:00', slot: 'lunch', ...MEAL_TEMPLATES.lunch.plant });
+    } else if (isWeightLoss && i === 5) {
+      dayPlan.meals.push({ time: '13:00', slot: 'lunch', ...MEAL_TEMPLATES.lunch.low_carb });
+    } else {
+      dayPlan.meals.push({ time: '13:00', slot: 'lunch', ...MEAL_TEMPLATES.lunch.mediterranean });
+    }
+
+    // Dinner - fish/seafood 2x/week for omega-3
+    if (i === 1 || i === 4) {
+      dayPlan.meals.push({ time: '19:00', slot: 'dinner', ...MEAL_TEMPLATES.dinner.mediterranean });
+    } else if (isPCOS) {
+      dayPlan.meals.push({ time: '19:00', slot: 'dinner', ...MEAL_TEMPLATES.dinner.pcos });
+    } else if (isWeightLoss) {
+      dayPlan.meals.push({ time: '19:00', slot: 'dinner', ...MEAL_TEMPLATES.dinner.light });
+    } else {
+      dayPlan.meals.push({ time: '19:00', slot: 'dinner', ...MEAL_TEMPLATES.dinner.high_protein });
+    }
+
+    // Sulforaphane snack (most days) - mid-afternoon or with first meal
+    if (i < 5) {
+      dayPlan.meals.push({ time: '15:00', slot: 'snack', ...MEAL_TEMPLATES.snacks.sulforaphane });
+    }
+
+    weeklyPlan.push(dayPlan);
+  }
+
+  // Render each day
+  weeklyPlan.forEach((day, idx) => {
+    const dayProtein = day.meals.reduce((sum, m) => sum + (m.macros?.p || 0), 0);
+    const dayCarbs = day.meals.reduce((sum, m) => sum + (m.macros?.c || 0), 0);
+    const dayFat = day.meals.reduce((sum, m) => sum + (m.macros?.f || 0), 0);
+    const dayCals = dayProtein * 4 + dayCarbs * 4 + dayFat * 9;
+
+    html += `
+    <div class="meal-day-card" data-day-index="${idx}">
+      <div class="meal-day-header">
+        <div class="meal-day-title">${day.day}</div>
+        <div class="meal-day-macros">
+          <span>${dayCals} kcal</span>
+          <span>P: ${dayProtein}g</span>
+          <span>C: ${dayCarbs}g</span>
+          <span>F: ${dayFat}g</span>
+        </div>
+      </div>`;
+
+    day.meals.forEach(meal => {
+      const baseItemsHtml = meal.baseItems ? meal.baseItems.map(item => {
+        const itemData = getItemByBudget(item, getCategoryForItem(item), 'std');
+        return itemData ? `<span class="budget-item" data-item="${item}">${itemData.name}</span>` : item;
+      }).join(', ') : meal.items.join(', ');
+
+      const altItemsHtml = meal.altItems ? `
+        <div class="meal-slot-alt">
+          <div class="meal-slot-alt-label">Alternative</div>
+          <div class="meal-slot-alt-items">${meal.altItems.map(item => {
+            const itemData = getItemByBudget(item, getCategoryForItem(item), 'std');
+            return itemData ? itemData.name : item;
+          }).join(' + ')}</div>
+        </div>
+      ` : '';
+
+      const costLevel = meal.baseItems ? meal.baseItems.reduce((sum, item) => {
+        const cat = getCategoryForItem(item);
+        const it = MEAL_DB[cat]?.[item];
+        return sum + (it?.cost || 2);
+      }, 0) / (meal.baseItems.length || 1) : 2;
+
+      const costDots = [1, 2, 3].map(i => `<span class="cost-dot ${i <= costLevel ? 'active' : ''}"></span>`).join('');
+
+      html += `
+      <div class="meal-slot">
+        <div class="meal-slot-time">${meal.time}</div>
+        <div class="meal-slot-content">
+          <div class="meal-slot-name">${meal.name}</div>
+          <div class="meal-slot-items">${baseItemsHtml}</div>
+          ${altItemsHtml}
+          ${meal.prep ? `<div style="margin-top:8px;font-size:0.75rem;color:var(--faint);">👨‍🍳 ${meal.prep}</div>` : ''}
+        </div>
+        <div class="meal-cost-indicator">
+          <div class="cost-level">${costDots}</div>
+          <div class="cost-text">${getBudgetLabel(costLevel <= 1.5 ? 'econ' : costLevel <= 2.5 ? 'std' : 'prem')}</div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div>`;
+  });
+
+  // Add shopping list section
+  html += buildShoppingList();
+
+  // Add meal prep tips
+  html += `
+  <div class="meal-prep-tips">
+    <div class="meal-prep-title">🥗 Weekly Meal Prep Tips</div>
+    <div class="meal-prep-text">
+      <strong>Batch cook Sunday:</strong> Prepare 3 days of grains (quinoa/rice), roast vegetables, and pre-portion proteins.
+      Store broccoli sprouts separately - add fresh to meals. <br>
+      <strong>Protein prep:</strong> Grill chicken breasts, bake fish portions, cook lentils in bulk.
+      Keeps 3-4 days refrigerated.<br>
+      <strong>EDC reduction:</strong> Store all prepped food in glass containers. Never heat in plastic.
+      ${isFemale ? '<br><strong>Cycle-sync tip:</strong> In luteal phase (days 15-28), increase magnesium-rich foods (pumpkin seeds, dark chocolate) to support mood and sleep.' : ''}
+    </div>
+  </div>`;
+
+  return html;
+}
+
+function getCategoryForItem(itemKey) {
+  for (const [cat, items] of Object.entries(MEAL_DB)) {
+    if (items[itemKey]) return cat;
+  }
+  return 'proteins';
+}
+
+function buildShoppingList() {
+  return `
+  <div class="meal-shopping-list">
+    <div class="meal-shopping-title">🛒 Weekly Shopping List</div>
+    <div class="meal-shopping-grid">
+      <div class="meal-shop-category">
+        <div class="meal-shop-cat-title">Proteins</div>
+        <div class="meal-shop-items">
+          <div class="meal-shop-item"><span class="item-name">Eggs</span><span class="item-qty">12-18</span></div>
+          <div class="meal-shop-item"><span class="item-name">Chicken breast</span><span class="item-qty">1kg</span></div>
+          <div class="meal-shop-item"><span class="item-name">Salmon/fish</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Sardines/mackerel</span><span class="item-qty">4 cans</span></div>
+          <div class="meal-shop-item"><span class="item-name">Greek yoghurt</span><span class="item-qty">1kg</span></div>
+          <div class="meal-shop-item"><span class="item-name">Lentils (dried)</span><span class="item-qty">500g</span></div>
+        </div>
+      </div>
+      <div class="meal-shop-category">
+        <div class="meal-shop-cat-title">Grains & Carbs</div>
+        <div class="meal-shop-items">
+          <div class="meal-shop-item"><span class="item-name">Oats</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Quinoa</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Brown rice</span><span class="item-qty">1kg</span></div>
+          <div class="meal-shop-item"><span class="item-name">Sweet potatoes</span><span class="item-qty">1kg</span></div>
+          <div class="meal-shop-item"><span class="item-name">Bananas</span><span class="item-qty">5-7</span></div>
+        </div>
+      </div>
+      <div class="meal-shop-category">
+        <div class="meal-shop-cat-title">Vegetables</div>
+        <div class="meal-shop-items">
+          <div class="meal-shop-item"><span class="item-name">Broccoli</span><span class="item-qty">1kg</span></div>
+          <div class="meal-shop-item"><span class="item-name">Broccoli sprouts</span><span class="item-qty">200g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Spinach</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Bell peppers</span><span class="item-qty">4-5</span></div>
+          <div class="meal-shop-item"><span class="item-name">Tomatoes</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Onions/garlic</span><span class="item-qty">500g</span></div>
+        </div>
+      </div>
+      <div class="meal-shop-category">
+        <div class="meal-shop-cat-title">Pantry Essentials</div>
+        <div class="meal-shop-items">
+          <div class="meal-shop-item"><span class="item-name">Extra virgin olive oil</span><span class="item-qty">500ml</span></div>
+          <div class="meal-shop-item"><span class="item-name">Mixed nuts</span><span class="item-qty">300g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Seeds (pumpkin)</span><span class="item-qty">200g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Frozen berries</span><span class="item-qty">500g</span></div>
+          <div class="meal-shop-item"><span class="item-name">Lemons</span><span class="item-qty">4-5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Budget tier switching function
+function setBudgetTier(tier, btn) {
+  // Update button states
+  document.querySelectorAll('#budgetSelector .meal-budget-btn').forEach(b => {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+
+  // Update all displayed items to show budget-specific names
+  document.querySelectorAll('.budget-item').forEach(el => {
+    const itemKey = el.dataset.item;
+    if (itemKey) {
+      const category = getCategoryForItem(itemKey);
+      const itemData = getItemByBudget(itemKey, category, tier);
+      if (itemData) {
+        el.textContent = itemData.name;
+        el.style.color = tier === 'econ' ? 'var(--green)' : tier === 'prem' ? 'var(--amber)' : 'var(--ink)';
+      }
+    }
+  });
+
+  // Save preference
+  localStorage.setItem('biooptima_budget_tier', tier);
 }
 
 function scoreBar(label, pct, colour) {
@@ -5060,13 +5619,15 @@ function toggleDark() {
   btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
   localStorage.setItem('bioptima-dark', document.body.classList.contains('dark') ? '1' : '0');
 }
-// Restore preference
+// Restore preferences
 (function() {
   if (localStorage.getItem('bioptima-dark') === '1') {
     document.body.classList.add('dark');
     const btn = document.getElementById('dmBtn');
     if (btn) btn.textContent = '☀️';
   }
+  // Budget tier preference - stored for when meal plan is shown
+  window.biooptimaBudgetTier = localStorage.getItem('biooptima_budget_tier') || 'std';
 })();
 </script>
 </body>
